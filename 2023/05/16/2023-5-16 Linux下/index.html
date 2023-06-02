@@ -1,0 +1,1634 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux下 | Hexo</title><meta name="keywords" content="Linux下"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Linux下"><meta name="application-name" content="Linux下"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta name="description" content="听说Linux的命令很难背哦">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下">
+<meta property="og:url" content="http://example.com/2023/05/16/2023-5-16%20Linux%E4%B8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="听说Linux的命令很难背哦">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/default_cover.jpg">
+<meta property="article:published_time" content="2023-05-15T22:19:03.000Z">
+<meta property="article:modified_time" content="2023-05-17T01:00:00.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Linux下">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/default_cover.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://example.com/2023/05/16/2023-5-16%20Linux%E4%B8%8B/"><link rel="preconnect" href="//npm.elemecdn.com"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  friends_vue_info: undefined,
+  navMusic: true,
+  changeMainColorPost: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#3b70fc","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux下',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-17 09:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/"><div class="title">Hexo</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" href="javascript:void(0);" title="Switch Between Light And Dark Mode" onclick="anzhiyu.switchDarkMode()"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke" style="font-size: 1.3rem"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Linux%E4%B8%8B/"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Linux下</span></a></span></div></div><h1 class="post-title">Linux下</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-05-15T22:19:03.000Z" title="Created 2023-05-16 06:19:03">2023-05-16</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-05-17T01:00:00.000Z" title="Updated 2023-05-17 09:00:00">2023-05-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/default_cover.jpg"></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
+
+<p><a name="EsqYr"></a></p>
+<h1 id="Linux-day-下"><a href="#Linux-day-下" class="headerlink" title="Linux-day(下)"></a>Linux-day(下)</h1><p><a name="Zu87P"></a></p>
+<h2 id="第一章-Linux常用命令"><a href="#第一章-Linux常用命令" class="headerlink" title="第一章 Linux常用命令"></a><a href="#jJ2wt">第一章 Linux常用命令</a></h2><p><a name="XV7Z6"></a></p>
+<h3 id="第一节-进程相关命令"><a href="#第一节-进程相关命令" class="headerlink" title="第一节 进程相关命令"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4">第一节 进程相关命令</a></h3><p><a name="jJ2wt"></a></p>
+<h4 id="1-查看进程状态"><a href="#1-查看进程状态" class="headerlink" title="1. 查看进程状态"></a>1. 查看进程状态</h4><p><a name="sBCOE"></a></p>
+<h5 id="1-1-命令的使用"><a href="#1-1-命令的使用" class="headerlink" title="1.1 命令的使用"></a>1.1 命令的使用</h5><p>ps 命令是用于查看进程状态的命令，它常和 e 参数(对应单词entire，表示全部。具体指显示系统中全部的进程信息。)，以及 f 参数(对应单词full-formate，表示完整格式。) 一起使用</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295349445-f2579ea8-1cdd-4e6e-8396-27a2327b54f2.png#averageHue=%230a0805&from=url&id=MXh41&originHeight=134&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>进程信息中各列数据的说明:</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UID</td>
+<td>进程的用户信息</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>进程id。由系统分配，不会重复。</td>
+</tr>
+<tr>
+<td>PPID</td>
+<td>父进程的id。父进程和子进程的关系是：父进程启动了子进程。</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>当前进程所对应的程序。</td>
+</tr>
+<tr>
+<td>C</td>
+<td>用整数表示的CPU使用率</td>
+</tr>
+<tr>
+<td>STIME</td>
+<td>进程启动时间</td>
+</tr>
+<tr>
+<td>TTY</td>
+<td>进程所在终端。所谓终端就是用户输入命令的操作界面。</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>进程所占用的CPU时间</td>
+</tr>
+</tbody></table>
+<p><a name="oi3eb"></a></p>
+<h5 id="1-2-父进程和子进程之间的关系"><a href="#1-2-父进程和子进程之间的关系" class="headerlink" title="1.2 父进程和子进程之间的关系"></a>1.2 父进程和子进程之间的关系</h5><p>简单来说，父进程和子进程的关系是：父进程启动了子进程。我们可以使用pstree命令查看整个进程树。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295349579-cf845e68-99de-4a97-abe9-ca0561dfa225.png#averageHue=%23090705&from=url&id=hVFls&originHeight=421&originWidth=556&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="YATnZ"></a></p>
+<h5 id="1-3-和其它命令配合一起查看进程"><a href="#1-3-和其它命令配合一起查看进程" class="headerlink" title="1.3 和其它命令配合一起查看进程"></a>1.3 和其它命令配合一起查看进程</h5><p><a name="STqLP"></a></p>
+<h6 id="1-3-1-分屏查看进程信息"><a href="#1-3-1-分屏查看进程信息" class="headerlink" title="1.3.1 分屏查看进程信息"></a>1.3.1 分屏查看进程信息</h6><p>全部进程的信息太多了，一屏无法全部显示，所以我们希望可以分屏显示并由我们来控制翻页。为了达到这个目标，我们可以使用管道符号将ps -ef命令的输出数据传送给less命令。  ps -ef | less</p>
+<p><a name="M5kIJ"></a></p>
+<h6 id="1-3-2-精确查询一个具体进程信息"><a href="#1-3-2-精确查询一个具体进程信息" class="headerlink" title="1.3.2 精确查询一个具体进程信息"></a>1.3.2 精确查询一个具体进程信息</h6><p>我们通过Xshell远程连接Linux系统，靠的是sshd这个服务。这个服务如果正在运行中，那么一定会有这个服务对应的进程。所以下面我们来查询一下sshd这个命令的进程。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295349673-ffd72631-4dfc-42c3-b49f-07ed4ab94810.png#averageHue=%23100a07&from=url&id=LRZrU&originHeight=69&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>我们看到这里返回了3条结果，其中前两天都是和sshd服务相关的结果，但是最后一条不是。</p>
+<p>root 72826 3456 0 20:06 pts&#x2F;0 00:00:00 grep –color&#x3D;auto sshd</p>
+<p>仔细观察一下就能发现，这其实是grep命令本身。因为grep命令运行过程中本身也是一个进程，“grep sshd”正好也匹配sshd，所以就被选中了。但是这是一个干扰项，并不是我们真正要查询的内容，所以需要把它从查询结果中排除。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295349770-d5706529-c4f0-4a80-91a4-1dff2e6eac28.png#averageHue=%230f0b08&from=url&id=YTujL&originHeight=58&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>再用一层管道，使用grep命令的-v参数把匹配grep的行排除，返回不匹配的结果，这就是我们最终想要的。</p>
+<p><a name="VewPN"></a></p>
+<h4 id="2-杀死进程"><a href="#2-杀死进程" class="headerlink" title="2. 杀死进程"></a>2. 杀死进程</h4><p><a name="pLQPE"></a></p>
+<h5 id="2-1-命令的使用"><a href="#2-1-命令的使用" class="headerlink" title="2.1 命令的使用"></a>2.1 命令的使用</h5><p>kill -9 进程id 表示杀死指定id的进程<br><a name="N942o"></a></p>
+<h5 id="2-2-举例"><a href="#2-2-举例" class="headerlink" title="2.2 举例"></a>2.2 举例</h5><ol>
+<li>打开Linux内置的火狐浏览器</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295349866-c1832faf-c789-4952-b621-17a565a77f5e.png#averageHue=%23c3c4a9&from=url&id=wJnBf&originHeight=173&originWidth=412&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ol>
+<li>查看火狐浏览器的进程id</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295349957-2291c695-37c9-4dac-aca2-6390eb233e2d.png#averageHue=%230f0c07&from=url&id=WAyMG&originHeight=47&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />另外一个是浏览器插件，不用管。</p>
+<ol>
+<li>使用kill命令结束火狐浏览器进程:  kill -9 3325<br><a name="vNhAs"></a></li>
+</ol>
+<h4 id="3-实时查看系统运行情况和健康状态-了解"><a href="#3-实时查看系统运行情况和健康状态-了解" class="headerlink" title="3. 实时查看系统运行情况和健康状态(了解)"></a>3. 实时查看系统运行情况和健康状态(了解)</h4><p><a name="QU3Vh"></a></p>
+<h5 id="3-1-命令和参数"><a href="#3-1-命令和参数" class="headerlink" title="3.1 命令和参数"></a>3.1 命令和参数</h5><table>
+<thead>
+<tr>
+<th>命令名</th>
+<th>更新时间间隔（秒）</th>
+<th>不显示任何闲置或者僵死进程</th>
+<th>通过进程id监控单一进程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>top</td>
+<td>-d 间隔秒数</td>
+<td>-i</td>
+<td>-p 进程id</td>
+</tr>
+</tbody></table>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350050-64693880-fcb8-4dce-933e-e7c92ecc232b.png#averageHue=%2315120f&from=url&id=jjhcG&originHeight=427&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="BQRWV"></a></p>
+<h5 id="3-2-按键操作"><a href="#3-2-按键操作" class="headerlink" title="3.2 按键操作"></a>3.2 按键操作</h5><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P</td>
+<td>默认值，根据CPU使用率排序</td>
+</tr>
+<tr>
+<td>M</td>
+<td>以内存的使用率排序</td>
+</tr>
+<tr>
+<td>N</td>
+<td>以PID排序</td>
+</tr>
+<tr>
+<td>d</td>
+<td>设置数据刷新的时间间隔，单位是秒</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+</tbody></table>
+<p><a name="Qeiv4"></a></p>
+<h5 id="3-3-查询结果的字段解释"><a href="#3-3-查询结果的字段解释" class="headerlink" title="3.3 查询结果的字段解释"></a>3.3 查询结果的字段解释</h5><p><a name="uJR5v"></a></p>
+<h6 id="3-3-1-第一行信息为任务队列信息"><a href="#3-3-1-第一行信息为任务队列信息" class="headerlink" title="3.3.1 第一行信息为任务队列信息"></a>3.3.1 第一行信息为任务队列信息</h6><table>
+<thead>
+<tr>
+<th>内容举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12:26:49</td>
+<td>系统当前时间</td>
+</tr>
+<tr>
+<td>up 1 day, 13:32</td>
+<td>系统的运行时间，前面例子表示本机已经运行1天13小时32分钟</td>
+</tr>
+<tr>
+<td>2 users</td>
+<td>当前登录了2个用户</td>
+</tr>
+<tr>
+<td>load average:0.00, 0.00, 0.00</td>
+<td>系统在之前1分钟，5分钟，15分钟的平均负载。 一般认为小于1时，负载较小。如果大于1，系统已经超出负荷。</td>
+</tr>
+</tbody></table>
+<p><a name="kMzQj"></a></p>
+<h6 id="3-3-2-第二行为进程信息"><a href="#3-3-2-第二行为进程信息" class="headerlink" title="3.3.2 第二行为进程信息"></a>3.3.2 第二行为进程信息</h6><table>
+<thead>
+<tr>
+<th>内容举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tasks: 95 total</td>
+<td>系统中的进程总数</td>
+</tr>
+<tr>
+<td>1 running</td>
+<td>正在运行的进程数</td>
+</tr>
+<tr>
+<td>94 sleeping</td>
+<td>睡眠的进程</td>
+</tr>
+<tr>
+<td>0 stopped</td>
+<td>正在停止的进程</td>
+</tr>
+<tr>
+<td>0 zombie</td>
+<td>僵尸进程。如果不是0，需要手工检查僵尸进程</td>
+</tr>
+</tbody></table>
+<p><a name="YzubY"></a></p>
+<h6 id="3-3-3-第三行为CPU信息"><a href="#3-3-3-第三行为CPU信息" class="headerlink" title="3.3.3 第三行为CPU信息"></a>3.3.3 第三行为CPU信息</h6><table>
+<thead>
+<tr>
+<th>内容举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cpu(s):0.1%us</td>
+<td>用户空间占用的CPU百分比，us对应user</td>
+</tr>
+<tr>
+<td>0.1%sy</td>
+<td>内核空间占用的CPU百分比，sy对应system</td>
+</tr>
+<tr>
+<td>0.0%ni</td>
+<td>改变过优先级的进程占用的CPU百分比，ni对应niced</td>
+</tr>
+<tr>
+<td>99.7%id</td>
+<td>空闲CPU的CPU百分比</td>
+</tr>
+<tr>
+<td>0.1%wa</td>
+<td>等待输入&#x2F;输出的进程的占用CPU百分比，wa对应IO wait</td>
+</tr>
+<tr>
+<td>0.0%hi</td>
+<td>硬中断请求服务占用的CPU百分比，hi对应hardware IRQ</td>
+</tr>
+<tr>
+<td>0.1%si</td>
+<td>软中断请求服务占用的CPU百分比，si对应software IRQ</td>
+</tr>
+<tr>
+<td>0.0%st</td>
+<td>st（Steal time）虚拟时间百分比，也叫被hypervisor偷走的时间。 就是当有虚拟机时，虚拟CPU等待实际CPU的时间百分比。</td>
+</tr>
+</tbody></table>
+<p><a name="SjdN7"></a></p>
+<h6 id="3-3-4-第四行为物理内存信息"><a href="#3-3-4-第四行为物理内存信息" class="headerlink" title="3.3.4 第四行为物理内存信息"></a>3.3.4 第四行为物理内存信息</h6><table>
+<thead>
+<tr>
+<th>内容举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2031912 total</td>
+<td>物理内存的总量，单位KB</td>
+</tr>
+<tr>
+<td>70496 free</td>
+<td>空闲的物理内存数量</td>
+</tr>
+<tr>
+<td>1780676 used</td>
+<td>已经使用的物理内存数量</td>
+</tr>
+<tr>
+<td>174864 buff&#x2F;cache</td>
+<td>作为缓冲的内存数量</td>
+</tr>
+</tbody></table>
+<p>使用中的内存总量（used）指的是现在系统内核控制的内存数，空闲内存总量（free）是还未纳入内核管控范围的数量。<br />纳入内核管理的内存不见得都在使用中，还包括过去使用过的现在可以被重复利用的内存，内核并不把这些可被重新使用的内存还给free，因此Linux系统运行过程中free内存会越来越少，但不影响系统运行。因为这表示更多的空闲内存被内核管理了。<br><a name="OoCcY"></a></p>
+<h6 id="3-3-5-第五行为交换分区（swap）信息"><a href="#3-3-5-第五行为交换分区（swap）信息" class="headerlink" title="3.3.5 第五行为交换分区（swap）信息"></a>3.3.5 第五行为交换分区（swap）信息</h6><table>
+<thead>
+<tr>
+<th>内容举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2097148 total</td>
+<td>交换分区（虚拟内存）的总大小</td>
+</tr>
+<tr>
+<td>1137824 free</td>
+<td>空闲交换分区的大小</td>
+</tr>
+<tr>
+<td>959324 used</td>
+<td>已经使用的交互分区的大小</td>
+</tr>
+<tr>
+<td>58640 avail Mem</td>
+<td>在不交换的情况下，对启动新应用程序可用内存的估计</td>
+</tr>
+</tbody></table>
+<p>交换分区是一个非常值得关注的地方，如果swap区的used数值持续发生变化那么说明在内核和交换分区之间正在持续发生数据交换，这表示内存不够用了——必须不断把内存中的数据保存到硬盘上。<br><a name="Garc8"></a></p>
+<h4 id="4-查看网络状态命令-了解"><a href="#4-查看网络状态命令-了解" class="headerlink" title="4. 查看网络状态命令(了解)"></a>4. 查看网络状态命令(了解)</h4><p><a name="Lfh3K"></a></p>
+<h5 id="4-1-命令和参数"><a href="#4-1-命令和参数" class="headerlink" title="4.1 命令和参数"></a>4.1 命令和参数</h5><p>netstat 命令是查看网络状态,常用参数列表如下:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>显示所有正在或不在侦听的套接字。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>显示数字形式地址而不是去解析主机、端口或用户名。</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>显示套接字所属进程的PID和名称。</td>
+</tr>
+</tbody></table>
+<p>常用:  netstat -anp</p>
+<p><a name="bP1Ga"></a></p>
+<h5 id="4-2-查询结果的解释"><a href="#4-2-查询结果的解释" class="headerlink" title="4.2 查询结果的解释"></a>4.2 查询结果的解释</h5><p>netstat命令显示的网络状态信息包含两部分内容：</p>
+<ul>
+<li>本机和外部的连接状态信息(重点)</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350182-1ecb2f42-0f79-4739-a4bf-4d171bfccd43.png#averageHue=%23040302&from=url&id=RJ4em&originHeight=838&originWidth=1680&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>本机系统内部进程间通信信息(了解)</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350302-98ecba18-8a3b-4c40-9953-285ed56d678c.png#averageHue=%230d0a07&from=url&id=KMAWy&originHeight=62&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="RGb8o"></a></p>
+<h5 id="4-3-使用技巧"><a href="#4-3-使用技巧" class="headerlink" title="4.3 使用技巧"></a>4.3 使用技巧</h5><p><a name="XLypc"></a></p>
+<h6 id="4-3-1-分屏查看网络状态"><a href="#4-3-1-分屏查看网络状态" class="headerlink" title="4.3.1 分屏查看网络状态"></a>4.3.1 分屏查看网络状态</h6><p>netstat -anp | less<br><a name="G7U6m"></a></p>
+<h6 id="4-3-2-根据进程名称查看网络状态"><a href="#4-3-2-根据进程名称查看网络状态" class="headerlink" title="4.3.2 根据进程名称查看网络状态"></a>4.3.2 根据进程名称查看网络状态</h6><p>netstat -anp | grep sshd</p>
+<p><a name="OLTyG"></a></p>
+<h6 id="4-3-3-根据端口号查看网络状态"><a href="#4-3-3-根据端口号查看网络状态" class="headerlink" title="4.3.3 根据端口号查看网络状态"></a>4.3.3 根据端口号查看网络状态</h6><p>netstat -anp | grep :22<br />这里需要注意一下，端口号本身就是一串数字，进程id也是一串数字。那么根据端口号匹配时，很多无关的进程id也会被匹配到，造成大量不必要的干扰。此时给端口号数字前加上冒号就好多了。<br><a name="TycMk"></a></p>
+<h2 id="第二章-Linux权限管理"><a href="#第二章-Linux权限管理" class="headerlink" title="第二章 Linux权限管理"></a><a href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86">第二章 Linux权限管理</a></h2><p><a name="pc0Zw"></a></p>
+<h3 id="第一节-权限管理中的专业术语"><a href="#第一节-权限管理中的专业术语" class="headerlink" title="第一节 权限管理中的专业术语"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD">第一节 权限管理中的专业术语</a></h3><ol>
+<li>用户<br />系统使用者登录系统时使用的账号、密码。系统通过“用户”来识别使用者的身份。使用者以“用户”的名义操作系统资源。<br />2. 登录<br />使用者想要让系统认可自己的身份就必须提供账号、密码等信息。更专业的说法是：“认证（authentication）”。<br />3. 资源<br />权限控制系统要保护的对象。权限控制系统中必须要保存每一个资源所要求的访问权限。哪怕是“不需要任何权限，任何人都可以使用”也是权限信息的一种描述——没有要求也是一种要求。<br />4. 授权<br />authorization，系统给用户分配权限。这些权限代表了用户可以做什么。<br />5. 校验<br />一个用户访问一个资源的时候，权限控制系统必须要检查这个用户持有的权限是否满足目标资源所要求的权限。<br />6. 用户组<br />同一类的用户归到同一个组，也可以叫做角色。<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350400-b1606caa-b664-4991-8afd-b064f1ed78f4.png#averageHue=%23766c60&from=url&id=qMJTn&originHeight=726&originWidth=1694&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="tnAYx"></a></li>
+</ol>
+<h3 id="第二节-创建用户和用户组的基本命令"><a href="#第二节-创建用户和用户组的基本命令" class="headerlink" title="第二节 创建用户和用户组的基本命令"></a><a href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">第二节 创建用户和用户组的基本命令</a></h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>groupadd 组名</td>
+<td>创建用户组</td>
+</tr>
+<tr>
+<td>id 用户名</td>
+<td>返回用户信息，检查用户是否存在</td>
+</tr>
+<tr>
+<td>useradd -g 组名 用户名</td>
+<td>创建用户，同时指定所属用户组</td>
+</tr>
+<tr>
+<td>passwd 用户名</td>
+<td>给用户账号设置密码</td>
+</tr>
+</tbody></table>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350610-cd011de0-25e0-434c-b18b-124f6af8aff6.png#averageHue=%23221a18&from=url&id=Ewims&originHeight=331&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="h2DiV"></a></p>
+<h3 id="第三节-文件权限"><a href="#第三节-文件权限" class="headerlink" title="第三节 文件权限"></a><a href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90">第三节 文件权限</a></h3><p><a name="QWz0e"></a></p>
+<h4 id="1-文件权限信息说明"><a href="#1-文件权限信息说明" class="headerlink" title="1. 文件权限信息说明"></a>1. 文件权限信息说明</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350705-1ada3022-5b32-4fd7-b046-763fae417c6c.png#averageHue=%231e1816&from=url&id=vsfXI&originHeight=466&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />权限信息共分三组，每组三位：<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350814-a31f4360-c41b-4341-99ad-363654b01b3e.png#averageHue=%23e7dede&from=url&id=DPBWU&originHeight=222&originWidth=516&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295350908-3a57fc03-8523-4ce9-9b0f-eb1baf370c8e.png#averageHue=%23a89f9f&from=url&id=fs6au&originHeight=142&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />文件类型<br />普通文件（-）<br />目录（d）<br />符号链接（l）<br />字符设备文件（c）<br />块设备文件（s）<br />套接字（s）<br />命名管道（p）<br />普通文件： 包括文本文件、数据文件、可执行的二进制程序文件等。<br />目录文件： Linux系统把目录看成是一种特殊的文件，利用它构成文件系统的树型结构。<br />下面介绍rwx-分别是什么意思：</p>
+<ul>
+<li>r：读（read）</li>
+<li>读文件：查看文件内容</li>
+</ul>
+<p>例如：cat、less、tail等命令</p>
+<ul>
+<li>读目录：查看目录内容</li>
+</ul>
+<p>例如：使用ll命令查看目录内容</p>
+<ul>
+<li>w：写（write）</li>
+<li>写文件：向文件中写入新内容</li>
+<li>写目录：在目录里面增删内容</li>
+</ul>
+<p>例如：在目录内新建文件、删除文件、新建目录、删除目录给目录重命名</p>
+<ul>
+<li>x：执行（execute）</li>
+<li>执行文件：把文件当作可执行文件来运行</li>
+<li>执行目录：使用cd命令进入目录</li>
+<li>-：无权限</li>
+</ul>
+<p>由于每一位要么有权限要么没有权限，所以天然可以使用二进制来表示权限信息：</p>
+<ul>
+<li>1：有</li>
+<li>0：无</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>权限的符号表示</th>
+<th>权限的二进制表示</th>
+<th>权限的十进制表示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rwx r-x r-x</td>
+<td>111 101 101</td>
+<td>7 5 5</td>
+</tr>
+<tr>
+<td>rw- r– r–</td>
+<td>110 100 100</td>
+<td>6 4 4</td>
+</tr>
+</tbody></table>
+<p><a name="OF4Ct"></a></p>
+<h4 id="2-修改文件权限"><a href="#2-修改文件权限" class="headerlink" title="2. 修改文件权限"></a>2. 修改文件权限</h4><p><a name="nfVbf"></a></p>
+<h5 id="2-1-命令介绍"><a href="#2-1-命令介绍" class="headerlink" title="2.1 命令介绍"></a>2.1 命令介绍</h5><table>
+<thead>
+<tr>
+<th>命令名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>chmod</td>
+<td>修改权限信息</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>修改文件或目录的所属用户</td>
+</tr>
+<tr>
+<td>chgrp</td>
+<td>修改文件或目录的所属用户组</td>
+</tr>
+</tbody></table>
+<p><a name="gEmwl"></a></p>
+<h5 id="2-2-演示chmod命令"><a href="#2-2-演示chmod命令" class="headerlink" title="2.2 演示chmod命令"></a>2.2 演示chmod命令</h5><p><a name="Rv33V"></a></p>
+<h6 id="2-2-1-修改权限信息前"><a href="#2-2-1-修改权限信息前" class="headerlink" title="2.2.1 修改权限信息前"></a>2.2.1 修改权限信息前</h6><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351001-72644087-a351-477f-be30-39e974049b80.png#averageHue=%23252321&from=url&id=eweZ2&originHeight=206&originWidth=561&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="KJKTH"></a></p>
+<h6 id="2-2-2-添加权限"><a href="#2-2-2-添加权限" class="headerlink" title="2.2.2 添加权限"></a>2.2.2 添加权限</h6><p>增加执行权限<br />chmod +x fruit&#x2F;content<br />添加权限信息后<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351102-04453b5f-ffa2-4e7c-8ed0-23efbc32ba9c.png#averageHue=%230a0705&from=url&id=zwwAB&originHeight=208&originWidth=569&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="JlEQh"></a></p>
+<h6 id="2-2-3-删除权限"><a href="#2-2-3-删除权限" class="headerlink" title="2.2.3 删除权限"></a>2.2.3 删除权限</h6><p>删除执行权限<br />chmod -x fruit&#x2F;content<br />删除权限信息后<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351196-1ce302be-f835-42e7-80f7-276553e559d6.png#averageHue=%230a0705&from=url&id=DC1V0&originHeight=205&originWidth=576&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351292-6322fa51-e97e-4dbc-91df-75c539d47b58.png#averageHue=%23241c1a&from=url&id=Ylf6r&originHeight=393&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="ephUl"></a></p>
+<h6 id="2-2-4-修改权限"><a href="#2-2-4-修改权限" class="headerlink" title="2.2.4 修改权限"></a>2.2.4 修改权限</h6><p>方法1:  chmod 三位数字<br />这三位数字分别表示: 拥有者的权限、同组用户的权限、其它用户的权限<br />r ：是4；  w ：是2； x ：是1</p>
+<p>例如 chmod 755 fruit&#x2F;content 表示将权限设置为:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351390-5f566da1-3a9f-4184-964f-5d9299531655.png#averageHue=%23130f0a&from=url&id=N2lAp&originHeight=100&originWidth=544&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>方法2:  chmod u&#x3D;rwx,g&#x3D;rx,o&#x3D;rx ，其中u表示拥有者，g表示同组用户，o表示其它用户</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351491-0824f8e3-76ca-4811-b1e7-074dacf379b4.png#averageHue=%23261d1b&from=url&id=BN6Wa&originHeight=449&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="dOXFf"></a></p>
+<h3 id="第四节-提升普通用户的权限"><a href="#第四节-提升普通用户的权限" class="headerlink" title="第四节 提升普通用户的权限"></a><a href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E6%8F%90%E5%8D%87%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%9A%84%E6%9D%83%E9%99%90">第四节 提升普通用户的权限</a></h3><p>在公司参与开发的过程中，通常我们不会拿到服务器系统的 root 权限，而是普通用户权限。但是普通用户很多操作无法执行。比如在 &#x2F;opt 目录下新建目录:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351618-4e12e917-4cff-4a6b-b916-e479be66128a.png#averageHue=%2329201d&from=url&id=agTa7&originHeight=346&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>root 用户创建目录</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351721-b35d8d36-b049-464e-81ea-41d16e115d73.png#averageHue=%2329201e&from=url&id=V8FkF&originHeight=263&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>赋予普通用户权限</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351821-3272b22d-8545-4b1b-935c-165ca3aa8468.png#averageHue=%2353403f&from=url&id=aR9dr&originHeight=104&originWidth=544&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>进入编辑区输入 &#x2F;root</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295351912-f45d37f2-2013-44f6-bd54-c58da520661b.png#averageHue=%23211614&from=url&id=PxqQb&originHeight=441&originWidth=564&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>提升普通用户的权限其实就是赋予普通用户那些超级管理员才有的权限，我们需要在 &#x2F;etc&#x2F;sudoers文件中 进行配置,但是注意sudoers文件默认是只读的，我们要修改它的权限，修改成root可以编辑 chmod 644 &#x2F;etc&#x2F;sudoers</p>
+<h2 id="Allow-root-to-run-any-commands-anywhere"><a href="#Allow-root-to-run-any-commands-anywhere" class="headerlink" title="Allow root to run any commands anywhere"></a>Allow root to run any commands anywhere</h2><p>root ALL&#x3D;(ALL) ALL</p>
+<p>luozhixiang ALL&#x3D;(ALL) ALL</p>
+<p>不需要重启系统，我们再次测试:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352007-31a78968-ae6b-4cfd-8ea1-2427bea9a890.png#averageHue=%23211918&from=url&id=TGeGs&originHeight=508&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>但此时我们发现，每次使用 sudo 都需要输入密码，很麻烦，所以我们可以在 &#x2F;etc&#x2F;sudoers 中进行配置</p>
+<p>luozhixiang ALL&#x3D;(ALL) NOPASSWD:ALL</p>
+<p>这样再使用sudo命令就不需要输入密码了</p>
+<p>这里有两点需要注意：</p>
+<ul>
+<li><p>在同一次登录中，即使不加NOPASSWD也只需要输入一次密码，所以NOPASSWD是否生效需要退出登录后再重新登录来测试。</p>
+</li>
+<li><p>使用sudo提权后创建的目录仍然是root root权限，如果有需要那就还要使用chown或chgrp来修改。</p>
+</li>
+</ul>
+<p><a name="lQgAl"></a></p>
+<h2 id="第三章-Linux系统的服务管理"><a href="#第三章-Linux系统的服务管理" class="headerlink" title="第三章 Linux系统的服务管理"></a><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86">第三章 Linux系统的服务管理</a></h2><p><a name="oODWK"></a></p>
+<h3 id="第一节-服务的概念"><a href="#第一节-服务的概念" class="headerlink" title="第一节 服务的概念"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%A6%82%E5%BF%B5">第一节 服务的概念</a></h3><p>操作系统中在后台持续运行的程序，本身并没有操作界面，需要通过端口号访问和操作。CentOS 6和CentOS 7的服务管理有很大区别，我们分别来看。</p>
+<p><a name="exvay"></a></p>
+<h3 id="第二节-CentOS6的服务-了解"><a href="#第二节-CentOS6的服务-了解" class="headerlink" title="第二节 CentOS6的服务(了解)"></a>第二节 CentOS6的服务(了解)</h3><p><a name="pLyyR"></a></p>
+<h4 id="1-service命令"><a href="#1-service命令" class="headerlink" title="1. service命令"></a>1. service命令</h4><p>启动服务：service 服务名 start</p>
+<p>停止服务：service 服务名 stop</p>
+<p>重启服务：service 服务名 restart</p>
+<p>重新加载服务：service 服务名 reload</p>
+<p>查看服务状态：service 服务名 status</p>
+<p><a name="sJTk5"></a></p>
+<h4 id="2-chkconfig命令"><a href="#2-chkconfig命令" class="headerlink" title="2. chkconfig命令"></a>2. chkconfig命令</h4><p>查看服务列表：chkconfig [–list]</p>
+<p>设置具体服务开机自动启动状态：chkconfig 服务名 on&#x2F;off</p>
+<p><a name="sIlI0"></a></p>
+<h4 id="3-防火墙"><a href="#3-防火墙" class="headerlink" title="3. 防火墙"></a>3. 防火墙</h4><p>防火墙默认会阻止绝大部分端口号的访问，在实际生产环境下，运维工程师需要为服务器设置详细的访问规则。在练习过程中，我们为了方便建议把防火墙直接关闭。由于防火墙服务默认开机自动启动，所以除了<strong>停止服务</strong>，还要设置为<strong>开机不自动启动</strong>。</p>
+<p>服务名：iptables</p>
+<p>停止防火墙：service iptables stop</p>
+<p>设置开机不自动启动：chkconfig iptables off</p>
+<p><a name="pvjoz"></a></p>
+<h3 id="第三节-CentOS7的服务"><a href="#第三节-CentOS7的服务" class="headerlink" title="第三节 CentOS7的服务"></a><a href="#%E7%AC%AC%E4%B8%89%E8%8A%82-centos7%E7%9A%84%E6%9C%8D%E5%8A%A1">第三节 CentOS7的服务</a></h3><p><a name="KedZz"></a></p>
+<h4 id="1-systemctl命令"><a href="#1-systemctl命令" class="headerlink" title="1. systemctl命令"></a>1. systemctl命令</h4><p>启动服务：systemctl start 服务名(xxxx.service)</p>
+<p>重启服务：systemctl restart 服务名(xxxx.service)</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352113-aa7d56ee-17bc-4d49-b1f7-f1bd21d41e77.png#averageHue=%233a2b29&from=url&id=lCZGq&originHeight=168&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>停止服务：systemctl stop 服务名(xxxx.service)</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352229-88a7bc31-57f6-4a87-9f58-2cb903cf4d4b.png#averageHue=%23372926&from=url&id=KL3e8&originHeight=215&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>重新加载服务：systemctl reload 服务名(xxxx.service)</p>
+<p>查看服务状态：systemctl status 服务名(xxxx.service)</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352341-31e8f48b-c1f6-43e5-a1a0-88c46d07b3f4.png#averageHue=%23352725&from=url&id=wwzkM&originHeight=198&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="QcuOh"></a></p>
+<h4 id="2-systemctl命令代替chkconfig命令"><a href="#2-systemctl命令代替chkconfig命令" class="headerlink" title="2. systemctl命令代替chkconfig命令"></a>2. systemctl命令代替chkconfig命令</h4><p>查看服务状态：systemctl list-unit-files</p>
+<p>设置或取消服务开机自动启动：</p>
+<ul>
+<li><p>设置开机自动启动：systemctl enable 服务名</p>
+</li>
+<li><p>取消开机自动启动：systemctl disable 服务名</p>
+</li>
+</ul>
+<p><a name="gJZNS"></a></p>
+<h4 id="3-防火墙的操作"><a href="#3-防火墙的操作" class="headerlink" title="3. 防火墙的操作"></a>3. 防火墙的操作</h4><ul>
+<li><p>开启防火墙  systemctl start firewalld</p>
+</li>
+<li><p>重启防火墙  systemctl restart firewalld</p>
+</li>
+<li><p>关闭防火墙 systemctl stop firewalld</p>
+</li>
+<li><p>设置开机启动 systemctl enable firewalld</p>
+</li>
+<li><p>停止并关闭开机启动 systemctl disable firewalld</p>
+</li>
+<li><p>查看防火墙状态 systemctl status firewalld  或者  firewall-cmd –state</p>
+</li>
+<li><p>查看防火墙开机时是否启动 systemctl list-unit-files | grep firewalld</p>
+</li>
+</ul>
+<p><a name="NrB7C"></a></p>
+<h4 id="4-防火墙端口设置"><a href="#4-防火墙端口设置" class="headerlink" title="4. 防火墙端口设置"></a>4. 防火墙端口设置</h4><ul>
+<li><p>开放端口  firewall-cmd –add-port&#x3D;端口号&#x2F;tcp –permanent</p>
+</li>
+<li><p>更新防火墙规则 firewall-cmd –reload</p>
+</li>
+<li><p>查看</p>
+</li>
+</ul>
+<p>firewall-cmd –zone&#x3D;public –query-port&#x3D;端口号&#x2F;tcp <br />firewall-cmd –zone&#x3D;public –list-ports</p>
+<ul>
+<li><p>取消端口开放  firewall-cmd –remove-port&#x3D;端口&#x2F;tcp –permanent</p>
+</li>
+<li><p>常用端口</p>
+</li>
+<li><p>8080 tomcat</p>
+</li>
+<li><p>80 http协议</p>
+</li>
+<li><p>443 https协议</p>
+</li>
+<li><p>22 ssh远程连接</p>
+</li>
+<li><p>3306 mysql</p>
+</li>
+<li><p>6379 redis</p>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352434-952bd4bf-79c8-4c54-9e04-69b6cd27ae17.png#averageHue=%231e1816&from=url&id=yxceF&originHeight=311&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="QSeeu"></a></p>
+<h2 id="第四章-服务器端应用程序的安装"><a href="#第四章-服务器端应用程序的安装" class="headerlink" title="第四章 服务器端应用程序的安装"></a><a href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%AE%89%E8%A3%85">第四章 服务器端应用程序的安装</a></h2><p><a name="FtC0G"></a></p>
+<h3 id="第一节-备份配置文件"><a href="#第一节-备份配置文件" class="headerlink" title="第一节 备份配置文件"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E5%A4%87%E4%BB%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">第一节 备份配置文件</a></h3><p>Linux 系统环境下配置文件通常内容很多。如果不小心修改了不该修改的地方，自己有不记得做了修改，那么将来报错很难找到错误位置。</p>
+<p>为了避免这样的问题，我们可以在修改任何配置文件之前都多复制一份：把原始、纯净、正确的配置文件执行了备份。将来万一发生问题，拿原始配置文件覆盖错误配置文件，瞬间恢复到正确状态可以重新开始。</p>
+<p><a name="seu4r"></a></p>
+<h3 id="第二节-快照备份虚拟机"><a href="#第二节-快照备份虚拟机" class="headerlink" title="第二节 快照备份虚拟机"></a><a href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E5%BF%AB%E7%85%A7%E5%A4%87%E4%BB%BD%E8%99%9A%E6%8B%9F%E6%9C%BA">第二节 快照备份虚拟机</a></h3><p><a name="UInL1"></a></p>
+<h4 id="1-使用场景"><a href="#1-使用场景" class="headerlink" title="1. 使用场景"></a>1. 使用场景</h4><p><a name="LXhbL"></a></p>
+<h5 id="1-1-场景一"><a href="#1-1-场景一" class="headerlink" title="1.1 场景一"></a>1.1 场景一</h5><p>针对需要通过安装过程来安装的程序，如果安装失败需要卸载后重新安装，那最好是卸载干净再重新执行安装。Linux 环境下不方便执行『清理残留』。</p>
+<p>所以为了避免安装失败以后没有退路可以重新开始，建议在执行相关安装之前拍摄快照。一旦发生问题，可以恢复快照重新开始。</p>
+<p><a name="fYc6G"></a></p>
+<h5 id="1-2-场景二"><a href="#1-2-场景二" class="headerlink" title="1.2 场景二"></a>1.2 场景二</h5><p>对于已经安装好的程序（特别是系统当中安装了很多程序都已成功），强烈建议通过拍摄快照的方式保留这个正确的状态。</p>
+<p><a name="SqvYR"></a></p>
+<h4 id="2-具体操作"><a href="#2-具体操作" class="headerlink" title="2. 具体操作"></a>2. 具体操作</h4><p><a name="PeXTX"></a></p>
+<h5 id="2-1-保存快照"><a href="#2-1-保存快照" class="headerlink" title="2.1 保存快照"></a>2.1 保存快照</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352563-9f092e37-eeed-45ef-81d1-37a85319350b.png#averageHue=%23adacab&from=url&id=mJulU&originHeight=360&originWidth=481&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>给快照文件命名:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352657-45d46136-92fc-4560-8f93-bf834ba19659.png#averageHue=%23ececec&from=url&id=SRd1l&originHeight=246&originWidth=380&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="EyTny"></a></p>
+<h5 id="2-2-恢复快照"><a href="#2-2-恢复快照" class="headerlink" title="2.2 恢复快照"></a>2.2 恢复快照</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352766-bd30a0b0-3daa-441d-a9f7-7ad198c9ee55.png#averageHue=%23979696&from=url&id=GDwcP&originHeight=328&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>2.3 删除快照</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295352918-81553365-4177-4189-8199-1858278e8f88.png#averageHue=%23e6e5e5&from=url&id=g6j2N&originHeight=464&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="uHxdu"></a></p>
+<h3 id="第三节-安装JDK"><a href="#第三节-安装JDK" class="headerlink" title="第三节 安装JDK"></a><a href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E5%AE%89%E8%A3%85jdk">第三节 安装JDK</a></h3><p><a name="kP0sp"></a></p>
+<h4 id="1-rpm命令"><a href="#1-rpm命令" class="headerlink" title="1. rpm命令"></a>1. rpm命令</h4><p>rpm 是 Redhat package management 的缩写，实质上来说，通过 rpm 可以管理 Linux 环境下的安装包。</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-qa</td>
+<td>查询系统中已经安装的程序，通常配合管道，使用 grep 精确匹配想要查询的包</td>
+</tr>
+<tr>
+<td>-ivh</td>
+<td>执行 rpm 包安装操作</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>卸载 rpm 包</td>
+</tr>
+<tr>
+<td>–nodeps</td>
+<td>在卸载过程中忽略依赖关系</td>
+</tr>
+</tbody></table>
+<p>注：Linux 系统中命令的参数往往有这样的特点：</p>
+<ul>
+<li><p>参数如果是一个或多个完整的单词那么前面是两个“-”</p>
+</li>
+<li><p>参数如果是单词的缩写，是一个字母，那么前面是一个“-”</p>
+</li>
+</ul>
+<p><a name="kctMJ"></a></p>
+<h4 id="2-具体安装步骤"><a href="#2-具体安装步骤" class="headerlink" title="2. 具体安装步骤"></a>2. 具体安装步骤</h4><p><a name="flSvb"></a></p>
+<h5 id="2-1-卸载系统预装的JDK"><a href="#2-1-卸载系统预装的JDK" class="headerlink" title="2.1 卸载系统预装的JDK"></a>2.1 卸载系统预装的JDK</h5><ol>
+<li>查询系统中已经安装的 JDK</li>
+</ol>
+<p>shel</p>
+<p>rpm -qa | grep openjdk</p>
+<ol>
+<li>执行卸载，卸载过程中使用 –nodeps 忽略依赖关系</li>
+</ol>
+<p>shell<br />rpm -e –nodeps 第一步查询出来的数据，如果是多个则用空格分隔</p>
+<ol>
+<li>重启系统生效</li>
+</ol>
+<p>shell</p>
+<p>reboot<br><a name="UJr05"></a></p>
+<h5 id="2-2-安装JDK"><a href="#2-2-安装JDK" class="headerlink" title="2.2 安装JDK"></a>2.2 安装JDK</h5><ol>
+<li>使用xftp将资料中的jdk的压缩包传输到虚拟机的 &#x2F;opt 目录中</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295353011-b9525b93-7070-48c2-95f9-7fb672054eaa.png#averageHue=%23ceb692&from=url&id=O7MPM&originHeight=101&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ol>
+<li>解压jdk压缩包</li>
+</ol>
+<p>shell<br />cd &#x2F;opt</p>
+<p>tar -zxvf jdk-8u152-linux-x64.tar.gz</p>
+<ol>
+<li>配置JDK的环境变量</li>
+</ol>
+<p>为了避免配置错误导致运行失败，提前复制一份&#x2F;etc&#x2F;profile<br />shell<br />cp &#x2F;etc&#x2F;profile &#x2F;etc&#x2F;profile.bak</p>
+<p>编辑 &#x2F;etc&#x2F;profile 文件（下面内容添加到文件末尾）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">声明 JAVA_HOME 环境变量，等号两边不能有空格</span></span><br><span class="line"></span><br><span class="line">JAVA_HOME=/opt/jdk1.8.0_152</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">给 PATH 环境变量附加 <span class="variable">$JAVA_HOME</span>/bin 部分</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="variable">$PATH</span> 表示引用 PATH 环境变量以前的旧值</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用英文冒号连接</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="variable">$JAVA_HOME</span> 表示对 JAVA_HOME 变量的引用</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&lt;br /&gt;JAVA_HOME/bin:<span class="variable">$PATH</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">发布</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">发布是发布变量名，不是引用变量的值，所以前面不写 $ 符号</span></span><br><span class="line"></span><br><span class="line">export JAVA_HOME PATH</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>保存退出vim后，使用source命令执行&#x2F;etc&#x2F;profile脚本，让脚本中发布的环境变量生效。但是仅限于当前进程，如果想让新环境变量全局生效，可以reboot。</p>
+<p>shell</p>
+<p>source &#x2F;etc&#x2F;profile<br />验证一下：<br />shell<br />echo $JAVA_HOME</p>
+<p>echo $PATH<br />java -version</p>
+<p><a name="Xce3E"></a></p>
+<h3 id="第四节-安装Tomcat"><a href="#第四节-安装Tomcat" class="headerlink" title="第四节 安装Tomcat"></a><a href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E5%AE%89%E8%A3%85tomcat">第四节 安装Tomcat</a></h3><p><a name="PokuM"></a></p>
+<h4 id="1-具体安装步骤"><a href="#1-具体安装步骤" class="headerlink" title="1. 具体安装步骤"></a>1. 具体安装步骤</h4><ol>
+<li>使用xftp将资料中的Tomcat的压缩包传输到虚拟机的 &#x2F;opt 目录中</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295353100-75e38aa2-6db9-4495-95e0-f7845288d0b7.png#averageHue=%23f0eeec&from=url&id=PNVnm&originHeight=100&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ol>
+<li>解压Tomcat的压缩包</li>
+</ol>
+<p>shell</p>
+<p>cd &#x2F;opt<br />tar -zxvf &#x2F;opt&#x2F;apache-tomcat-8.5.32.tar.gz</p>
+<p><a name="JY2lJ"></a></p>
+<h4 id="2-操作Tomcat"><a href="#2-操作Tomcat" class="headerlink" title="2. 操作Tomcat"></a>2. 操作Tomcat</h4><ol>
+<li>启动 Tomcat</li>
+</ol>
+<p>shell</p>
+<p>&#x2F;opt&#x2F;apache-tomcat-8.5.32&#x2F;bin&#x2F;startup.sh</p>
+<ol>
+<li>停止 Tomcat</li>
+</ol>
+<p>shell<br />&#x2F;opt&#x2F;apache-tomcat-8.5.32&#x2F;bin&#x2F;shutdown.sh</p>
+<ol>
+<li>查看日志</li>
+</ol>
+<p>shell</p>
+<p>tail -F &#x2F;opt&#x2F;apache-tomcat-8.5.32&#x2F;logs&#x2F;catalina.out</p>
+<ol>
+<li>部署 war 包放在 webapps 目录下</li>
+</ol>
+<p>shell<br />&#x2F;opt&#x2F;apache-tomcat-8.5.32&#x2F;webapps</p>
+<p>注意:</p>
+<ul>
+<li><p>在 Linux 系统本地使用火狐浏览器访问可以使用 localhost</p>
+</li>
+<li><p>在 Windows 系统访问 Linux 服务器端的 Tomcat 需要使用 LInux 的 IP 地址,并且要保证防火墙关闭，或者放行了8080端口</p>
+</li>
+</ul>
+<p>开发阶段可以关闭防火墙，关闭防火墙的命令:</p>
+<p>systemctl stop firewalld.service</p>
+<p>在开发阶段可以禁止防火墙开机自启动: systemctl disable firewalld.service</p>
+<p>让防火墙放行8080端口的命令:</p>
+<p>firewall-cmd –add-port&#x3D;8080&#x2F;tcp –permanent</p>
+<h1 id="放行端口后一定要重新加载防火墙配置"><a href="#放行端口后一定要重新加载防火墙配置" class="headerlink" title="放行端口后一定要重新加载防火墙配置"></a>放行端口后一定要重新加载防火墙配置</h1><p>firewall-cmd –reload</p>
+<p><a name="gRvEQ"></a></p>
+<h3 id="第三节-安装MySQL"><a href="#第三节-安装MySQL" class="headerlink" title="第三节 安装MySQL"></a><a href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E5%AE%89%E8%A3%85mysql">第三节 安装MySQL</a></h3><p><a name="Kp5vc"></a></p>
+<h4 id="1-卸载系统预装-mariadb"><a href="#1-卸载系统预装-mariadb" class="headerlink" title="1. 卸载系统预装 mariadb"></a>1. 卸载系统预装 mariadb</h4><ol>
+<li>查询系统中预装的mariadb</li>
+</ol>
+<p>shell</p>
+<p>rpm -qa | grep mariadb –color</p>
+<ol>
+<li>删除系统中预装的mariadb(如果第一步没查到就不删)</li>
+</ol>
+<p>shell<br />rpm -e –nodeps 第一步查询到的结果<br />注：MySQL 被 Oracle 收购，社区担心将来 MySQL 被 Oracle 关闭开源模式，和 Oracle 数据库一样变成商业化运作。所以社区开发了一个 MySQL 的社区版，内部和 MySQL 一样，只是名字不同，这就是 mariadb。但是我们当前在 Linux 系统中已经预装的 mariadb 只是一个残片，不能直接使用。所以还是要先卸载。<br><a name="WlWql"></a></p>
+<h4 id="2-具体安装步骤-1"><a href="#2-具体安装步骤-1" class="headerlink" title="2. 具体安装步骤"></a>2. 具体安装步骤</h4><p><a name="ANcyI"></a></p>
+<h5 id="2-1-将mysql的压缩包拷贝到虚拟机中"><a href="#2-1-将mysql的压缩包拷贝到虚拟机中" class="headerlink" title="2.1 将mysql的压缩包拷贝到虚拟机中"></a>2.1 将mysql的压缩包拷贝到虚拟机中</h5><ol>
+<li>在虚拟机中的 &#x2F;usr&#x2F;local 中创建一个 mysql 目录</li>
+<li>使用xftp将mysql压缩包拷贝到 &#x2F;usr&#x2F;local&#x2F;mysql 目录中</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295353221-1cd2c23f-a1d7-4d77-bb64-da5c36388653.png#averageHue=%23f3f2ef&from=url&id=WFJFp&originHeight=102&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="VWAIU"></a></p>
+<h5 id="2-2-解压MySQL的tar包"><a href="#2-2-解压MySQL的tar包" class="headerlink" title="2.2 解压MySQL的tar包"></a>2.2 解压MySQL的tar包</h5><p>cd &#x2F;usr&#x2F;local&#x2F;mysql<br />tar -zxvf mysql-5.7.25-1.el7.x86_64.rpm-bundle.tar.gz<br><a name="tLW0p"></a></p>
+<h5 id="2-3-安装MySQL-下述步骤依次执行"><a href="#2-3-安装MySQL-下述步骤依次执行" class="headerlink" title="2.3 安装MySQL,下述步骤依次执行"></a>2.3 安装MySQL,下述步骤依次执行</h5><p>rpm -ivh mysql-community-common-5.7.25-1.el7.x86_64.rpm<br />rpm -ivh mysql-community-libs-5.7.25-1.el7.x86_64.rpm<br />rpm -ivh mysql-community-devel-5.7.25-1.el7.x86_64.rpm<br />rpm -ivh mysql-community-libs-compat-5.7.25-1.el7.x86_64.rpm<br />rpm -ivh mysql-community-client-5.7.25-1.el7.x86_64.rpm<br />rpm -ivh mysql-community-server-5.7.25-1.el7.x86_64.rpm<br><a name="IrV7M"></a></p>
+<h5 id="2-4-修改MySQL的字符集配置"><a href="#2-4-修改MySQL的字符集配置" class="headerlink" title="2.4 修改MySQL的字符集配置"></a>2.4 修改MySQL的字符集配置</h5><p>MySql默认使用的字符集是latin1，即：iso-8859-1，是不支持中文的。<br />要想让MySql支持中文，需要通过配置文件设置指定MySql使用utf-8字符集才可以。<br />修改MySql的字符集：<br />使用vim打开mysql的配置文件： vim &#x2F;etc&#x2F;my.cnf<br />进入编辑模式,在[mysqld]后边添加内容： character-set-server&#x3D;utf8<br />注意：别在 vim 的一般模式下直接粘贴！<strong>一定要进入编辑模式</strong>！<br><a name="Zv9nM"></a></p>
+<h5 id="2-5-启动MySQL服务"><a href="#2-5-启动MySQL服务" class="headerlink" title="2.5 启动MySQL服务"></a>2.5 启动MySQL服务</h5><p>systemctl start mysqld<br><a name="EvTq8"></a></p>
+<h5 id="2-6-设置MySQL服务开机自启动"><a href="#2-6-设置MySQL服务开机自启动" class="headerlink" title="2.6 设置MySQL服务开机自启动"></a>2.6 设置MySQL服务开机自启动</h5><p>systemctl enable mysqld<br><a name="lZnuc"></a></p>
+<h5 id="2-7-查看MySQL初始密码"><a href="#2-7-查看MySQL初始密码" class="headerlink" title="2.7 查看MySQL初始密码"></a>2.7 查看MySQL初始密码</h5><p>安装MySQL的过程中会自动生成初始密码，我们可以在 &#x2F;var&#x2F;log&#x2F;mysqld.log 文件中进行查看<br />cat &#x2F;var&#x2F;log&#x2F;mysqld.log | grep “temporary password” –color<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684295353537-7a8f00c8-9cf3-4c0f-bbdc-71600809d4c8.png#averageHue=%230d0906&from=url&id=Sl9XX&originHeight=43&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="rUGt4"></a></p>
+<h5 id="2-8-使用初始密码登录MySQL"><a href="#2-8-使用初始密码登录MySQL" class="headerlink" title="2.8 使用初始密码登录MySQL"></a>2.8 使用初始密码登录MySQL</h5><p>mysql -uroot -p”初始密码”<br />注意: p和初始密码之间千万不能空格<br><a name="hOFUy"></a></p>
+<h5 id="2-9-修改root的密码"><a href="#2-9-修改root的密码" class="headerlink" title="2.9 修改root的密码"></a>2.9 修改root的密码</h5><p>在使用初始密码登录mysql之后，依次执行下面三行命令<br />set global validate_password_length&#x3D;4;<br />set global validate_password_policy&#x3D;LOW;<br />set password &#x3D; password(‘root’);<br />第一次修改密码一定要按照上述三步来做，修改完之后你如果想将密码改成其它的密码，你可以在退出mysql之后执行（需要在未登录mysql的情况下执行）：<br />mysqladmin -uroot -p password 新密码 – 新密码不需要加上引号<br><a name="zYTEb"></a></p>
+<h4 id="3-在宿主机上用SqlYog远程连接虚拟机上的MySQL"><a href="#3-在宿主机上用SqlYog远程连接虚拟机上的MySQL" class="headerlink" title="3. 在宿主机上用SqlYog远程连接虚拟机上的MySQL"></a>3. 在宿主机上用SqlYog远程连接虚拟机上的MySQL</h4><p><a name="iryn8"></a></p>
+<h5 id="3-1-会遇到的问题"><a href="#3-1-会遇到的问题" class="headerlink" title="3.1 会遇到的问题"></a>3.1 会遇到的问题</h5><p><a name="NcCLt"></a></p>
+<h6 id="3-1-1-被防火墙拦截"><a href="#3-1-1-被防火墙拦截" class="headerlink" title="3.1.1 被防火墙拦截"></a>3.1.1 被防火墙拦截</h6><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/jpeg/21527991/1684295353644-c7fba6c4-b021-4d3f-a8d1-7ec61c1f210b.jpeg#averageHue=%23e3dfd8&from=url&id=Yvhkf&originHeight=172&originWidth=410&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />解决方案是关闭防火墙或者是让防火墙放行 3306 端口<br />关闭防火墙命令:<br />systemctl stop firewalld.service<br />放行3306端口的操作:<br />firewall-cmd –add-port&#x3D;3306&#x2F;tcp –permanent<br /># 放行端口后一定要重新加载防火墙配置<br />firewall-cmd –reload<br><a name="Hu716"></a></p>
+<h6 id="3-1-2-MySQL服务器不允许远程访问"><a href="#3-1-2-MySQL服务器不允许远程访问" class="headerlink" title="3.1.2 MySQL服务器不允许远程访问"></a>3.1.2 MySQL服务器不允许远程访问</h6><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/jpeg/21527991/1684295353769-7aad7024-ca15-432f-bf74-b8736f4fa147.jpeg#averageHue=%23e4e0d8&from=url&id=vupiS&originHeight=172&originWidth=448&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />解决方案是让 root 用户能够远程访问MySQL服务器:<br /># 允许远程访问<br />grant all on <em>.</em> to ‘root‘@’%’ identified by ‘root’;<br /># 刷新设置<br />flush privileges;<br />解决上述俩问题之后，就可以使用宿主机中的SQLYog远程连接访问虚拟机中的MySQL了<br><a name="sR7rV"></a></p>
+<h3 id="第五章-VMWare软件联网原理说明与故障解决"><a href="#第五章-VMWare软件联网原理说明与故障解决" class="headerlink" title="第五章 VMWare软件联网原理说明与故障解决"></a><a href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-vmware%E8%BD%AF%E4%BB%B6%E8%81%94%E7%BD%91%E5%8E%9F%E7%90%86%E8%AF%B4%E6%98%8E%E4%B8%8E%E6%95%85%E9%9A%9C%E8%A7%A3%E5%86%B3">第五章 VMWare软件联网原理说明与故障解决</a></h3><p><a name="e4ASx"></a></p>
+<h4 id="常见的问题"><a href="#常见的问题" class="headerlink" title="常见的问题"></a><a href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98">常见的问题</a></h4><p><a name="FBs2r"></a></p>
+<h4 id="1-Windows端虚拟网卡虚拟网络连接丢失"><a href="#1-Windows端虚拟网卡虚拟网络连接丢失" class="headerlink" title="1. Windows端虚拟网卡虚拟网络连接丢失"></a>1. Windows端虚拟网卡虚拟网络连接丢失</h4><p>也就是在你的网络连接中丢失了 VMware Network Adapter VMnet8 虚拟网卡<br />修复办法：</p>
+<ul>
+<li>首先将Linux系统关机。</li>
+<li>打开“虚拟网络编辑器”</li>
+<li>点击“还原默认设置”（不保证和之前是同一个网段，所以大概率IP地址网段会变）</li>
+<li>如果修复了虚拟网卡和虚拟网络连接</li>
+<li>进入Linux系统修改IP地址，还是要求和虚拟网络编辑器中限定的网段一致</li>
+<li>重新进入“虚拟网络编辑器”执行“还原默认设置”</li>
+<li>如果还没有解决，可以尝试卸载VMWare并清理残留重新安装VMWare</li>
+<li>如果还不行，重装Windows系统<br><a name="ac9EZ"></a></li>
+</ul>
+<h4 id="2-虚拟网络连接IP地址乱了"><a href="#2-虚拟网络连接IP地址乱了" class="headerlink" title="2. 虚拟网络连接IP地址乱了"></a>2. 虚拟网络连接IP地址乱了</h4><p>虚拟网卡还在，虚拟网络连接也在，但是和 NAT 方式对应的虚拟网络连接的 IP 不是 192.168.xxx.xxx 了，而是169.254.xxx.xxx。此时已经没法和 Linux 的 IP 保持同一个网段了。<br />此时唯一的办法：在虚拟网络编辑器中“还原默认设置”。让 VMWare 的虚拟网络编辑器重置网络连接。</p>
+</article><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2023/05/16/2023-5-16%20Linux%E4%B8%8B/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Linux下&amp;url=http://example.com/2023/05/16/2023-5-16%20Linux%E4%B8%8B/&amp;pic=/img/default_cover.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Linux%E4%B8%8B/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Linux下<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/default_cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><div class="post-copyright"><i class="anzhiyufont anzhiyu-icon-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2023/05/16/2023-5-16%20Linux%E4%B8%8B/">原创</a><a class="post-copyright-title"><span>Linux下</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"></span><a class="link" href="http://example.com">John Doe</a></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a class="link" href="http://example.com/2023/05/16/2023-5-16%20Linux%E4%B8%8B/">http://example.com/2023/05/16/2023-5-16%20Linux%E4%B8%8B/</a></span><span class="copy-button" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-copy"></i></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/15/2023-5-17%20Linux%E4%B8%8A/"><img class="prev-cover" src="/img/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Linux上</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/02/2023-5-8-%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2%E7%AE%80%E5%8E%86/"><img class="next-cover" src="/img/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">java工程师</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author-info-top"> <div class="card-info-avatar"></div></div><div class="author-info__sayhi" id="author-info__sayhi"></div><h1 class="author-info__name">John Doe</h1><div class="author-info__description"></div><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/about/&quot;)"><span class="banner-button-text">了解更多</span><i class="anzhiyufont anzhiyu-icon-arrow-circle-right" style="font-size: 1.5rem"></i></a></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-day-%E4%B8%8B"><span class="toc-number">1.</span> <span class="toc-text">Linux-day(下)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">第一章 Linux常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.1.</span> <span class="toc-text">第一节 进程相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1. 查看进程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.1.1.1.</span> <span class="toc-text">1.1 命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E7%88%B6%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%AD%90%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.1.1.2.</span> <span class="toc-text">1.2 父进程和子进程之间的关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-%E5%92%8C%E5%85%B6%E5%AE%83%E5%91%BD%E4%BB%A4%E9%85%8D%E5%90%88%E4%B8%80%E8%B5%B7%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.1.1.1.3.</span> <span class="toc-text">1.3 和其它命令配合一起查看进程</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-3-1-%E5%88%86%E5%B1%8F%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.1.1.3.1.</span> <span class="toc-text">1.3.1 分屏查看进程信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-3-2-%E7%B2%BE%E7%A1%AE%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%B8%AA%E5%85%B7%E4%BD%93%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.1.1.3.2.</span> <span class="toc-text">1.3.2 精确查询一个具体进程信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">2. 杀死进程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.1.2.1.</span> <span class="toc-text">2.1 命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.1.1.2.2.</span> <span class="toc-text">2.2 举例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5%E5%92%8C%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81-%E4%BA%86%E8%A7%A3"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">3. 实时查看系统运行情况和健康状态(了解)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.1.3.1.</span> <span class="toc-text">3.1 命令和参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E6%8C%89%E9%94%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.1.3.2.</span> <span class="toc-text">3.2 按键操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E7%9A%84%E5%AD%97%E6%AE%B5%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.1.3.3.</span> <span class="toc-text">3.3 查询结果的字段解释</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-1-%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BF%A1%E6%81%AF%E4%B8%BA%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.1.3.3.1.</span> <span class="toc-text">3.3.1 第一行信息为任务队列信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-2-%E7%AC%AC%E4%BA%8C%E8%A1%8C%E4%B8%BA%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.1.3.3.2.</span> <span class="toc-text">3.3.2 第二行为进程信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-3-%E7%AC%AC%E4%B8%89%E8%A1%8C%E4%B8%BACPU%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.1.3.3.3.</span> <span class="toc-text">3.3.3 第三行为CPU信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-4-%E7%AC%AC%E5%9B%9B%E8%A1%8C%E4%B8%BA%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.1.3.3.4.</span> <span class="toc-text">3.3.4 第四行为物理内存信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-5-%E7%AC%AC%E4%BA%94%E8%A1%8C%E4%B8%BA%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%EF%BC%88swap%EF%BC%89%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.1.3.3.5.</span> <span class="toc-text">3.3.5 第五行为交换分区（swap）信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81%E5%91%BD%E4%BB%A4-%E4%BA%86%E8%A7%A3"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">4. 查看网络状态命令(了解)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.1.4.1.</span> <span class="toc-text">4.1 命令和参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.1.4.2.</span> <span class="toc-text">4.2 查询结果的解释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-number">1.1.1.4.3.</span> <span class="toc-text">4.3 使用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-3-1-%E5%88%86%E5%B1%8F%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81"><span class="toc-number">1.1.1.4.3.1.</span> <span class="toc-text">4.3.1 分屏查看网络状态</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-3-2-%E6%A0%B9%E6%8D%AE%E8%BF%9B%E7%A8%8B%E5%90%8D%E7%A7%B0%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81"><span class="toc-number">1.1.1.4.3.2.</span> <span class="toc-text">4.3.2 根据进程名称查看网络状态</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-3-3-%E6%A0%B9%E6%8D%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81"><span class="toc-number">1.1.1.4.3.3.</span> <span class="toc-text">4.3.3 根据端口号查看网络状态</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Linux%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">第二章 Linux权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.2.1.</span> <span class="toc-text">第一节 权限管理中的专业术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.2.</span> <span class="toc-text">第二节 创建用户和用户组的基本命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">1.2.3.</span> <span class="toc-text">第三节 文件权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%BF%A1%E6%81%AF%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1. 文件权限信息说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2. 修改文件权限</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">2.1 命令介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E6%BC%94%E7%A4%BAchmod%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.3.2.2.</span> <span class="toc-text">2.2 演示chmod命令</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#2-2-1-%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90%E4%BF%A1%E6%81%AF%E5%89%8D"><span class="toc-number">1.2.3.2.2.1.</span> <span class="toc-text">2.2.1 修改权限信息前</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-2-2-%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-number">1.2.3.2.2.2.</span> <span class="toc-text">2.2.2 添加权限</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-2-3-%E5%88%A0%E9%99%A4%E6%9D%83%E9%99%90"><span class="toc-number">1.2.3.2.2.3.</span> <span class="toc-text">2.2.3 删除权限</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-2-4-%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90"><span class="toc-number">1.2.3.2.2.4.</span> <span class="toc-text">2.2.4 修改权限</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E6%8F%90%E5%8D%87%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%9A%84%E6%9D%83%E9%99%90"><span class="toc-number">1.2.4.</span> <span class="toc-text">第四节 提升普通用户的权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Allow-root-to-run-any-commands-anywhere"><span class="toc-number">1.3.</span> <span class="toc-text">Allow root to run any commands anywhere</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-Linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">第三章 Linux系统的服务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text">第一节 服务的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-CentOS6%E7%9A%84%E6%9C%8D%E5%8A%A1-%E4%BA%86%E8%A7%A3"><span class="toc-number">1.4.2.</span> <span class="toc-text">第二节 CentOS6的服务(了解)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-service%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">1. service命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-chkconfig%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2. chkconfig命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">3. 防火墙</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-CentOS7%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.4.3.</span> <span class="toc-text">第三节 CentOS7的服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-systemctl%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">1. systemctl命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-systemctl%E5%91%BD%E4%BB%A4%E4%BB%A3%E6%9B%BFchkconfig%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">2. systemctl命令代替chkconfig命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%98%B2%E7%81%AB%E5%A2%99%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">3. 防火墙的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.3.4.</span> <span class="toc-text">4. 防火墙端口设置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.5.</span> <span class="toc-text">第四章 服务器端应用程序的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E5%A4%87%E4%BB%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.1.</span> <span class="toc-text">第一节 备份配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E5%BF%AB%E7%85%A7%E5%A4%87%E4%BB%BD%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">1.5.2.</span> <span class="toc-text">第二节 快照备份虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">1. 使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E5%9C%BA%E6%99%AF%E4%B8%80"><span class="toc-number">1.5.2.1.1.</span> <span class="toc-text">1.1 场景一</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-%E5%9C%BA%E6%99%AF%E4%BA%8C"><span class="toc-number">1.5.2.1.2.</span> <span class="toc-text">1.2 场景二</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B7%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">2. 具体操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E4%BF%9D%E5%AD%98%E5%BF%AB%E7%85%A7"><span class="toc-number">1.5.2.2.1.</span> <span class="toc-text">2.1 保存快照</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E6%81%A2%E5%A4%8D%E5%BF%AB%E7%85%A7"><span class="toc-number">1.5.2.2.2.</span> <span class="toc-text">2.2 恢复快照</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E5%AE%89%E8%A3%85JDK"><span class="toc-number">1.5.3.</span> <span class="toc-text">第三节 安装JDK</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-rpm%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">1. rpm命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B7%E4%BD%93%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">2. 具体安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E5%8D%B8%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%A2%84%E8%A3%85%E7%9A%84JDK"><span class="toc-number">1.5.3.2.1.</span> <span class="toc-text">2.1 卸载系统预装的JDK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E5%AE%89%E8%A3%85JDK"><span class="toc-number">1.5.3.2.2.</span> <span class="toc-text">2.2 安装JDK</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E5%AE%89%E8%A3%85Tomcat"><span class="toc-number">1.5.4.</span> <span class="toc-text">第四节 安装Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%B7%E4%BD%93%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.4.1.</span> <span class="toc-text">1. 具体安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9CTomcat"><span class="toc-number">1.5.4.2.</span> <span class="toc-text">2. 操作Tomcat</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3%E5%90%8E%E4%B8%80%E5%AE%9A%E8%A6%81%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">放行端口后一定要重新加载防火墙配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">2.0.1.</span> <span class="toc-text">第三节 安装MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8D%B8%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%A2%84%E8%A3%85-mariadb"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">1. 卸载系统预装 mariadb</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B7%E4%BD%93%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4-1"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">2. 具体安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E5%B0%86mysql%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85%E6%8B%B7%E8%B4%9D%E5%88%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD"><span class="toc-number">2.0.1.2.1.</span> <span class="toc-text">2.1 将mysql的压缩包拷贝到虚拟机中</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E8%A7%A3%E5%8E%8BMySQL%E7%9A%84tar%E5%8C%85"><span class="toc-number">2.0.1.2.2.</span> <span class="toc-text">2.2 解压MySQL的tar包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-%E5%AE%89%E8%A3%85MySQL-%E4%B8%8B%E8%BF%B0%E6%AD%A5%E9%AA%A4%E4%BE%9D%E6%AC%A1%E6%89%A7%E8%A1%8C"><span class="toc-number">2.0.1.2.3.</span> <span class="toc-text">2.3 安装MySQL,下述步骤依次执行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-%E4%BF%AE%E6%94%B9MySQL%E7%9A%84%E5%AD%97%E7%AC%A6%E9%9B%86%E9%85%8D%E7%BD%AE"><span class="toc-number">2.0.1.2.4.</span> <span class="toc-text">2.4 修改MySQL的字符集配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-5-%E5%90%AF%E5%8A%A8MySQL%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.0.1.2.5.</span> <span class="toc-text">2.5 启动MySQL服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-6-%E8%AE%BE%E7%BD%AEMySQL%E6%9C%8D%E5%8A%A1%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="toc-number">2.0.1.2.6.</span> <span class="toc-text">2.6 设置MySQL服务开机自启动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-7-%E6%9F%A5%E7%9C%8BMySQL%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81"><span class="toc-number">2.0.1.2.7.</span> <span class="toc-text">2.7 查看MySQL初始密码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-8-%E4%BD%BF%E7%94%A8%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95MySQL"><span class="toc-number">2.0.1.2.8.</span> <span class="toc-text">2.8 使用初始密码登录MySQL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-9-%E4%BF%AE%E6%94%B9root%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-number">2.0.1.2.9.</span> <span class="toc-text">2.9 修改root的密码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%9C%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8A%E7%94%A8SqlYog%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E7%9A%84MySQL"><span class="toc-number">2.0.1.3.</span> <span class="toc-text">3. 在宿主机上用SqlYog远程连接虚拟机上的MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.1.3.1.</span> <span class="toc-text">3.1 会遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-1-1-%E8%A2%AB%E9%98%B2%E7%81%AB%E5%A2%99%E6%8B%A6%E6%88%AA"><span class="toc-number">2.0.1.3.1.1.</span> <span class="toc-text">3.1.1 被防火墙拦截</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-1-2-MySQL%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8D%E5%85%81%E8%AE%B8%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE"><span class="toc-number">2.0.1.3.1.2.</span> <span class="toc-text">3.1.2 MySQL服务器不允许远程访问</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-VMWare%E8%BD%AF%E4%BB%B6%E8%81%94%E7%BD%91%E5%8E%9F%E7%90%86%E8%AF%B4%E6%98%8E%E4%B8%8E%E6%95%85%E9%9A%9C%E8%A7%A3%E5%86%B3"><span class="toc-number">2.0.2.</span> <span class="toc-text">第五章 VMWare软件联网原理说明与故障解决</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.2.1.</span> <span class="toc-text">常见的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Windows%E7%AB%AF%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1%E8%99%9A%E6%8B%9F%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%A2%E5%A4%B1"><span class="toc-number">2.0.2.2.</span> <span class="toc-text">1. Windows端虚拟网卡虚拟网络连接丢失</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%99%9A%E6%8B%9F%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5IP%E5%9C%B0%E5%9D%80%E4%B9%B1%E4%BA%86"><span class="toc-number">2.0.2.3.</span> <span class="toc-text">2. 虚拟网络连接IP地址乱了</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/02/2023-5-8-%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2%E7%AE%80%E5%8E%86/" title="java工程师"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java工程师"/></a><div class="content"><a class="title" href="/2023/06/02/2023-5-8-%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2%E7%AE%80%E5%8E%86/" title="java工程师">java工程师</a><time datetime="2023-06-02T08:58:25.061Z" title="Created 2023-06-02 16:58:25">2023-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/16/2023-5-16%20Linux%E4%B8%8B/" title="Linux下"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux下"/></a><div class="content"><a class="title" href="/2023/05/16/2023-5-16%20Linux%E4%B8%8B/" title="Linux下">Linux下</a><time datetime="2023-05-15T22:19:03.000Z" title="Created 2023-05-16 06:19:03">2023-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/2023-5-17%20Linux%E4%B8%8A/" title="Linux上"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux上"/></a><div class="content"><a class="title" href="/2023/05/15/2023-5-17%20Linux%E4%B8%8A/" title="Linux上">Linux上</a><time datetime="2023-05-14T22:19:03.000Z" title="Created 2023-05-15 06:19:03">2023-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8A/" title="Redis上"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis上"/></a><div class="content"><a class="title" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8A/" title="Redis上">Redis上</a><time datetime="2023-05-14T22:19:03.000Z" title="Created 2023-05-15 06:19:03">2023-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8B/" title="Redis下"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis下"/></a><div class="content"><a class="title" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8B/" title="Redis下">Redis下</a><time datetime="2023-05-14T22:19:03.000Z" title="Created 2023-05-15 06:19:03">2023-05-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://anzhiy.cn/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a></p></div></footer></div></div></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="data:image/jpeg;base64,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"/><div class="loading-image-dot"></div><div id="loading-percentage">0%</div></div></div><script>const loadingPercentage = document.getElementById("loading-percentage");
+let loadingPercentageTimer = setInterval(function() {
+  var progressBar = document.querySelector(".pace-progress");
+  if (!progressBar) return
+  var currentValue = progressBar.getAttribute("data-progress-text");
+  if (currentValue !== loadingPercentage.textContent) {
+    loadingPercentage.textContent = currentValue;
+    if (currentValue === "100%") {
+      clearInterval(loadingPercentageTimer);
+    }
+  }
+}, 100);
+const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+    Pace.restart()
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/progress_bar/progress_bar.css"/><script async="async" src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">5</div></a></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="center-console" type="button" title="中控台"><i class="anzhiyufont anzhiyu-icon-fish"></i></button><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div><div id="console"><div class="close-btn" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-xmark" style="font-size: 35px;"></i></div><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="anzhiyu.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> <span>Newest Comments</span></span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="anzhiyu.hideConsole()"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Linux%E4%B8%8A/" style="font-size: 1.05rem;">Linux上<sup>1</sup></a><a href="/tags/Linux%E4%B8%8B/" style="font-size: 1.05rem;">Linux下<sup>1</sup></a><a href="/tags/Redis%E4%B8%8A/" style="font-size: 1.05rem;">Redis上<sup>1</sup></a><a href="/tags/Redis%E4%B8%8B/" style="font-size: 1.05rem;">Redis下<sup>1</sup></a><a href="/tags/mybatis/" style="font-size: 1.05rem;">mybatis<sup>2</sup></a><a href="/tags/spring/" style="font-size: 1.05rem;">spring<sup>1</sup></a><a href="/tags/spring%E5%85%A8%E5%AE%B6%E6%A1%B6/" style="font-size: 1.05rem;">spring全家桶<sup>3</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" style="font-size: 1.05rem;">个人简历<sup>1</sup></a><a href="/tags/%E5%B0%9A%E5%A5%BD%E6%88%BF/" style="font-size: 1.05rem;">尚好房<sup>1</sup></a><a href="/tags/%E7%AE%80%E5%8E%86/" style="font-size: 1.05rem;">简历<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history" onclick="anzhiyu.hideConsole()"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">June 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">May 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="anzhiyu.switchDarkMode()" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.2.1/source/js/utils.js"></script><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.2.1/source/js/main.js"></script><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.2.1/source/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><script src="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 1.2.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#3b70fc",
+      "",
+      "color:#3b70fc",
+      "color:#3b70fc",
+      "",
+      "color:#3b70fc",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 John Doe 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("04/01/2021 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+      img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+      img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anzhiy.cn";</script><script>//动态标题
+let leaveTitle = 'w(ﾟДﾟ)w 不要走！再看看嘛！';
+let backTitle = '♪(^∇^*)欢迎肥来！';
+let OriginTitile = document.title
+let titleTime
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    //离开当前页面时标签显示内容
+    document.title = leaveTitle
+    clearTimeout(titleTime)
+  } else {
+    //返回当前页面时标签显示内容
+    document.title = backTitle + OriginTitile
+    //两秒后变回正常标题
+    titleTime = setTimeout(function () {
+      document.title = OriginTitile
+    }, 2000)
+  }
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script>// 初始化函数
+let rm = {};
+
+//禁止图片与超链接拖拽
+let aElements = document.getElementsByTagName("a");
+for (let i = 0; i < aElements.length; i++) {
+  aElements[i].setAttribute("draggable", "false");
+  let imgElements = aElements[i].getElementsByTagName("img");
+  for (let j = 0; j < imgElements.length; j++) {
+    imgElements[j].setAttribute("draggable", "false");
+  }
+}
+
+// 显示菜单
+rm.showRightMenu = function (isTrue, x = 0, y = 0) {
+  console.info(x, y)
+  let rightMenu = document.getElementById("rightMenu");
+  rightMenu.style.top = x + "px";
+  rightMenu.style.left = y + "px";
+  if (isTrue) {
+    rightMenu.style.display = "block";
+    stopMaskScroll();
+  } else {
+    rightMenu.style.display = "none";
+  }
+};
+
+// 隐藏菜单
+rm.hideRightMenu = function () {
+  rm.showRightMenu(false);
+  let rightMenuMask = document.querySelector("#rightmenu-mask");
+  rightMenuMask.style.display = "none";
+};
+
+// 尺寸
+let rmWidth = document.getElementById("rightMenu").offsetWidth;
+let rmHeight = document.getElementById("rightMenu").offsetHeight;
+
+// 重新定义尺寸
+rm.reloadrmSize = function () {
+  rightMenu.style.visibility = "hidden";
+  rightMenu.style.display = "block";
+  // 获取宽度和高度
+  rmWidth = document.getElementById("rightMenu").offsetWidth;
+  rmHeight = document.getElementById("rightMenu").offsetHeight;
+  rightMenu.style.visibility = "visible";
+};
+
+// 获取点击的href
+let domhref = "";
+let domImgSrc = "";
+let globalEvent = null;
+
+var oncontextmenuFunction = function (event) {
+  if (document.body.clientWidth > 768) {
+    let pageX = event.clientX + 10; //加10是为了防止显示时鼠标遮在菜单上
+    let pageY = event.clientY;
+
+    //其他额外菜单
+    const $rightMenuOther = document.querySelector(".rightMenuOther");
+    const $rightMenuPlugin = document.querySelector(".rightMenuPlugin");
+    const $rightMenuCopyText = document.querySelector("#menu-copytext");
+    const $rightMenuPasteText = document.querySelector("#menu-pastetext");
+    const $rightMenuCommentText = document.querySelector("#menu-commenttext");
+    const $rightMenuNewWindow = document.querySelector("#menu-newwindow");
+    const $rightMenuNewWindowImg = document.querySelector("#menu-newwindowimg");
+    const $rightMenuCopyLink = document.querySelector("#menu-copylink");
+    const $rightMenuCopyImg = document.querySelector("#menu-copyimg");
+    const $rightMenuDownloadImg = document.querySelector("#menu-downloadimg");
+    const $rightMenuSearch = document.querySelector("#menu-search");
+    const $rightMenuSearchBaidu = document.querySelector("#menu-searchBaidu");
+    const $rightMenuMusicToggle = document.querySelector("#menu-music-toggle");
+    const $rightMenuMusicBack = document.querySelector("#menu-music-back");
+    const $rightMenuMusicForward = document.querySelector("#menu-music-forward");
+    const $rightMenuMusicPlaylist = document.querySelector("#menu-music-playlist");
+    const $rightMenuMusicCopyMusicName = document.querySelector("#menu-music-copyMusicName");
+
+    let href = event.target.href;
+    let imgsrc = event.target.currentSrc;
+
+    // 判断模式 扩展模式为有事件
+    let pluginMode = false;
+    $rightMenuOther.style.display = "block";
+    globalEvent = event;
+
+    // 检查是否需要复制 是否有选中文本
+    if (selectTextNow && window.getSelection()) {
+      pluginMode = true;
+      $rightMenuCopyText.style.display = "block";
+      $rightMenuCommentText.style.display = "block";
+      $rightMenuSearch.style.display = "block";
+      $rightMenuSearchBaidu.style.display = "block";
+    } else {
+      $rightMenuCopyText.style.display = "none";
+      $rightMenuCommentText.style.display = "none";
+      $rightMenuSearchBaidu.style.display = "none";
+      $rightMenuSearch.style.display = "none";
+    }
+
+    //检查是否右键点击了链接a标签
+    if (href) {
+      pluginMode = true;
+      $rightMenuNewWindow.style.display = "block";
+      $rightMenuCopyLink.style.display = "block";
+      domhref = href;
+    } else {
+      $rightMenuNewWindow.style.display = "none";
+      $rightMenuCopyLink.style.display = "none";
+    }
+
+    //检查是否需要复制图片
+    if (imgsrc) {
+      pluginMode = true;
+      $rightMenuCopyImg.style.display = "block";
+      $rightMenuDownloadImg.style.display = "block";
+      $rightMenuNewWindowImg.style.display = "block";
+      document.getElementById("rightMenu").style.width="12rem"
+      domImgSrc = imgsrc;
+    } else {
+      $rightMenuCopyImg.style.display = "none";
+      $rightMenuDownloadImg.style.display = "none";
+      $rightMenuNewWindowImg.style.display = "none";
+    }
+
+    // 判断是否为输入框
+    if (event.target.tagName.toLowerCase() === "input" || event.target.tagName.toLowerCase() === "textarea") {
+      pluginMode = true;
+      $rightMenuPasteText.style.display = "block";
+    } else {
+      $rightMenuPasteText.style.display = "none";
+    }
+    const navMusicEl = document.querySelector("#nav-music");
+    //判断是否是音乐
+    if (navMusicEl && navMusicEl.contains(event.target)) {
+      pluginMode = true;
+      $rightMenuMusicToggle.style.display = "block";
+      $rightMenuMusicBack.style.display = "block";
+      $rightMenuMusicForward.style.display = "block";
+      $rightMenuMusicPlaylist.style.display = "block";
+      $rightMenuMusicCopyMusicName.style.display = "block";
+    } else {
+      $rightMenuMusicToggle.style.display = "none";
+      $rightMenuMusicBack.style.display = "none";
+      $rightMenuMusicForward.style.display = "none";
+      $rightMenuMusicPlaylist.style.display = "none";
+      $rightMenuMusicCopyMusicName.style.display = "none";
+    }
+
+    // 如果不是扩展模式则隐藏扩展模块
+    if (pluginMode) {
+      $rightMenuOther.style.display = "none";
+      $rightMenuPlugin.style.display = "block";
+    } else {
+      $rightMenuPlugin.style.display = "none";
+    }
+
+    rm.reloadrmSize();
+
+    // 鼠标默认显示在鼠标右下方，当鼠标靠右或靠下时，将菜单显示在鼠标左方\上方
+    if (pageX + rmWidth > window.innerWidth) {
+      pageX -= rmWidth + 10;
+    }
+    if (pageY + rmHeight > window.innerHeight) {
+      pageY -= pageY + rmHeight - window.innerHeight;
+    }
+
+    rm.showRightMenu(true, pageY, pageX);
+    document.getElementById("rightmenu-mask").style.display = "flex";
+    return false;
+  }
+};
+
+// 监听右键初始化
+window.oncontextmenu = oncontextmenuFunction
+
+// 下载图片状态
+rm.downloadimging = false;
+
+// 复制图片到剪贴板
+rm.writeClipImg = function (imgsrc) {
+  console.log("按下复制");
+  rm.hideRightMenu();
+  anzhiyu.snackbarShow("正在下载中，请稍后", false, 10000);
+  if (rm.downloadimging == false) {
+    rm.downloadimging = true;
+    setTimeout(function () {
+      copyImage(imgsrc);
+      anzhiyu.snackbarShow("复制成功！图片已添加盲水印，请遵守版权协议");
+      rm.downloadimging = false;
+    }, "10000");
+  }
+};
+
+function imageToBlob(imageURL) {
+  const img = new Image();
+  const c = document.createElement("canvas");
+  const ctx = c.getContext("2d");
+  img.crossOrigin = "";
+  img.src = imageURL;
+  return new Promise(resolve => {
+    img.onload = function () {
+      c.width = this.naturalWidth;
+      c.height = this.naturalHeight;
+      ctx.drawImage(this, 0, 0);
+      c.toBlob(
+        blob => {
+          // here the image is a blob
+          resolve(blob);
+        },
+        "image/png",
+        0.75
+      );
+    };
+  });
+}
+
+async function copyImage(imageURL) {
+  const blob = await imageToBlob(imageURL);
+  const item = new ClipboardItem({ "image/png": blob });
+  navigator.clipboard.write([item]);
+}
+
+rm.copyUrl = function (id) {
+  const input = document.createElement("input"); // Create a new <input> element
+  input.id = "copyVal"; // Set the id of the new element to "copyVal"
+  document.body.appendChild(input); // Append the new element to the end of the <body> element
+  
+  const text = id;
+  input.value = text;
+  input.select();
+  input.setSelectionRange(0, input.value.length);
+  document.execCommand("copy");
+  
+  input.remove(); // Remove the <input> element from the DOM
+};
+
+function stopMaskScroll() {
+  if (document.getElementById("rightmenu-mask")) {
+    let xscroll = document.getElementById("rightmenu-mask");
+    xscroll.addEventListener(
+      "mousewheel",
+      function (e) {
+        //阻止浏览器默认方法
+        rm.hideRightMenu();
+        // e.preventDefault();
+      },
+      { passive: true }
+    );
+  }
+  if (document.getElementById("rightMenu")) {
+    let xscroll = document.getElementById("rightMenu");
+    xscroll.addEventListener(
+      "mousewheel",
+      function (e) {
+        //阻止浏览器默认方法
+        rm.hideRightMenu();
+        // e.preventDefault();
+      },
+      { passive: true }
+    );
+  }
+}
+
+rm.rightmenuCopyText = function (txt) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt);
+  }
+  rm.hideRightMenu();
+};
+
+rm.copyPageUrl = function () {
+  var url = window.location.href;
+  rm.copyUrl(url);
+  anzhiyu.snackbarShow("复制本页链接地址成功", false, 2000);
+  rm.hideRightMenu();
+};
+
+rm.sharePage = function () {
+  var content = window.location.href;
+  rm.copyUrl(url);
+  anzhiyu.snackbarShow("复制本页链接地址成功", false, 2000);
+  rm.hideRightMenu();
+};
+
+// 复制当前选中文本
+var selectTextNow = "";
+document.onmouseup = document.ondblclick = selceText;
+
+function selceText() {
+  var txt;
+  if (document.selection) {
+    txt = document.selection.createRange().text;
+  } else {
+    txt = window.getSelection().toString();
+  }
+  selectTextNow = txt !== "" ? txt : "";
+}
+
+// 读取剪切板
+rm.readClipboard = function () {
+  if (navigator.clipboard) {
+    navigator.clipboard.readText().then(clipText => rm.insertAtCaret(globalEvent.target, clipText));
+  }
+};
+
+// 粘贴文本到焦点
+rm.insertAtCaret = function (elemt, value) {
+  const startPos = elemt.selectionStart,
+    endPos = elemt.selectionEnd;
+  if (document.selection) {
+    elemt.focus();
+    var sel = document.selection.createRange();
+    sel.text = value;
+    elemt.focus();
+  } else {
+    if (startPos || startPos == "0") {
+      var scrollTop = elemt.scrollTop;
+      elemt.value = elemt.value.substring(0, startPos) + value + elemt.value.substring(endPos, elemt.value.length);
+      elemt.focus();
+      elemt.selectionStart = startPos + value.length;
+      elemt.selectionEnd = startPos + value.length;
+      elemt.scrollTop = scrollTop;
+    } else {
+      elemt.value += value;
+      elemt.focus();
+    }
+  }
+};
+
+//粘贴文本
+rm.pasteText = function () {
+  const result = rm.readClipboard() || "";
+  rm.hideRightMenu();
+};
+
+//引用到评论
+rm.rightMenuCommentText = function (txt) {
+  rm.hideRightMenu();
+  const postCommentDom = document.getElementById("post-comment");
+  var domTop = postCommentDom.offsetTop;
+  window.scrollTo(0, domTop - 80);
+  if (txt == "undefined" || txt == "null") txt = "好棒！";
+  function setText() {
+    setTimeout(() => {
+      var input = document.getElementsByClassName("el-textarea__inner")[0];
+      if (!input) setText();
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("input", true, true);
+      let inputValue = replaceAll(txt, "\n", "\n> ");
+      input.value = "> " + inputValue + "\n\n";
+      input.dispatchEvent(evt);
+      input.focus();
+      input.setSelectionRange(-1, -1);
+      if (document.getElementById("comment-tips")) {
+        document.getElementById("comment-tips").classList.add("show");
+      }
+    }, 100);
+  }
+  setText();
+};
+
+//替换所有内容
+function replaceAll(string, search, replace) {
+  return string.split(search).join(replace);
+}
+
+// 百度搜索
+rm.searchBaidu = function () {
+  anzhiyu.snackbarShow("即将跳转到百度搜索", false, 2000);
+  setTimeout(function () {
+    window.open("https://www.baidu.com/s?wd=" + selectTextNow);
+  }, "2000");
+  rm.hideRightMenu();
+};
+
+//分享链接
+rm.copyLink = function () {
+  rm.rightmenuCopyText(domhref);
+  anzhiyu.snackbarShow("已复制链接地址");
+};
+
+function addRightMenuClickEvent() {
+  // 添加点击事件
+  document.getElementById("menu-backward").addEventListener("click", function () {
+  window.history.back();
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-forward").addEventListener("click", function () {
+    window.history.forward();
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-refresh").addEventListener("click", function () {
+    window.location.reload();
+  });
+
+  document.getElementById("menu-top").addEventListener("click", function () {
+    anzhiyu.scrollToDest(0, 500);
+    rm.hideRightMenu();
+  });
+
+  const menuLinks = document.querySelectorAll(".menu-link");
+  menuLinks.forEach(function (link) {
+    link.addEventListener("click", rm.hideRightMenu);
+  });
+
+  document.getElementById("menu-darkmode").addEventListener("click", anzhiyu.switchDarkMode);
+
+  document.getElementById("menu-home") && document.getElementById("menu-home").addEventListener("click", function () {
+    window.location.href = window.location.origin;
+  });
+
+  document.getElementById("menu-randomPost").addEventListener("click", function () {
+    toRandomPost();
+  });
+
+  document.getElementById("menu-commentBarrage").addEventListener("click", anzhiyu.switchCommentBarrage);
+
+  document.getElementById("rightmenu-mask").addEventListener("click", rm.hideRightMenu);
+
+  document.getElementById("rightmenu-mask").addEventListener("contextmenu", function (event) {
+    rm.hideRightMenu();
+    event.preventDefault(); // Prevent the default context menu from appearing
+  });
+
+  document.getElementById("menu-copy").addEventListener("click", rm.copyPageUrl);
+
+  document.getElementById("menu-pastetext").addEventListener("click", rm.pasteText);
+
+  document.getElementById("menu-copytext").addEventListener("click", function () {
+    rm.rightmenuCopyText(selectTextNow);
+    anzhiyu.snackbarShow("复制成功，复制和转载请标注本文地址");
+  });
+
+  document.getElementById("menu-commenttext").addEventListener("click", function () {
+    rm.rightMenuCommentText(selectTextNow);
+  });
+
+  document.getElementById("menu-newwindow").addEventListener("click", function () {
+    window.open(domhref, "_blank");
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-copylink").addEventListener("click", rm.copyLink);
+
+  document.getElementById("menu-downloadimg").addEventListener("click", function () {
+    anzhiyu.downloadImage(domImgSrc, "anzhiyu");
+  });
+
+  document.getElementById("menu-newwindowimg").addEventListener("click", function () {
+    window.open(domImgSrc, "_blank");
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-copyimg").addEventListener("click", function () {
+    rm.writeClipImg(domImgSrc);
+  });
+
+  document.getElementById("menu-searchBaidu").addEventListener("click", rm.searchBaidu);
+
+  //音乐
+  document.getElementById("menu-music-toggle").addEventListener("click", anzhiyu.musicToggle);
+
+  document.getElementById("menu-music-back").addEventListener("click", anzhiyu.musicSkipBack);
+
+  document.getElementById("menu-music-forward").addEventListener("click", anzhiyu.musicSkipForward);
+
+  document.getElementById("menu-music-copyMusicName").addEventListener("click", function () {
+    rm.rightmenuCopyText(anzhiyu.musicGetName());
+    anzhiyu.snackbarShow("复制歌曲名称成功", false, 3000);
+  });
+
+}
+
+addRightMenuClickEvent();</script><script data-pjax>var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var consoleEl = document.getElementById("console");
+// 已随机的歌曲
+var selectRandomSong = [];
+// 音乐默认声音大小
+var musicVolume = 0.8;
+// 是否切换了周杰伦音乐列表
+var changeMusicListFlag = false;
+// 当前默认播放列表
+var defaultPlayMusicList = [];
+
+document.getElementById("page-name").innerText = document.title.split(" | Hexo")[0];
+anzhiyu.initIndexEssay();
+anzhiyu.changeTimeInEssay();
+anzhiyu.removeBodyPaceClass();
+anzhiyu.qrcodeCreate();
+anzhiyu.changeTimeInAlbumDetail();
+anzhiyu.reflashEssayWaterFall();
+anzhiyu.sayhi();
+anzhiyu.stopImgRightDrag();
+anzhiyu.addNavBackgroundInit();
+anzhiyu.setValueToBodyType();
+anzhiyu.catalogActive();
+anzhiyu.tagsPageActive();
+anzhiyu.categoriesBarActive();
+anzhiyu.topCategoriesBarScroll();
+
+anzhiyu.getCustomPlayList();
+anzhiyu.addEventListenerConsoleMusicList(false);
+setTimeout(() => {
+  if (typeof addFriendLinksInFooter === "function") {
+    addFriendLinksInFooter();
+  }
+}, 200)</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.0/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>

@@ -1,0 +1,1668 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Redis下 | Hexo</title><meta name="keywords" content="Redis下"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Redis下"><meta name="application-name" content="Redis下"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta name="description" content="听说Redis有订阅者监听者等模式哦">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis下">
+<meta property="og:url" content="http://example.com/2023/05/15/2023-5-18%20Redis%E4%B8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="听说Redis有订阅者监听者等模式哦">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/default_cover.jpg">
+<meta property="article:published_time" content="2023-05-14T22:19:03.000Z">
+<meta property="article:modified_time" content="2023-05-16T01:00:00.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Redis下">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/default_cover.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://example.com/2023/05/15/2023-5-18%20Redis%E4%B8%8B/"><link rel="preconnect" href="//npm.elemecdn.com"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  friends_vue_info: undefined,
+  navMusic: true,
+  changeMainColorPost: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#3b70fc","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis下',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-16 09:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/"><div class="title">Hexo</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" href="javascript:void(0);" title="Switch Between Light And Dark Mode" onclick="anzhiyu.switchDarkMode()"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke" style="font-size: 1.3rem"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Redis/">Redis</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Redis%E4%B8%8B/"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Redis下</span></a></span></div></div><h1 class="post-title">Redis下</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-05-14T22:19:03.000Z" title="Created 2023-05-15 06:19:03">2023-05-15</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-05-16T01:00:00.000Z" title="Updated 2023-05-16 09:00:00">2023-05-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/default_cover.jpg"></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer" />
+
+<p><a name="DVXzl"></a></p>
+<h1 id="Redis-下"><a href="#Redis-下" class="headerlink" title="Redis(下)"></a>Redis(下)</h1><p><a name="E1o0D"></a></p>
+<h2 id="第一章-Redis持久化机制"><a href="#第一章-Redis持久化机制" class="headerlink" title="第一章 Redis持久化机制"></a><a href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6">第一章 Redis持久化机制</a></h2><p>Redis的高性能是由于其将所有数据都存储在了内存中，为了使Redis在重启之后仍能保证数据不丢失，需要将数据<strong>从内存中同步到硬盘(文件)中，这一过程就是持久化</strong>。<br />Redis 为我们提供了两种持久化方案，一种是基于快照，另外一种是基于 AOF 日志。<br />官网地址: <a target="_blank" rel="noopener" href="https://redis.io/topics/persistence">https://redis.io/topics/persistence</a><br />持久化就是把内存中的数据存放到磁盘中，比如重启机器、机器故障、防止宕机后内存数据丢失。<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322476593-af2db8a8-0a14-4feb-acf3-4d5a8216defb.png#averageHue=%23ece1e0&from=url&id=OX45L&originHeight=200&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />Redis  可以通过创建快照来获得存储在内存里面的数据。创建快照之后，可以对快照进行备份，可以将快照复制到其他服务器从而创建具有相同数据的服务器副本，还可以将快照留在原地以便重启服务器的时候使用</p>
+<p>设置服务器数据：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322476703-b04dac28-60df-42a8-b991-85af62e0837e.png#averageHue=%233c2828&from=url&id=nFVrf&originHeight=103&originWidth=246&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>关闭服务器和客户端，重新打开服务器和客户端：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322476785-66d8a14a-2a04-4289-8c62-12b801bde696.png#averageHue=%23664f4f&from=url&id=ozSl3&originHeight=76&originWidth=226&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="jkY2p"></a></p>
+<h3 id="第一节-RDB持久化机制"><a href="#第一节-RDB持久化机制" class="headerlink" title="第一节 RDB持久化机制"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-rdb%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6">第一节 RDB持久化机制</a></h3><p><a name="ZpLCW"></a></p>
+<h4 id="1-RDB的概念"><a href="#1-RDB的概念" class="headerlink" title="1. RDB的概念"></a>1. RDB的概念</h4><p>RDB(Redis Database) 通过快照的形式将数据保存到磁盘中。所谓快照，可以理解为在某一时间点将数据集拍照并保存下来。Redis 通过这种方式可以在指定的时间间隔或者执行特定命令时将当前系统中的数据保存备份，以二进制的形式写入磁盘中，默认文件名为dump.rdb。</p>
+<p>RDB是Redis默认的持久化方式。按照指定的时间间隔内将内存的数据以快照的形式保存到硬盘中，对应产生的数据文件为dump.rdb。通过配置文件中的save参数来定义快照的周期。</p>
+<p>恢复时，将rdb文件直接读到内存中，具体做法：将rdb文件放到redis的启动目录上，redis会自动检查dump.rdb文件，恢复数据</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322476882-074fb2a9-08b8-4aa9-8986-ff3cb993da4f.png#averageHue=%23e69b0c&from=url&id=Nr11I&originHeight=234&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="NmXEO"></a></p>
+<h4 id="2-快照的触发时机"><a href="#2-快照的触发时机" class="headerlink" title="2. 快照的触发时机"></a>2. 快照的触发时机</h4><p><a name="L9taz"></a></p>
+<h5 id="2-1-基于默认配置"><a href="#2-1-基于默认配置" class="headerlink" title="2.1 基于默认配置"></a>2.1 基于默认配置</h5><p>快照持久化是  Redis  默认采用的持久化方式，在  redis.windwos.conf  配置文件中默认有此下配置</p>
+<h1 id="在-900-秒-15分钟-之后，如果至少有-1-个-key-发生变化，Redis-就会自动触发创建快照"><a href="#在-900-秒-15分钟-之后，如果至少有-1-个-key-发生变化，Redis-就会自动触发创建快照" class="headerlink" title="在 900 秒(15分钟)之后，如果至少有 1 个 key 发生变化，Redis 就会自动触发创建快照"></a>在 900 秒(15分钟)之后，如果至少有 1 个 key 发生变化，Redis 就会自动触发创建快照</h1><p>save 900 1</p>
+<h1 id="在-300-秒-5分钟-之后，如果至少有-10-个-key-发生变化，Redis-就会自动触发创建快照"><a href="#在-300-秒-5分钟-之后，如果至少有-10-个-key-发生变化，Redis-就会自动触发创建快照" class="headerlink" title="在 300 秒(5分钟)之后，如果至少有 10 个 key 发生变化，Redis 就会自动触发创建快照"></a>在 300 秒(5分钟)之后，如果至少有 10 个 key 发生变化，Redis 就会自动触发创建快照</h1><p>save 300 10</p>
+<h1 id="在-60-秒-1分钟-之后，如果至少有-10000-个-key-发生变化，Redis-就会自动触发创建快照"><a href="#在-60-秒-1分钟-之后，如果至少有-10000-个-key-发生变化，Redis-就会自动触发创建快照" class="headerlink" title="在 60 秒(1分钟)之后，如果至少有 10000 个 key 发生变化，Redis 就会自动触发创建快照"></a>在 60 秒(1分钟)之后，如果至少有 10000 个 key 发生变化，Redis 就会自动触发创建快照</h1><p>save 60 10000</p>
+<p><a name="CNnSn"></a></p>
+<h4 id="3-RDB的相关配置"><a href="#3-RDB的相关配置" class="headerlink" title="3. RDB的相关配置"></a>3. RDB的相关配置</h4><table>
+<thead>
+<tr>
+<th><strong>配置项</strong></th>
+<th><strong>取值</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>save</td>
+<td>900 1</td>
+<td>设置RDB的快照时间点，如果为空则禁用RDB</td>
+</tr>
+<tr>
+<td>dbfilename</td>
+<td>文件名，例如：dump.rdb</td>
+<td>设置RDB机制下，数据存储文件的文件名</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>Redis工作目录路径</td>
+<td>指定存放持久化文件的目录的路径。注意：这里指定的必须是目录不能是文件名</td>
+</tr>
+</tbody></table>
+<p><a name="HODlY"></a></p>
+<h5 id="①-编辑-redis-windwos-conf-文件"><a href="#①-编辑-redis-windwos-conf-文件" class="headerlink" title="① 编辑  redis.windwos.conf 文件"></a>① 编辑  redis.windwos.conf 文件</h5><h1 id="after-900-sec-15-min-if-at-least-1-key-changed"><a href="#after-900-sec-15-min-if-at-least-1-key-changed" class="headerlink" title="after 900 sec (15 min) if at least 1 key changed"></a>after 900 sec (15 min) if at least 1 key changed</h1><h1 id="900秒（15分钟）后，如果至少有1个key改变"><a href="#900秒（15分钟）后，如果至少有1个key改变" class="headerlink" title="900秒（15分钟）后，如果至少有1个key改变"></a>900秒（15分钟）后，如果至少有1个key改变</h1><p>save 900 1</p>
+<h1 id="after-300-sec-5-min-if-at-least-10-keys-changed"><a href="#after-300-sec-5-min-if-at-least-10-keys-changed" class="headerlink" title="after 300 sec (5 min) if at least 10 keys changed"></a>after 300 sec (5 min) if at least 10 keys changed</h1><p>save 300 10</p>
+<h1 id="after-60-sec-if-at-least-10000-keys-changed"><a href="#after-60-sec-if-at-least-10000-keys-changed" class="headerlink" title="after 60 sec if at least 10000 keys changed"></a>after 60 sec if at least 10000 keys changed</h1><p>save 60 10000</p>
+<p><a name="vHPNV"></a></p>
+<h5 id="②-重新启动redis服务器，并指定配置文件名称"><a href="#②-重新启动redis服务器，并指定配置文件名称" class="headerlink" title="② 重新启动redis服务器，并指定配置文件名称"></a>② 重新启动redis服务器，并指定配置文件名称</h5><p>redis-server.exe redis.windows.conf</p>
+<p>修改配置文件  redis.windows.conf</p>
+<h1 id="每隔10秒钟，5个键修改，进行保存数据"><a href="#每隔10秒钟，5个键修改，进行保存数据" class="headerlink" title="每隔10秒钟，5个键修改，进行保存数据"></a>每隔10秒钟，5个键修改，进行保存数据</h1><p>save 10 5</p>
+<p>进入到  redis  启动目录 ，启动配置文件</p>
+<p>redis-server.exe redis.windows.conf</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322476970-81f6f5d9-b64b-40b2-9da6-08e04209e1b4.png#averageHue=%236d5a5a&from=url&id=Gjiww&originHeight=125&originWidth=492&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>双击启动  redis-cli.exe  客户端，设置5个值</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477057-76f2f5a0-5529-44f4-9ca4-fcffacfeed59.png#averageHue=%234f4343&from=url&id=kZO1K&originHeight=250&originWidth=253&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>关闭服务器和客户端，发现数据已经被缓存</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477160-3717ff10-45ba-47d1-bf22-0629b3b4e2ff.png#averageHue=%23f0e1df&from=url&id=m5BAz&originHeight=323&originWidth=281&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>双击启动 redis 服务器和 redis 客户端 , 直接可以获取数据，说明数据已经存储下来</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477249-d51d57aa-d8ef-49c8-9f43-0c1b11d00166.png#averageHue=%23564545&from=url&id=oOeTH&originHeight=109&originWidth=240&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>功能完成之后，把刚刚配置文件修改回来：</p>
+<p>save 900 1</p>
+<p>save 300 10</p>
+<p>save 60 10000</p>
+<p><a name="kKLWQ"></a></p>
+<h4 id="4-RDB持久化的优势"><a href="#4-RDB持久化的优势" class="headerlink" title="4. RDB持久化的优势"></a>4. RDB持久化的优势</h4><p>1). 一旦采用该方式，那么你的整个Redis数据库将只包含一个文件。比如，你可能打算每个小时归档一次最近24小时的数据，同时还要每天归档一次最近30天的数据。通过这样的备份策略，一旦系统出现灾难性故障，我们可以非常容易的进行恢复。</p>
+<p>2). 宕机恢复数据，RDB是非常不错的选择。RDB就一个单独的文件存储恢复方便。</p>
+<p>3). 性能最大化。</p>
+<p><a name="HUQa1"></a></p>
+<h4 id="5-RDB的缺点"><a href="#5-RDB的缺点" class="headerlink" title="5. RDB的缺点"></a>5. RDB的缺点</h4><ol>
+<li>容易造成数据丢失，因为RDB是在一定的时间点才会去进行持久化，例如( 300秒内至少有10次修改则触发保存操作)，那么此时如果发生不可预期的关机或断电，则会导致这5分钟之内的数据丢失</li>
+</ol>
+<p><a name="BaIzy"></a></p>
+<h3 id="第二节-AOF持久化机制"><a href="#第二节-AOF持久化机制" class="headerlink" title="第二节 AOF持久化机制"></a><a href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-aof%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6">第二节 AOF持久化机制</a></h3><p><a name="cgAnc"></a></p>
+<h4 id="1-AOF的概念"><a href="#1-AOF的概念" class="headerlink" title="1. AOF的概念"></a>1. AOF的概念</h4><p>AOF持久化(即Append Only File持久化)，则是将Redis执行的每次写命令记录到日志文件中，当重启Redis会加载appendonly.aof文件来恢复数据。</p>
+<p>默认是不采用AOF的，需要在配置文件中修改</p>
+<p>与快照  RDB  持久化相比， AOF  持久化的实时性更好，因此已成为主流的持久化方案</p>
+<p>默认情况下  Redis  没有开启  AOF  方式的持久化，可以通过  appendonly  参数开启</p>
+<h1 id="开启-AOF-持久化"><a href="#开启-AOF-持久化" class="headerlink" title="开启 AOF 持久化"></a>开启 AOF 持久化</h1><p>appendonly yes</p>
+<p>开启  AOF  持久化后每执行一条会更改  Redis  中的数据的命令， Redis  就会将该命令写入硬盘中的  AOF  文件。 AOF  文件的保存位置和  RDB  文件的位置相同，都是通过  dir  参数设置的，默认的文件名是  appendonly.aof</p>
+<p><a name="mY99i"></a></p>
+<h5 id="AOF-的运行原理-创建"><a href="#AOF-的运行原理-创建" class="headerlink" title="AOF  的运行原理-创建"></a>AOF  的运行原理-创建</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477341-40d3a9b9-4533-478b-8c40-6fc90265bc85.png#averageHue=%23edc6c5&from=url&id=UfucN&originHeight=287&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="U5Li3"></a></p>
+<h5 id="AOF-的运行原理-恢复"><a href="#AOF-的运行原理-恢复" class="headerlink" title="AOF  的运行原理-恢复"></a>AOF  的运行原理-恢复</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477438-2b689b86-d883-487c-b34d-207495e9e433.png#averageHue=%23e8b9b8&from=url&id=VJA37&originHeight=287&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="RBc1x"></a></p>
+<h4 id="2-AOF的基本配置"><a href="#2-AOF的基本配置" class="headerlink" title="2. AOF的基本配置"></a>2. AOF的基本配置</h4><table>
+<thead>
+<tr>
+<th><strong>配置项</strong></th>
+<th><strong>取值</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>appendonly</td>
+<td>yes</td>
+<td>启用AOF持久化机制</td>
+</tr>
+<tr>
+<td></td>
+<td>no</td>
+<td>禁用AOF持久化机制[默认值]</td>
+</tr>
+<tr>
+<td>appendfilename</td>
+<td>“文件名”</td>
+<td>AOF持久化文件名</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>Redis工作目录路径</td>
+<td>指定存放持久化文件的目录的路径。注意：这里指定的必须是目录不能是文件名</td>
+</tr>
+<tr>
+<td>appendfsync</td>
+<td>always</td>
+<td>每一次数据修改后都将执行文件写入操作，是最安全的方式但是速度缓慢。</td>
+</tr>
+<tr>
+<td></td>
+<td>everysec</td>
+<td>每秒执行一次写入操作。折中。</td>
+</tr>
+<tr>
+<td></td>
+<td>no</td>
+<td>由操作系统在适当的时候执行写入操作，Redis性能最好，数据保存次数最少。</td>
+</tr>
+</tbody></table>
+<p>在  Redis  的配置文件中存在三种不同的  AOF  持久化方式，它们分别是</p>
+<h1 id="每次有数据修改发生时都会写入-AOF-文件，速度缓慢但是最安全"><a href="#每次有数据修改发生时都会写入-AOF-文件，速度缓慢但是最安全" class="headerlink" title="每次有数据修改发生时都会写入 AOF 文件，速度缓慢但是最安全"></a>每次有数据修改发生时都会写入 AOF 文件，速度缓慢但是最安全</h1><p>appendfsync always</p>
+<h1 id="每秒钟同步一次，显示地将多个写命令同步到硬盘。AOF-默认使用的"><a href="#每秒钟同步一次，显示地将多个写命令同步到硬盘。AOF-默认使用的" class="headerlink" title="每秒钟同步一次，显示地将多个写命令同步到硬盘。AOF 默认使用的"></a>每秒钟同步一次，显示地将多个写命令同步到硬盘。AOF 默认使用的</h1><p>appendfsync everysec</p>
+<h1 id="让操作系统决定何时进行同步，速度最快"><a href="#让操作系统决定何时进行同步，速度最快" class="headerlink" title="让操作系统决定何时进行同步，速度最快"></a>让操作系统决定何时进行同步，速度最快</h1><p>appendfsync no</p>
+<p><a name="BNI8Z"></a></p>
+<h5 id="①-编辑-redis-windwos-conf-文件-1"><a href="#①-编辑-redis-windwos-conf-文件-1" class="headerlink" title="① 编辑  redis.windwos.conf 文件"></a>① 编辑  redis.windwos.conf 文件</h5><h1 id="编辑redis-windwos-conf文件"><a href="#编辑redis-windwos-conf文件" class="headerlink" title="编辑redis.windwos.conf文件"></a>编辑redis.windwos.conf文件</h1><p>appendonly no（关闭aof） –&gt; appendonly yes （开启aof）</p>
+<h1 id="appendfsync-always-：-每一次操作都进行持久化"><a href="#appendfsync-always-：-每一次操作都进行持久化" class="headerlink" title="appendfsync always ： 每一次操作都进行持久化"></a>appendfsync always ： 每一次操作都进行持久化</h1><p>appendfsync everysec ： 每隔一秒进行一次持久化</p>
+<h1 id="appendfsync-no-：-不进行持久化"><a href="#appendfsync-no-：-不进行持久化" class="headerlink" title="appendfsync no	 ： 不进行持久化"></a>appendfsync no	 ： 不进行持久化</h1><p><a name="VguoH"></a></p>
+<h5 id="②-重新启动redis服务器，并指定配置文件名称-1"><a href="#②-重新启动redis服务器，并指定配置文件名称-1" class="headerlink" title="② 重新启动redis服务器，并指定配置文件名称"></a>② 重新启动redis服务器，并指定配置文件名称</h5><p>redis-server.exe redis.windows.conf</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477540-c109457e-168f-44b8-8450-a7265345e604.png#averageHue=%23746262&from=url&id=bOGiE&originHeight=130&originWidth=497&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>启动完成之后，发现能出现  aof  配置文件</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477637-ca5bfa48-f11a-4d56-908c-a3e13ae693eb.png#averageHue=%23f1e2e1&from=url&id=LcqKT&originHeight=281&originWidth=275&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477725-201fe343-7db5-4144-95f3-94bd216a62ce.png#averageHue=%23998d8d&from=url&id=EGPEv&originHeight=258&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>数据存储之后，关闭服务器和客户端 ，然后在启动服务器和客户端</p>
+<p>redis-server.exe redis.windows.conf</p>
+<p>双击启动客户端</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477817-98f546d4-95fd-4147-ac46-8e36960cd928.png#averageHue=%23645555&from=url&id=XzqCW&originHeight=153&originWidth=261&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="AHoZk"></a></p>
+<h4 id="3-AOF的优势"><a href="#3-AOF的优势" class="headerlink" title="3. AOF的优势"></a>3. AOF的优势</h4><p>1). 该机制可以带来更高的数据安全性，即数据持久性。Redis中提供了3中同步策略，即每秒同步、每修改同步和不同步。事实上，每秒同步也是异步完成的，其效率也是非常高的，所差的是一旦系统出现宕机现象，那么这一秒钟之内修改的数据将会丢失。</p>
+<p>2). 由于该机制对日志文件的写入操作采用的是append模式，因此在写入过程中即使出现宕机现象，也不会破坏日志文件中已经存在的内容。然而如果我们本次操作只是写入了一半数据就出现了系统崩溃问题，不用担心，在Redis下一次启动之前，我们可以通过redis-check-aof工具来帮助我们解决数据一致性的问题。</p>
+<p><a name="MPDK2"></a></p>
+<h4 id="4-AOF的缺点"><a href="#4-AOF的缺点" class="headerlink" title="4. AOF的缺点"></a>4. AOF的缺点</h4><p>1). 对于相同数量的数据集而言，AOF文件通常要大于RDB文件。RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快。</p>
+<p>2). 根据同步策略的不同，AOF在运行效率上往往会慢于RDB。</p>
+<p><a name="frzUs"></a></p>
+<h2 id="第二章-Jedis-重点"><a href="#第二章-Jedis-重点" class="headerlink" title="第二章 Jedis(重点)"></a>第二章 Jedis(重点)</h2><p><a name="v0yd8"></a></p>
+<h3 id="第一节-Jedis的入门"><a href="#第一节-Jedis的入门" class="headerlink" title="第一节 Jedis的入门"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-jedis%E7%9A%84%E5%85%A5%E9%97%A8">第一节 Jedis的入门</a></h3><p><a name="ytALU"></a></p>
+<h4 id="1-Jedis的简介"><a href="#1-Jedis的简介" class="headerlink" title="1. Jedis的简介"></a>1. Jedis的简介</h4><p>Redis不仅是使用命令来操作，现在基本上主流的语言都有客户端支持，比如java、C、C#、C++、php、Node.js、Go等。 在官方网站里列一些Java的客户端，有Jedis、Redisson、Jredis、JDBC-Redis、等其中官方推荐使用Jedis和Redisson。 在企业中用的最多的就是Jedis，Jedis同样也是托管在github上</p>
+<p><a name="OBhJA"></a></p>
+<h4 id="2-修改Redis配置文件中的bind配置项"><a href="#2-修改Redis配置文件中的bind配置项" class="headerlink" title="2. 修改Redis配置文件中的bind配置项"></a>2. 修改Redis配置文件中的bind配置项</h4><p><a name="tLglw"></a></p>
+<h5 id="2-1-bind配置项的作用"><a href="#2-1-bind配置项的作用" class="headerlink" title="2.1 bind配置项的作用"></a>2.1 bind配置项的作用</h5><p>bind后面跟的ip地址是客户端访问Redis时使用的IP地址。规则是：Redis要求客户端访问的地址，必须是 bind 配置项绑定的地址。看下面例子：</p>
+<table>
+<thead>
+<tr>
+<th><strong>bind值</strong></th>
+<th><strong>访问方式</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>127.0.0.1</td>
+<td>.&#x2F;redis-cli -h 127.0.0.1</td>
+</tr>
+<tr>
+<td>192.168.200.100</td>
+<td>.&#x2F;redis-cli -h 192.168.200.100</td>
+</tr>
+</tbody></table>
+<p>所以，结论是：bind 配置项要绑定可以对外暴露的本机地址。那么 Redis 为什么会有这样的要求？就是因为在实际项目中，Redis 不是给用户直接访问的，而是给 Java 程序访问的。所以 Redis 只要绑定一个内部访问地址，就能够屏蔽外部的访问，所以这个地址绑定机制，能够对 Redis 进行保护。</p>
+<p><a name="MIaQF"></a></p>
+<h5 id="2-2-修改bind配置项"><a href="#2-2-修改bind配置项" class="headerlink" title="2.2 修改bind配置项"></a>2.2 修改bind配置项</h5><p>因为我们是在宿主机Windows系统中编写Java代码，而Redis服务器是在虚拟机Linux系统中运行，所以为了让Redis能够被远程客户端访问，我们需要修改bind的配置，在redis.conf配置文件中将bind的值配置成虚拟机的IP地址</p>
+<p>例如:原本的是</p>
+<p>bind 127.0.0.1</p>
+<p>现在改成</p>
+<p>bind 127.0.0.1 192.168.141.135</p>
+<p>改完需要重启redis服务器</p>
+<p>千万不要把 127.0.0.1删掉 ，如果删掉了的话，则Linux本机无法访问Redis。</p>
+<p>将bind的值修改成 0.0.0.0 也可以实现本机和远程都能连接redis服务器。</p>
+<p>当然还有另一种方式可以让Redis被远程客户端访问，那就是关闭Redis的安全模式: 在redis.conf配置文件中将 protected-mode 的值设置为 no</p>
+<p><a name="zNad3"></a></p>
+<h4 id="3-使用Jedis"><a href="#3-使用Jedis" class="headerlink" title="3. 使用Jedis"></a>3. 使用Jedis</h4><p><a name="AnJQG"></a></p>
+<h5 id="3-1-引入Jedis的依赖"><a href="#3-1-引入Jedis的依赖" class="headerlink" title="3.1 引入Jedis的依赖"></a>3.1 引入Jedis的依赖</h5><p>redis.clients</p>
+<p>jedis<br />2.8.2</p>
+<p>junit<br />junit</p>
+<p>4.12</p>
+<p>jedis 是 redis推荐的java客户端。通过Jedis我们可以很方便地使用java代码的方式，对redis进行操作。jedis使用起来比较简单，它的操作方法与redis命令相类似。对于初次使用redis的人来说，上手更快，更能适应。<br />Jedis的基本API<br />Jedis jedis &#x3D; new jedis(String host, Stringport)<br />Jedis jedis &#x3D; new jedis(String host,String port,intconnectionTimeout,final int soTimeout)<br />参数说明：<br />ip：redis服务器的ip地址<br />port：redis服务器的端口号<br />connectionTimeout:客户端连接超时<br />soTimeout：客户端读写超时<br><a name="awZBV"></a></p>
+<h5 id="3-2-Jedis的使用代码基本操作"><a href="#3-2-Jedis的使用代码基本操作" class="headerlink" title="3.2 Jedis的使用代码基本操作"></a>3.2 Jedis的使用代码基本操作</h5><p>package com.atguigu;<br />import org.junit.Test;<br />import redis.clients.jedis.Jedis;<br />public class JedisTest {<br /><a href="/Test">@Test</a></p>
+<p>public void test01(){<br />Jedis jedis &#x3D; new Jedis(“localhost”,6379);</p>
+<p>jedis.set(“name”,”zhangsan”);<br />jedis.close();</p>
+<p>}<br />}<br />运行程序：<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477905-55ac9aee-4eb9-4922-8d0b-c3850af8cb00.png#averageHue=%23605050&from=url&id=uqRxa&originHeight=117&originWidth=246&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />字符串类型数据结构<br />string 是 redis 最基本的类型，一个 key 对应一个 value。<br />实例<br /># 存储： set key value<br />redis 127.0.0.1:6379&gt; SET username zhangsan<br /># 获取： get key<br />redis 127.0.0.1:6379&gt; GET username<br /># 删除： del key<br />redis 127.0.0.1:6379&gt; del username<br /># 设置过期时间<br />setex key seconds value<br />在以上实例中我们使用了 Redis 的 <strong>SET</strong> 和 <strong>GET</strong> 命令。键为 username，对应的值为 <strong>zhangsan</strong>。<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322477991-a2ebe318-022e-40e9-a180-05eeb2d44aa4.png#averageHue=%232c2121&from=url&id=i01Y7&originHeight=213&originWidth=327&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />&#x2F;**<br />* string 数据结构操作</p>
+<p>*&#x2F;<br /><a href="/Test">@Test</a><br />public void test2(){<br />&#x2F;&#x2F;1. 获取连接</p>
+<p>Jedis jedis &#x3D; new Jedis();&#x2F;&#x2F;如果使用空参构造，默认值 “localhost”,6379端口<br />&#x2F;&#x2F;2. 操作</p>
+<p>&#x2F;&#x2F;存储<br />jedis.set(“username”,”zhangsan”);</p>
+<p>&#x2F;&#x2F;获取<br />String username &#x3D; jedis.get(“username”);</p>
+<p>System.out.println(username);<br />&#x2F;&#x2F;可以使用setex()方法存储可以指定过期时间的 key value</p>
+<p>jedis.setex(“code”,20,”hehe”);&#x2F;&#x2F;将code：hehe键值对存入redis，并且20秒后自动删除该键值对<br />&#x2F;&#x2F;3. 关闭连接</p>
+<p>jedis.close();<br />}<br />运行程序<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478076-65f274fb-83a5-4835-98e1-eeadd4bd4735.png#averageHue=%23463636&from=url&id=IBL70&originHeight=128&originWidth=276&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />过 20 秒 activecode 就会过期<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478170-2c2a1901-f4f3-48fd-ad54-9898b00ecc68.png#averageHue=%23352525&from=url&id=yOo76&originHeight=170&originWidth=278&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />hash 数据结构操作<br />Redis hash 是一个键值(key&#x3D;&gt;value)对集合。hash 特别适合用于存储对象。<br />hash 类型数据的基本操作<br />添加&#x2F;修改数据<br />hset key field value<br />获取数据<br />hget key field<br />hgetall key<br />删除数据<br />hdel key field1 [field2]<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478253-fac0f8bb-6522-4d14-afc1-c0c0038318a4.png#averageHue=%232b2323&from=url&id=qkE46&originHeight=305&originWidth=400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />&#x2F;**<br />* hash 数据结构操作</p>
+<p>*&#x2F;<br /><a href="/Test">@Test</a><br />public void test3(){<br />&#x2F;&#x2F;1. 获取连接</p>
+<p>Jedis jedis &#x3D; new Jedis();&#x2F;&#x2F;如果使用空参构造，默认值 “localhost”,6379端口<br />&#x2F;&#x2F;2. 操作</p>
+<p>&#x2F;&#x2F; 存储hash<br />jedis.hset(“user”,”name”,”lisi”);</p>
+<p>jedis.hset(“user”,”age”,”23”);<br />jedis.hset(“user”,”gender”,”female”);</p>
+<p>&#x2F;&#x2F; 获取hash<br />String name &#x3D; jedis.hget(“user”, “name”);</p>
+<p>System.out.println(name);<br />&#x2F;&#x2F; 获取hash的所有map中的数据</p>
+<p>Map&lt;String, String&gt; user &#x3D; jedis.hgetAll(“user”);<br />&#x2F;&#x2F; keyset</p>
+<p>Set keySet &#x3D; user.keySet();<br />for (String key : keySet) {</p>
+<p>&#x2F;&#x2F;获取value<br />String value &#x3D; user.get(key);</p>
+<p>System.out.println(key + “:” + value);<br />}</p>
+<p>&#x2F;&#x2F;3. 关闭连接<br />jedis.close();</p>
+<p>}</p>
+<p>list 数据结构操作</p>
+<p>Redis列表是简单的字符串列表，按照插入顺序排序。你可以添加一个元素到列表的头部（左边）或者尾部（右边）, 允许重复元素</p>
+<ol>
+<li><p>添加：</p>
+</li>
+<li><p>lpush key value: 将元素加入列表左表<br />2. rpush key value：将元素加入列表右边</p>
+</li>
+</ol>
+<p>127.0.0.1:6379&gt; lpush myList a<br />(integer) 1</p>
+<p>127.0.0.1:6379&gt; lpush myList b<br />(integer) 2</p>
+<p>127.0.0.1:6379&gt; rpush myList c<br />(integer) 3</p>
+<ol start="2">
+<li>获取：</li>
+</ol>
+<ul>
+<li>lrange key start end ：范围获取<br />127.0.0.1:6379&gt; lrange myList 0 -1</li>
+</ul>
+<ol>
+<li><p>“b”<br />2) “a”</p>
+</li>
+<li><p>“c”<br />3. 删除：<br />* lpop key： 删除列表最左边的元素，并将元素返回</p>
+</li>
+</ol>
+<ul>
+<li>rpop key： 删除列表最右边的元素，并将元素返回<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478338-34c56aa7-79eb-4ded-8392-2a9a7c850466.png#averageHue=%23362e2e&from=url&id=eaFfx&originHeight=333&originWidth=321&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />&#x2F;**<br />* list 数据结构操作</li>
+</ul>
+<p>*&#x2F;<br /><a href="/Test">@Test</a><br />public void test4(){<br />&#x2F;&#x2F;1. 获取连接</p>
+<p>Jedis jedis &#x3D; new Jedis();&#x2F;&#x2F;如果使用空参构造，默认值 “localhost”,6379端口<br />&#x2F;&#x2F;2. 操作</p>
+<p>&#x2F;&#x2F; list 存储<br />jedis.lpush(“mylist”,”a”,”b”,”c”);&#x2F;&#x2F;从左边存</p>
+<p>jedis.rpush(“mylist”,”a”,”b”,”c”);&#x2F;&#x2F;从右边存<br />&#x2F;&#x2F; list 范围获取</p>
+<p>List mylist &#x3D; jedis.lrange(“mylist”, 0, -1);<br />System.out.println(mylist);</p>
+<p>&#x2F;&#x2F; list 弹出<br />String element1 &#x3D; jedis.lpop(“mylist”);&#x2F;&#x2F;c</p>
+<p>System.out.println(element1);<br />String element2 &#x3D; jedis.rpop(“mylist”);&#x2F;&#x2F;c</p>
+<p>System.out.println(element2);<br />&#x2F;&#x2F; list 范围获取</p>
+<p>List mylist2 &#x3D; jedis.lrange(“mylist”, 0, -1);<br />System.out.println(mylist2);</p>
+<p>&#x2F;&#x2F;3. 关闭连接<br />jedis.close();</p>
+<p>}</p>
+<p>set 数据结构操作</p>
+<p>Redis 的 Set 是 string 类型的无序集合。</p>
+<p>sadd 命令</p>
+<p>添加一个 string 元素到 key 对应的 set 集合中，成功返回 1，如果元素已经在集合中返回 0。</p>
+<p>sadd key member</p>
+<p>实例</p>
+<p>集合类型 set ： 不允许重复元素</p>
+<ol>
+<li>存储：sadd key value<br />127.0.0.1:6379&gt; sadd myset a</li>
+</ol>
+<p>(integer) 1<br />127.0.0.1:6379&gt; sadd myset a</p>
+<p>(integer) 0<br />2. 获取：smembers key:获取set集合中所有元素</p>
+<p>127.0.0.1:6379&gt; smembers myset<br />1) “a”</p>
+<ol start="3">
+<li>删除：srem key value:删除set集合中的某个元素<br />127.0.0.1:6379&gt; srem myset a</li>
+</ol>
+<p>(integer) 1<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478427-9f40203a-dee3-45e0-b602-45d8b8ae075f.png#averageHue=%232d2424&from=url&id=owurb&originHeight=327&originWidth=288&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />&#x2F;**</p>
+<ul>
+<li>set 数据结构操作<br />*&#x2F;</li>
+</ul>
+<p><a href="/Test">@Test</a></p>
+<p>public void test5(){</p>
+<p>&#x2F;&#x2F;1. 获取连接<br />Jedis jedis &#x3D; new Jedis();&#x2F;&#x2F;如果使用空参构造，默认值 “localhost”,6379端口</p>
+<p>&#x2F;&#x2F;2. 操作<br />&#x2F;&#x2F; set 存储</p>
+<p>jedis.sadd(“myset”,”java”,”php”,”c++”);<br />&#x2F;&#x2F; set 获取</p>
+<p>Set myset &#x3D; jedis.smembers(“myset”);<br />System.out.println(myset);</p>
+<p>&#x2F;&#x2F;3. 关闭连接<br />jedis.close();</p>
+<p>}</p>
+<p>sortedset 数据结构操作(sorted set：有序集合)</p>
+<p>Redis zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。</p>
+<p>不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。</p>
+<p>zset的成员是唯一的,但分数(score)却可以重复。</p>
+<p>zadd 命令</p>
+<p>添加元素到集合，元素在集合中存在则更新对应score</p>
+<p>zadd key score member</p>
+<p>实例</p>
+<ol>
+<li>存储：zadd key score value</li>
+</ol>
+<p>127.0.0.1:6379&gt; zadd mysort 60 zhangsan<br />(integer) 1</p>
+<p>127.0.0.1:6379&gt; zadd mysort 50 lisi<br />(integer) 1</p>
+<p>127.0.0.1:6379&gt; zadd mysort 80 wangwu<br />(integer) 1</p>
+<ol start="2">
+<li>获取：zrange key start end [withscores]</li>
+</ol>
+<p>127.0.0.1:6379&gt; zrange mysort 0 -1<br />1) “lisi”</p>
+<ol start="2">
+<li>“zhangsan”<br />3) “wangwu”</li>
+</ol>
+<p>127.0.0.1:6379&gt; zrange mysort 0 -1 withscores<br />1) “zhangsan”</p>
+<ol start="2">
+<li><p>“60”<br />3) “wangwu”</p>
+</li>
+<li><p>“80”<br />5) “lisi”</p>
+</li>
+<li><p>“500”<br />3. 删除：zrem key value<br />127.0.0.1:6379&gt; zrem mysort lisi</p>
+</li>
+</ol>
+<p>(integer) 1<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478514-1d2be909-5332-4e66-9eac-e850632e4898.png#averageHue=%23241d1d&from=url&id=XrZ0E&originHeight=412&originWidth=393&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />&#x2F;**<br />* sortedset 数据结构操作</p>
+<p>*&#x2F;<br /><a href="/Test">@Test</a></p>
+<p>public void test6(){<br />&#x2F;&#x2F;1. 获取连接</p>
+<p>Jedis jedis &#x3D; new Jedis();&#x2F;&#x2F;如果使用空参构造，默认值 “localhost”,6379端口<br />&#x2F;&#x2F;2. 操作</p>
+<p>&#x2F;&#x2F; sortedset 存储<br />jedis.zadd(“mysortedset”,3,”亚瑟”);</p>
+<p>jedis.zadd(“mysortedset”,30,”后裔”);<br />jedis.zadd(“mysortedset”,55,”孙悟空”);</p>
+<p>&#x2F;&#x2F; sortedset 获取<br />Set mysortedset &#x3D; jedis.zrange(“mysortedset”, 0, -1);</p>
+<p>System.out.println(mysortedset);<br />&#x2F;&#x2F;3. 关闭连接</p>
+<p>jedis.close();<br />}</p>
+<p><a name="ZO39h"></a></p>
+<h3 id="4-JedisPool的使用"><a href="#4-JedisPool的使用" class="headerlink" title="4. JedisPool的使用"></a>4. JedisPool的使用</h3><p>JedisPool是Jedis的连接池</p>
+<p>&#x2F;**</p>
+<ul>
+<li>jedis连接池使用<br />*&#x2F;</li>
+</ul>
+<p><a href="/Test">@Test</a></p>
+<p>public void test7(){</p>
+<p>&#x2F;&#x2F;0.创建一个配置对象<br />JedisPoolConfig config &#x3D; new JedisPoolConfig();</p>
+<p>config.setMaxTotal(50);<br />config.setMaxIdle(10);</p>
+<p>&#x2F;&#x2F;1.创建Jedis连接池对象<br />JedisPool jedisPool &#x3D; new JedisPool(config,”localhost”,6379);</p>
+<p>&#x2F;&#x2F;2.获取连接<br />Jedis jedis &#x3D; jedisPool.getResource();</p>
+<p>&#x2F;&#x2F;3. 使用<br />jedis.set(“hehe”,”heihei”);</p>
+<p>&#x2F;&#x2F;4. 关闭 归还到连接池中<br />jedis.close();</p>
+<p>}</p>
+<p>连接池工具类</p>
+<p>&#x2F;**</p>
+<ul>
+<li>jedis连接池工具类使用<br />*&#x2F;</li>
+</ul>
+<p><a href="/Test">@Test</a></p>
+<p>public void test8(){</p>
+<p>&#x2F;&#x2F;通过连接池工具类获取<br />Jedis jedis &#x3D; JedisPoolUtils.getJedis();</p>
+<p>&#x2F;&#x2F;3. 使用<br />jedis.set(“hello”,”world”);</p>
+<p>&#x2F;&#x2F;4. 关闭 归还到连接池中<br />jedis.close();;</p>
+<p>}</p>
+<p>创建数据库</p>
+<p>import redis.clients.jedis.Jedis;</p>
+<p>import redis.clients.jedis.JedisPool;</p>
+<p>import redis.clients.jedis.JedisPoolConfig;</p>
+<p>import java.io.IOException;</p>
+<p>import java.io.InputStream;</p>
+<p>import java.util.Properties;</p>
+<p>&#x2F;**</p>
+<p>JedisPool工具类<br />加载配置文件，配置连接池的参数</p>
+<p>提供获取连接的方法<br />*&#x2F;</p>
+<p>public class JedisPoolUtils {</p>
+<p>private static JedisPool jedisPool;<br />static{</p>
+<p>&#x2F;&#x2F;读取配置文件<br />InputStream is &#x3D; JedisPoolUtils.class.getClassLoader().getResourceAsStream(“jedis.properties”);</p>
+<p>&#x2F;&#x2F;创建Properties对象<br />Properties pro &#x3D; new Properties();</p>
+<p>&#x2F;&#x2F;关联文件<br />try {</p>
+<p>pro.load(is);<br />} catch (IOException e) {</p>
+<p>e.printStackTrace();<br />}</p>
+<p>&#x2F;&#x2F;获取数据，设置到JedisPoolConfig中<br />JedisPoolConfig config &#x3D; new JedisPoolConfig();</p>
+<p>config.setMaxTotal(Integer.parseInt(pro.getProperty(“maxTotal”)));<br />config.setMaxIdle(Integer.parseInt(pro.getProperty(“maxIdle”)));</p>
+<p>&#x2F;&#x2F;初始化JedisPool<br />jedisPool &#x3D; new JedisPool(config,pro.getProperty(“host”),Integer.parseInt(pro.getProperty(“port”)));</p>
+<p>}<br />&#x2F;**</p>
+<ul>
+<li>获取连接方法<br />*&#x2F;</li>
+</ul>
+<p>public static Jedis getJedis(){<br />return jedisPool.getResource();</p>
+<p>}<br />}<br />resources  新建文件 jedis.properties</p>
+<p>host&#x3D;127.0.0.1</p>
+<p>port&#x3D;6379</p>
+<p>maxTotal&#x3D;50</p>
+<p>maxIdle&#x3D;10</p>
+<p><a name="IXRAs"></a></p>
+<h2 id="第三章-Redis事务控制"><a href="#第三章-Redis事务控制" class="headerlink" title="第三章 Redis事务控制"></a><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-redis%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6">第三章 Redis事务控制</a></h2><p><a name="M7RCQ"></a></p>
+<h3 id="第一节-Redis事务的概述"><a href="#第一节-Redis事务的概述" class="headerlink" title="第一节 Redis事务的概述"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-redis%E4%BA%8B%E5%8A%A1%E7%9A%84%E6%A6%82%E8%BF%B0">第一节 Redis事务的概述</a></h3><p><a name="dICy6"></a></p>
+<h4 id="1-事务的作用"><a href="#1-事务的作用" class="headerlink" title="1. 事务的作用"></a>1. 事务的作用</h4><p>Redis事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。</p>
+<p>Redis事务的主要作用就是串联多个命令防止别的命令插队。</p>
+<p><a name="nb3ij"></a></p>
+<h4 id="2-事务控制的相关命令"><a href="#2-事务控制的相关命令" class="headerlink" title="2. 事务控制的相关命令"></a>2. 事务控制的相关命令</h4><table>
+<thead>
+<tr>
+<th><strong>命令名</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MULTI</td>
+<td>告诉 Redis 服务器开启一个事务。注意，只是开启，而不是执行 。</td>
+</tr>
+<tr>
+<td>EXEC</td>
+<td>告诉 Redis 开始执行事务 。</td>
+</tr>
+<tr>
+<td>DISCARD</td>
+<td>告诉 Redis 取消事务。</td>
+</tr>
+<tr>
+<td>WATCH</td>
+<td>监视某一个键值对，它的作用是在事务执行之前如果监视的键值被修改，事务会被取消。</td>
+</tr>
+<tr>
+<td>unwatch</td>
+<td>取消 WATCH 命令对所有 key 的监视，一般用于DISCARD和EXEC命令之前。</td>
+</tr>
+</tbody></table>
+<p><a name="qy7QR"></a></p>
+<h4 id="事务在其他语言中，一般分为以下三个阶段："><a href="#事务在其他语言中，一般分为以下三个阶段：" class="headerlink" title="事务在其他语言中，一般分为以下三个阶段："></a>事务在其他语言中，一般分为以下三个阶段：</h4><ul>
+<li><p>开启事务——Begin Transaction</p>
+</li>
+<li><p>执行业务代码，提交事务——Common Transaction</p>
+</li>
+<li><p>业务处理中出现异常，回滚事务——Rollback Transaction</p>
+</li>
+</ul>
+<p><strong>以 Java 中的事务执行为例</strong>：</p>
+<p>&#x2F;&#x2F; 开启事务</p>
+<p>begin();</p>
+<p>try {</p>
+<p>&#x2F;&#x2F;……<br />&#x2F;&#x2F; 提交事务</p>
+<p>commit();<br />} catch(Exception e) {<br />&#x2F;&#x2F; 回滚事务</p>
+<p>rollback();<br />}<br /><strong>Redis 中的事务从开始到结束也是要经历三个阶段</strong>：</p>
+<ul>
+<li>开启事务</li>
+<li>命令入列</li>
+<li>执行事务&#x2F;放弃事务</li>
+</ul>
+<p>其中，开启事务使用 <strong>multi命令</strong>，事务执行使用 <strong>exec命令</strong>，放弃事务使用 <strong>discard命令</strong>。<br><a name="k0XtF"></a></p>
+<h3 id="开启事务"><a href="#开启事务" class="headerlink" title="开启事务"></a><a href="#%E5%BC%80%E5%90%AF%E4%BA%8B%E5%8A%A1">开启事务</a></h3><p><strong>multi 命令</strong>用于开启事务，实现代码如下：<br />&gt; multi<br />OK<br />multi 命令可以让客户端从非事务模式状态，变为事务模式状态<br /><strong>注意</strong>：multi 命令不能嵌套使用，如果已经开启了事务的情况下，再执行 multi 命令，会提示如下错误：<br />127.0.0.1:6379&gt; multi<br />OK<br />127.0.0.1:6379&gt; multi<br />(error) ERR MULTI calls can not be nested<br />127.0.0.1:6379&gt;<br />当客户端是非事务状态时，使用 multi 命令，客户端会返回结果 OK ，如果客户端已经是事务状态，再执行 multi 命令会 multi 命令不能嵌套的错误，但不会终止客户端为事务的状态<br /><a href="#%E5%91%BD%E4%BB%A4%E5%85%A5%E5%88%97">命令入列</a><br />客户端进入事务状态之后，执行的所有常规 Redis 操作命令（非触发事务执行或放弃和导致入列异常的命令）会依次入列，命令入列成功后会返回 QUEUED ，如下代码所示：<br />127.0.0.1:6379&gt; multi<br />OK<br />127.0.0.1:6379&gt; set k v<br />QUEUED<br />127.0.0.1:6379&gt; get k<br />QUEUED<br />127.0.0.1:6379&gt;<br /><strong>注意</strong>：命令会按照先进先出（FIFO）的顺序出入列，也就是说事务会按照命令的入列顺序，从前往后依次执行。<br><a name="fgf57"></a></p>
+<h3 id="执行事务-x2F-放弃事务"><a href="#执行事务-x2F-放弃事务" class="headerlink" title="执行事务&#x2F;放弃事务"></a><a href="#%E6%89%A7%E8%A1%8C%E4%BA%8B%E5%8A%A1-%E6%94%BE%E5%BC%83%E4%BA%8B%E5%8A%A1">执行事务&#x2F;放弃事务</a></h3><p><strong>执行事务的命令是 exec ，放弃事务的命令是 discard</strong> 。 执行事务示例代码如下：<br />127.0.0.1:6379&gt; multi<br />OK<br />127.0.0.1:6379&gt; set aa bb<br />QUEUED<br />127.0.0.1:6379&gt; exec<br />\1) OK<br />127.0.0.1:6379&gt; get aa<br />“bb”<br />127.0.0.1:6379&gt;<br /><strong>放弃事务示例代码如下</strong>：<br />127.0.0.1:6379&gt; multi<br />OK<br />127.0.0.1:6379&gt; set cc dd<br />QUEUED<br />127.0.0.1:6379&gt; discard<br />OK<br />127.0.0.1:6379&gt; get cc<br />null<br />127.0.0.1:6379&gt;<br /><strong>事务错误&amp;回滚</strong><br />事务执行中的错误分为以下三类：</p>
+<ul>
+<li>执行时才会出现的错误（简称：执行时错误）；</li>
+<li>入列时错误，不会终止整个事务；</li>
+<li>入列时错误，会终止整个事务。</li>
+</ul>
+<p><strong>示例代码如下</strong>：<br />&gt; get k<br />“v”<br />&gt; multi<br />OK<br />&gt; set k v2<br />QUEUED<br />&gt; expire k 10s<br />QUEUED<br />&gt; exec<br />\1) OK<br />\2) (error) ERR value is not an integer or out of range<br />&gt; get k<br />“v2”<br /><strong>执行命令解释如下图所示</strong>：<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478603-3ff432a6-b69f-4e6d-92d0-6bdd63c7b887.png#averageHue=%23231c1b&from=url&id=FW3oL&originHeight=343&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />从以上结果可以看出，即使事务队列中某个命令在执行期间发生了错误，事务也会继续执行，直到事务队列中所有命令执行完成。<br /><a href="#%E5%85%A5%E5%88%97%E9%94%99%E8%AF%AF%E4%B8%8D%E5%BD%B1%E5%93%8D%E4%BA%8B%E5%8A%A1">入列错误不影响事务</a><br /><strong>示例代码如下</strong>：<br />&gt; get k<br />“v”<br />&gt; multi<br />OK<br />&gt; set k v2<br />QUEUED<br />&gt; multi<br />(error) ERR MULTI calls can not be nested<br />&gt; exec<br />\1) OK<br />&gt; get k<br />“v2”<br /><strong>执行命令解释如下图所示</strong>：<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478703-19866de2-12fa-4b6c-917e-12bd9bdbeaaf.png#averageHue=%232a211f&from=url&id=Jaf5B&originHeight=429&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />可以看出，重复执行 multi 会导致入列错误，但不会终止事务，最终查询的结果是事务执行成功了。除了重复执行 multi 命令<br /><a href="#%E5%85%A5%E5%88%97%E9%94%99%E8%AF%AF%E5%AF%BC%E8%87%B4%E4%BA%8B%E5%8A%A1%E7%BB%93%E6%9D%9F">入列错误导致事务结束</a><br /><strong>示例代码如下</strong>：<br />&gt; get k<br />“v2”<br />&gt; multi<br />OK<br />&gt; set k v3<br />QUEUED<br />&gt; set k<br />(error) ERR wrong number of arguments for ‘set’ command<br />&gt; exec<br />(error) EXECABORT Transaction discarded because of previous errors.<br />&gt; get k<br />“v2”<br /><strong>执行命令解释如下图所示</strong>：<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478872-6da338f5-60f1-4170-bc72-eab5690acdce.png#averageHue=%23231c1b&from=url&id=jJuLN&originHeight=270&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><a href="#%E7%9B%91%E6%8E%A7">监控</a><br />watch 命令用于客户端并发情况下，为事务提供一个乐观锁（CAS，Check And Set），也就是可以用 watch 命令来监控一个或多个变量，如果在事务的过程中，某个<strong>监控项被修改</strong>了，那么<strong>整个事务</strong>就会<strong>终止执行</strong>。<br />watch 基本语法如下：<br />watch key [key …]<br />watch  示例代码如下：</p>
+<blockquote>
+<p>watch k</p>
+</blockquote>
+<p>OK</p>
+<blockquote>
+<p>multi</p>
+</blockquote>
+<p>OK</p>
+<blockquote>
+<p>set k v2</p>
+</blockquote>
+<p>QUEUED</p>
+<blockquote>
+<p>exec</p>
+</blockquote>
+<p>(nil)</p>
+<blockquote>
+<p>get k</p>
+</blockquote>
+<p>“v”</p>
+<p>需要开启两个Redis客户端</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322478970-854e8714-47a2-4a8a-88f4-1ef7ad1ce8ae.png#averageHue=%236a6a69&from=url&id=qLKRI&originHeight=293&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>注意：以上事务在执行期间，也就是开启事务（multi）之后，执行事务（exec）之前，模拟多客户端并发操作了变量 k 的值，这个时候再去执行事务，才会出现如上结果，exec 执行的结果为 nil。</p>
+<p>可以看出，当执行 exec 返回的结果是 nil 时，表示 watch 监控的对象在事务执行的过程中被修改了。从 get k 的结果也可以印证，因为事务中设置的值 set k v2 并未正常执行。</p>
+<p><strong>注意</strong>： watch 命令只能在客户端开启事务之前执行，在事务中执行 watch 命令会引发错误，但不会造成整个事务失败，如下代码所示：</p>
+<blockquote>
+<p>multi</p>
+</blockquote>
+<p>OK</p>
+<blockquote>
+<p>set k v3</p>
+</blockquote>
+<p>QUEUED</p>
+<blockquote>
+<p>watch k</p>
+</blockquote>
+<p>(error) ERR WATCH inside MULTI is not allowed</p>
+<blockquote>
+<p>exec</p>
+</blockquote>
+<p>\1) OK</p>
+<blockquote>
+<p>get k</p>
+</blockquote>
+<p>“v3”</p>
+<p>执行命令解释如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479062-df61045c-6c44-496e-86ce-c79172ed1ba7.png#averageHue=%23261a16&from=url&id=oeIGW&originHeight=293&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>unwatch 命令用于清除所有之前监控的所有对象（键值对）。</p>
+<p>unwatch 示例如下所示：</p>
+<blockquote>
+<p>set k v</p>
+</blockquote>
+<p>OK</p>
+<blockquote>
+<p>watch k</p>
+</blockquote>
+<p>OK</p>
+<blockquote>
+<p>multi</p>
+</blockquote>
+<p>OK</p>
+<blockquote>
+<p>unwatch</p>
+</blockquote>
+<p>QUEUED</p>
+<blockquote>
+<p>set k v2</p>
+</blockquote>
+<p>QUEUED</p>
+<blockquote>
+<p>exec</p>
+</blockquote>
+<p>\1) OK</p>
+<p>\2) OK</p>
+<blockquote>
+<p>get k</p>
+</blockquote>
+<p>“v2”</p>
+<p>可以看出，即使在事务的执行过程中，k 值被修改了，因为调用了 unwatch 命令，整个事务依然会顺利执行。</p>
+<p><a name="qWgDe"></a></p>
+<h3 id="第二节-命令队列执行失败的两种情况"><a href="#第二节-命令队列执行失败的两种情况" class="headerlink" title="第二节 命令队列执行失败的两种情况"></a><a href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E5%91%BD%E4%BB%A4%E9%98%9F%E5%88%97%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%83%85%E5%86%B5">第二节 命令队列执行失败的两种情况</a></h3><p><a name="IL90W"></a></p>
+<h4 id="3-Redis为什么不支持回滚"><a href="#3-Redis为什么不支持回滚" class="headerlink" title="3. Redis为什么不支持回滚"></a>3. Redis为什么不支持回滚</h4><p>官方解释如下：</p>
+<p>大概的意思是，作者不支持事务回滚的原因有以下两个：</p>
+<p>他认为 Redis 事务的执行时，错误通常都是编程错误造成的，这种错误通常只会出现在开发环境中，而很少会在实际的生产环境中出现，所以他认为没有必要为 Redis 开发事务回滚功能；</p>
+<p>不支持事务回滚是因为这种复杂的功能和 Redis 追求的简单高效的设计主旨不符合。</p>
+<p>这里不支持事务回滚，指的是不支持运行时错误的事务回滚。</p>
+<p><a name="uijQF"></a></p>
+<h3 id="第三节-悲观锁和乐观锁"><a href="#第三节-悲观锁和乐观锁" class="headerlink" title="第三节 悲观锁和乐观锁"></a><a href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%82%B2%E8%A7%82%E9%94%81%E5%92%8C%E4%B9%90%E8%A7%82%E9%94%81">第三节 悲观锁和乐观锁</a></h3><p>比如有一个人的购物账号有三个人曾经都登陆过，这三个人如果同时的去购物网站进行购物就会出现问题。比如账号额度为10000元，此时如果一个人想要买一个8000元的商品，一个人想要买一个5000元的商品，最后一个人想买一个1000元的商品。而账号总额为10000，那么最后的结果可能会出现问题，导致最后账户余额为负数。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479160-d6945d65-8d68-4444-9d28-1e76861f509e.png#averageHue=%23fdf9ef&from=url&id=K8wd0&originHeight=212&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="hiyrF"></a></p>
+<h4 id="1-悲观锁"><a href="#1-悲观锁" class="headerlink" title="1. 悲观锁"></a>1. 悲观锁</h4><p>悲观锁，悲观是我们人类一种消极的情绪，对应到锁的悲观情绪，<strong>悲观锁认为被它保护的数据是极其不安全的，每时每刻都有可能变动，一个事务拿到悲观锁后（可以理解为一个用户），其他任何事务都不能对该数据进行修改，只能等待锁被释放才可以执行。</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479256-5681c4b2-cca2-4926-8da9-f23983bd591a.png#averageHue=%23f6eeee&from=url&id=Myaa0&originHeight=416&originWidth=476&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479352-424d8c1a-6389-477a-9ba4-802dbd32559e.png#averageHue=%23f1c58e&from=url&id=iZ2X8&originHeight=168&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>从上面的介绍我们可以知道，这种操作方式会导致执行效率的低下，每次都是顺序执行不允许别人做任何的操作，即使是查询一下额度不进行消费也是无法做到的。</p>
+<p><a name="D21jH"></a></p>
+<h4 id="2-乐观锁"><a href="#2-乐观锁" class="headerlink" title="2. 乐观锁"></a>2. 乐观锁</h4><p>顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。</p>
+<p>乐观锁大多数情况是基于数据版本号（version）的机制实现的。何谓数据版本？即为数据增加一个版本标识，在基于数据库表的版本解决方案中，一般是通过为数据库表添加一个“version”字段来实现读取出数据时，将此版本号一同读出，之后更新时，对此版本号加1。此时，将提交数据的版本号与数据库表对应记录的当前版本号进行比对，如果提交的数据版本号大于数据库表当前版本号，则予以更新，否则认为是过期数据，不予更新。</p>
+<ul>
+<li><p>如果是基于最新的版本所做的修改：服务器接受，修改成功</p>
+</li>
+<li><p>如果是基于旧的版本号所做的修改：服务器不接受，修改失败，整个MULTI队列中的操作都被丢弃</p>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479464-09a26ca3-220d-48c5-bb57-296b277290e3.png#averageHue=%23f7f2f2&from=url&id=mqZZk&originHeight=263&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479552-7c83ea03-6efe-454a-b094-da58408cea30.png#averageHue=%23f4dac8&from=url&id=hkP6P&originHeight=190&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>乐观锁适用于多读的应用类型，这样可以提高吞吐量。在执行multi之前，先执行watch key1 [key2],可以监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。这就是乐观锁的具体体现</p>
+<p>Redis中主要使用watch来监视一个值，实现乐观锁。</p>
+<p>（1）先设置一个键值对</p>
+<p>127.0.0.1:6379&gt; set banlence 100</p>
+<p>OK</p>
+<p>（2）打开<strong>两个</strong>Redis客户端，分别监视banlence值</p>
+<p>127.0.0.1:6379&gt; watch banlence</p>
+<p>OK</p>
+<p>（3） 在<strong>两个</strong>客户端中分别创建将banlence值+10的事务</p>
+<p>127.0.0.1:6379&gt; multi</p>
+<p>OK</p>
+<p>127.0.0.1:6379(TX)&gt; incrby banlence 10</p>
+<p>QUEUED</p>
+<p>（4）在第一个客户端中提交执行</p>
+<p>127.0.0.1:6379(TX)&gt; exec</p>
+<p>\1) (integer) 110</p>
+<p>（5）在第二个客户端中提交执行</p>
+<p>127.0.0.1:6379(TX)&gt; exec</p>
+<p>(nil)</p>
+<p>可以看出，在第一个客户端提交成功后，第二个提交失败，这说明在第一个提交后，版本号已经修改，说明实现了锁。</p>
+<p><a name="h4s9I"></a></p>
+<h2 id="第四章-Redis的主从复制机制"><a href="#第四章-Redis的主从复制机制" class="headerlink" title="第四章 Redis的主从复制机制"></a><a href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-redis%E7%9A%84%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%9C%BA%E5%88%B6">第四章 Redis的主从复制机制</a></h2><p><a name="fK6hD"></a></p>
+<h3 id="第一节-主从复制的概述"><a href="#第一节-主从复制的概述" class="headerlink" title="第一节 主从复制的概述"></a><a href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E6%A6%82%E8%BF%B0">第一节 主从复制的概述</a></h3><p><a name="wOIn4"></a></p>
+<h4 id="1-什么是主从复制"><a href="#1-什么是主从复制" class="headerlink" title="1. 什么是主从复制"></a>1. 什么是主从复制</h4><p>主从复制是主机数据更新后根据配置和策略， 自动同步到备机的master&#x2F;slave机制，Master以写为主，Slave以读为主</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479651-ed8c30b0-4fc2-4297-b27a-d20681895652.png#averageHue=%23000000&from=url&id=FTxtR&originHeight=234&originWidth=424&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><a name="fau8n"></a></p>
+<h4 id="2-主从复制的目的"><a href="#2-主从复制的目的" class="headerlink" title="2. 主从复制的目的"></a>2. 主从复制的目的</h4><ul>
+<li><p>性能优化：主服务器专注于写操作，可以用更适合写入数据的模式工作；同样，从服务器专注于读操作，可以用更适合读取数据的模式工作。</p>
+</li>
+<li><p>强化数据安全，避免单点故障：由于数据同步机制的存在，各个服务器之间数据保持一致，所以其中某个服务器宕机不会导致数据丢失或无法访问。从这个角度说参与主从复制的Redis服务器构成了一个<strong>集群</strong>。</p>
+</li>
+</ul>
+<p><a name="Hf7mT"></a></p>
+<h3 id="第二节-搭建主从复制集群"><a href="#第二节-搭建主从复制集群" class="headerlink" title="第二节 搭建主从复制集群"></a><a href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E6%90%AD%E5%BB%BA%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E9%9B%86%E7%BE%A4">第二节 搭建主从复制集群</a></h3><p><a name="sx6R7"></a></p>
+<h4 id="1-搭建思路"><a href="#1-搭建思路" class="headerlink" title="1. 搭建思路"></a>1. 搭建思路</h4><p>Redis集群在运行时使用的是同一个可执行文件(redis-server)，只是对应的配置文件(redis.conf)不同。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479739-411d4a5d-c057-4a31-86c9-8ac66bf31a8c.png#averageHue=%23000000&from=url&id=IV4Zn&originHeight=159&originWidth=372&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>每个配置文件相同的参数是:</p>
+<p>daemonize yes</p>
+<p>dir &#x2F;usr&#x2F;local&#x2F;cluster-redis</p>
+<p>不同的参数是:</p>
+<table>
+<thead>
+<tr>
+<th><strong>配置项名称</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>取值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>port</td>
+<td>Redis服务器启动后监听的端口号</td>
+<td>6000 7000 8000</td>
+</tr>
+<tr>
+<td>dbfilename</td>
+<td>RDB文件存储位置</td>
+<td>dump6000.rdb dump7000.rdb dump8000.rdb</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>日志文件位置</td>
+<td>&#x2F;var&#x2F;logs&#x2F;redis6000.log &#x2F;var&#x2F;logs&#x2F;redis7000.log &#x2F;var&#x2F;logs&#x2F;redis8000.log</td>
+</tr>
+<tr>
+<td>pidfile</td>
+<td>pid文件位置</td>
+<td>&#x2F;var&#x2F;run&#x2F;redis6000.pid &#x2F;var&#x2F;run&#x2F;redis7000.pid &#x2F;var&#x2F;run&#x2F;redis8000.pid</td>
+</tr>
+</tbody></table>
+<p><a name="KHMRi"></a></p>
+<h4 id="2-搭建步骤"><a href="#2-搭建步骤" class="headerlink" title="2. 搭建步骤"></a>2. 搭建步骤</h4><ul>
+<li><p>第一步：创建&#x2F;usr&#x2F;local&#x2F;cluster-redis目录 mkdir &#x2F;usr&#x2F;local&#x2F;cluster-redis</p>
+</li>
+<li><p>第二步：把原始未经修改的redis.conf复制到&#x2F;usr&#x2F;local&#x2F;cluster-redis目录,并且改名为redis6000.conf</p>
+</li>
+</ul>
+<p>cp &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis.conf &#x2F;usr&#x2F;local&#x2F;cluster-redis&#x2F;redis6000.conf</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479830-24144ebb-6d20-41d9-a85a-50e5df65818b.png#averageHue=%232a1c1b&from=url&id=s1YsY&originHeight=142&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>第三步：按照既定计划修改redis6000.conf中的相关配置项</p>
+</li>
+<li><p>daemonize yes</p>
+</li>
+<li><p>dir</p>
+</li>
+<li><p>port</p>
+</li>
+<li><p>dbfilename</p>
+</li>
+<li><p>logfile</p>
+</li>
+<li><p>pidfile</p>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322479916-29f6c83d-0206-4e91-b5a9-04af0a266156.png#averageHue=%23585451&from=url&id=UgOFj&originHeight=479&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>第五步：复制redis6000.conf为redis7000.conf</p>
+</li>
+<li><p>第六步：修改redis7000.conf中的相关配置项</p>
+</li>
+<li><p>port</p>
+</li>
+<li><p>dbfilename</p>
+</li>
+<li><p>logfile</p>
+</li>
+<li><p>pidfile</p>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480014-2d2172ea-9d75-4bec-b42e-b4c1be27b5dd.png#averageHue=%23392d2b&from=url&id=Nm3CG&originHeight=186&originWidth=467&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>全局搜索 把所有的端口6000改成7000，全局替换</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480101-feed3ef7-81f8-4e3f-9e5d-ba90515cd773.png#averageHue=%23392828&from=url&id=naejg&originHeight=200&originWidth=363&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><p>第七步：复制redis6000.conf为redis8000.conf</p>
+</li>
+<li><p>第八步：修改redis8000.conf中的相关配置项</p>
+</li>
+<li><p>port</p>
+</li>
+<li><p>dbfilename</p>
+</li>
+<li><p>logfile</p>
+</li>
+<li><p>pidfile</p>
+</li>
+</ul>
+<p>同上操作</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480189-d15a94dd-4ef4-46b0-ab54-5bc08002a898.png#averageHue=%235c4746&from=url&id=MLS6j&originHeight=95&originWidth=471&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>全局搜索 把所有的端口6000改成8000，全局替换</p>
+<p><a name="yDae8"></a></p>
+<h4 id="3-启动Redis主从复制集群"><a href="#3-启动Redis主从复制集群" class="headerlink" title="3. 启动Redis主从复制集群"></a>3. 启动Redis主从复制集群</h4><p>进入 &#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin 目录下:</p>
+<p>.&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;cluster-redis&#x2F;redis6000.conf</p>
+<p>.&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;cluster-redis&#x2F;redis7000.conf</p>
+<p>.&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;cluster-redis&#x2F;redis8000.conf</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480321-1eaa3103-8efa-401d-9cca-756038ac263c.png#averageHue=%232b2220&from=url&id=IaiGH&originHeight=185&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480416-26972361-72c1-4409-bc10-71d022aec891.png#averageHue=%23d5cec8&from=url&id=bt8Sf&originHeight=188&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p>使用redis-cli连接指定服务器的命令格式如下:</p>
+<p>&#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin&#x2F;redis-cli -h IP地址 -p 端口号</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480504-f0be83df-fddb-45e3-9f00-7ccb7faab919.png#averageHue=%232c2220&from=url&id=qnjmA&originHeight=349&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480595-a7200130-0f45-43b3-828d-925df65b8438.png#averageHue=%232e2423&from=url&id=FmSOt&originHeight=391&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><strong>同样的命令连接6000</strong></p>
+<p>使用redis-cli停止指定服务器的命令格式如下：</p>
+<p>&#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin&#x2F;redis-cli -h IP地址 -p 端口号 shutdown<br><a name="XIjRM"></a></p>
+<h3 id="第三节-主从关系"><a href="#第三节-主从关系" class="headerlink" title="第三节 主从关系"></a><a href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E4%B8%BB%E4%BB%8E%E5%85%B3%E7%B3%BB">第三节 主从关系</a></h3><p><a name="T0fHI"></a></p>
+<h4 id="1-查看主从关系"><a href="#1-查看主从关系" class="headerlink" title="1. 查看主从关系"></a>1. 查看主从关系</h4><p>刚刚启动的集群服务器中每一个节点服务器都认为自己是主服务器。需要建立主从关系。<br />info replication<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480692-4f81d121-e7ba-4850-b03b-2715e5afcecc.png#averageHue=%23271d1b&from=url&id=rgDQV&originHeight=328&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480786-8134feeb-ae03-4bc5-826c-87bbc3847ae3.png#averageHue=%23271c1b&from=url&id=PPahw&originHeight=328&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480882-1a6fc023-cf5d-4360-a949-699d49e80908.png#averageHue=%23271c1b&from=url&id=tnkxA&originHeight=319&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="Co8uv"></a></p>
+<h4 id="2-配置主从关系"><a href="#2-配置主从关系" class="headerlink" title="2. 配置主从关系"></a>2. 配置主从关系</h4><p>只需要在从机上指定主机的地址和端口号即可<br />SLAVEOF 127.0.0.1 6000<br />此时表示本机的 6000 端口是主机<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322480979-6bfedb64-776d-4811-a57d-e642b56a467c.png#averageHue=%23241a19&from=url&id=p7QAW&originHeight=348&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481080-a9a33c0e-b311-4e0d-9787-c0e92739253e.png#averageHue=%23241a18&from=url&id=geG4n&originHeight=368&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481177-5131708c-2062-42e6-84b1-d5015b6361ab.png#averageHue=%231f1715&from=url&id=j4Bw3&originHeight=464&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481279-bb45b139-d4a8-4338-9109-bdf251194c69.png#averageHue=%23201716&from=url&id=guDY7&originHeight=470&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481376-18e0829d-b565-43d7-8ac1-7729b5e9a382.png#averageHue=%23867a79&from=url&id=TkhaI&originHeight=130&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481463-b3528f8a-b637-47f3-829a-85cc57286825.png#averageHue=%23423332&from=url&id=M6onO&originHeight=94&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481562-88fbfa53-7e45-447d-9133-7ffe774fe14c.png#averageHue=%23413231&from=url&id=t0hYs&originHeight=97&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="pANOp"></a></p>
+<h4 id="3-取消主从关系"><a href="#3-取消主从关系" class="headerlink" title="3. 取消主从关系"></a>3. 取消主从关系</h4><p>只需要在从机上执行命令 SLAVEOF NO ONE 即可，那么此时从机就自己变成了主机<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481649-cd40d13f-1158-48c9-8cf6-abb50191ee01.png#averageHue=%23231917&from=url&id=DFk4w&originHeight=389&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br><a name="nMQBR"></a></p>
+<h4 id="4-执行测试"><a href="#4-执行测试" class="headerlink" title="4. 执行测试"></a>4. 执行测试</h4><ul>
+<li>测试1：在主机写入数据，在从机查看</li>
+<li>测试2：在从机写入数据会报错。配置文件中的依据是：slave-read-only yes</li>
+<li>测试3：主机执行SHUTDOWN看从机状态</li>
+<li>测试4：主机恢复启动，看从机状态</li>
+<li>测试5：从机SHUTDOWN，此时主机写入数据，从机恢复启动查看状态。重新设定主从关系后看新写入的数据是否同步。<br><a name="ZSJfJ"></a></li>
+</ul>
+<h3 id="第四节-哨兵模式"><a href="#第四节-哨兵模式" class="headerlink" title="第四节 哨兵模式"></a><a href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F">第四节 哨兵模式</a></h3><p><a name="HYFGi"></a></p>
+<h4 id="1-哨兵模式的概念"><a href="#1-哨兵模式的概念" class="headerlink" title="1. 哨兵模式的概念"></a>1. 哨兵模式的概念</h4><p>能够后台监控主机是否故障，如果故障了根据投票数自动将从机转换为主机，通过哨兵服务器监控master&#x2F;slave可以实现主从复制集群的自动管理<br><a name="mnGtB"></a></p>
+<h4 id="2-相关概念"><a href="#2-相关概念" class="headerlink" title="2. 相关概念"></a>2. 相关概念</h4><p><a name="fadpE"></a></p>
+<h5 id="2-1-主观下线"><a href="#2-1-主观下线" class="headerlink" title="2.1 主观下线"></a>2.1 主观下线</h5><p>一台哨兵服务器检测到某个节点服务器下线了<br><a name="DxQIT"></a></p>
+<h5 id="2-2-客观下线"><a href="#2-2-客观下线" class="headerlink" title="2.2 客观下线"></a>2.2 客观下线</h5><p>检测到某个节点服务器下线的哨兵服务器达到了一定数量，这个数量后续会在哨兵的启动配置文件中指定。注意：只有master机需要做客观下线判断，slave机只需要做主观下线判断<br><a name="ios0t"></a></p>
+<h5 id="2-3-心跳检查"><a href="#2-3-心跳检查" class="headerlink" title="2.3 心跳检查"></a>2.3 心跳检查</h5><p>心跳(heart beat)检查是指客户端为了确认服务器端是否正常运行，会不断地给服务器端发送数据包，通过服务器端返回的数据包判断服务器端是否正在运行的一种工作机制<br><a name="SNcWQ"></a></p>
+<h4 id="3-配置哨兵"><a href="#3-配置哨兵" class="headerlink" title="3. 配置哨兵"></a>3. 配置哨兵</h4><p>简单起见我们只配置一台哨兵。我们所需要做的就是创建一个哨兵服务器运行所需要的配置文件。<br />touch &#x2F;usr&#x2F;local&#x2F;cluster-redis&#x2F;sentinel.conf<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481741-25a61422-c2cb-4972-824f-54861964d270.png#averageHue=%23261c1a&from=url&id=ZLFFD&originHeight=254&originWidth=624&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br />编辑sentinel.conf文件:<br /><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.nlark.com/yuque/0/2023/png/21527991/1684322481836-3ed1e613-97c2-429f-b451-d9ec944c1229.png#averageHue=%23aca3a1&from=url&id=EfNGQ&originHeight=262&originWidth=608&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<table>
+<thead>
+<tr>
+<th><strong>格式</strong></th>
+<th><strong>例子</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sentinel monitor 为主机命名 主机IP 主机端口号 将主机判定为下线时需要Sentinel同意的数量</td>
+<td>sentinel monitor mymaster 127.0.0.1 6000 1</td>
+</tr>
+</tbody></table>
+<p><strong>4. 启动哨兵</strong><br />进入 &#x2F;usr&#x2F;local&#x2F;redis&#x2F;bin 目录中:<br />然后执行 .&#x2F;redis-server &#x2F;usr&#x2F;local&#x2F;cluster-redis&#x2F;sentinel.conf –sentinel<br />假设两个 slave 服务器参与选举：</p>
+<ul>
+<li>情况1：</li>
+<li>slave A：投票给 slave B</li>
+<li>slave B：投票给 slave A</li>
+<li>两个服务器各得一票，平手，不能确定，需要继续投票</li>
+<li>情况2：</li>
+<li>slave A：投票给自己</li>
+<li>slave B：投票给自己</li>
+<li>两个服务器各得一票，平手，不能确定，需要继续投票</li>
+<li>情况3：</li>
+<li>slave A：投票给自己</li>
+<li>slave B：投票给 slave A</li>
+<li>slave A 得 2 票，slave B 没有得票，所以 slave A 当选</li>
+</ul>
+</article><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2023/05/15/2023-5-18%20Redis%E4%B8%8B/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Redis下&amp;url=http://example.com/2023/05/15/2023-5-18%20Redis%E4%B8%8B/&amp;pic=/img/default_cover.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Redis%E4%B8%8B/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Redis下<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/default_cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><div class="post-copyright"><i class="anzhiyufont anzhiyu-icon-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2023/05/15/2023-5-18%20Redis%E4%B8%8B/">原创</a><a class="post-copyright-title"><span>Redis下</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"></span><a class="link" href="http://example.com">John Doe</a></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a class="link" href="http://example.com/2023/05/15/2023-5-18%20Redis%E4%B8%8B/">http://example.com/2023/05/15/2023-5-18%20Redis%E4%B8%8B/</a></span><span class="copy-button" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-copy"></i></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/15/2023-5-20-%E5%B0%9A%E5%A5%BD%E6%88%BF%E9%A1%B9%E7%9B%AE/"><img class="prev-cover" src="/img/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">尚好房项目day7</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/15/2023-5-18%20Redis%E4%B8%8A/"><img class="next-cover" src="/img/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Redis上</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author-info-top"> <div class="card-info-avatar"></div></div><div class="author-info__sayhi" id="author-info__sayhi"></div><h1 class="author-info__name">John Doe</h1><div class="author-info__description"></div><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/about/&quot;)"><span class="banner-button-text">了解更多</span><i class="anzhiyufont anzhiyu-icon-arrow-circle-right" style="font-size: 1.5rem"></i></a></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-%E4%B8%8B"><span class="toc-number">1.</span> <span class="toc-text">Redis(下)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.</span> <span class="toc-text">第一章 Redis持久化机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-RDB%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">第一节 RDB持久化机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-RDB%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1. RDB的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BF%AB%E7%85%A7%E7%9A%84%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">2. 快照的触发时机</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E5%9F%BA%E4%BA%8E%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.1.2.1.</span> <span class="toc-text">2.1 基于默认配置</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8-900-%E7%A7%92-15%E5%88%86%E9%92%9F-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%87%B3%E5%B0%91%E6%9C%89-1-%E4%B8%AA-key-%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%8CRedis-%E5%B0%B1%E4%BC%9A%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7"><span class="toc-number">2.</span> <span class="toc-text">在 900 秒(15分钟)之后，如果至少有 1 个 key 发生变化，Redis 就会自动触发创建快照</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8-300-%E7%A7%92-5%E5%88%86%E9%92%9F-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%87%B3%E5%B0%91%E6%9C%89-10-%E4%B8%AA-key-%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%8CRedis-%E5%B0%B1%E4%BC%9A%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7"><span class="toc-number">3.</span> <span class="toc-text">在 300 秒(5分钟)之后，如果至少有 10 个 key 发生变化，Redis 就会自动触发创建快照</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8-60-%E7%A7%92-1%E5%88%86%E9%92%9F-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%87%B3%E5%B0%91%E6%9C%89-10000-%E4%B8%AA-key-%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%8CRedis-%E5%B0%B1%E4%BC%9A%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7"><span class="toc-number">4.</span> <span class="toc-text">在 60 秒(1分钟)之后，如果至少有 10000 个 key 发生变化，Redis 就会自动触发创建快照</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-RDB%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">3. RDB的相关配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0-%E7%BC%96%E8%BE%91-redis-windwos-conf-%E6%96%87%E4%BB%B6"><span class="toc-number">4.0.0.1.1.</span> <span class="toc-text">① 编辑  redis.windwos.conf 文件</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#after-900-sec-15-min-if-at-least-1-key-changed"><span class="toc-number">5.</span> <span class="toc-text">after 900 sec (15 min) if at least 1 key changed</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#900%E7%A7%92%EF%BC%8815%E5%88%86%E9%92%9F%EF%BC%89%E5%90%8E%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%87%B3%E5%B0%91%E6%9C%891%E4%B8%AAkey%E6%94%B9%E5%8F%98"><span class="toc-number">6.</span> <span class="toc-text">900秒（15分钟）后，如果至少有1个key改变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#after-300-sec-5-min-if-at-least-10-keys-changed"><span class="toc-number">7.</span> <span class="toc-text">after 300 sec (5 min) if at least 10 keys changed</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#after-60-sec-if-at-least-10000-keys-changed"><span class="toc-number">8.</span> <span class="toc-text">after 60 sec if at least 10000 keys changed</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1-%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8redis%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E5%B9%B6%E6%8C%87%E5%AE%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0"><span class="toc-number">8.0.0.0.1.</span> <span class="toc-text">② 重新启动redis服务器，并指定配置文件名称</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%8F%E9%9A%9410%E7%A7%92%E9%92%9F%EF%BC%8C5%E4%B8%AA%E9%94%AE%E4%BF%AE%E6%94%B9%EF%BC%8C%E8%BF%9B%E8%A1%8C%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="toc-number">9.</span> <span class="toc-text">每隔10秒钟，5个键修改，进行保存数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-RDB%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">9.0.0.1.</span> <span class="toc-text">4. RDB持久化的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-RDB%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">9.0.0.2.</span> <span class="toc-text">5. RDB的缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-AOF%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="toc-number">9.0.1.</span> <span class="toc-text">第二节 AOF持久化机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-AOF%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">9.0.1.1.</span> <span class="toc-text">1. AOF的概念</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%90%AF-AOF-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">10.</span> <span class="toc-text">开启 AOF 持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#AOF-%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86-%E5%88%9B%E5%BB%BA"><span class="toc-number">10.0.0.0.1.</span> <span class="toc-text">AOF  的运行原理-创建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AOF-%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86-%E6%81%A2%E5%A4%8D"><span class="toc-number">10.0.0.0.2.</span> <span class="toc-text">AOF  的运行原理-恢复</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-AOF%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">10.0.0.1.</span> <span class="toc-text">2. AOF的基本配置</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%8F%E6%AC%A1%E6%9C%89%E6%95%B0%E6%8D%AE%E4%BF%AE%E6%94%B9%E5%8F%91%E7%94%9F%E6%97%B6%E9%83%BD%E4%BC%9A%E5%86%99%E5%85%A5-AOF-%E6%96%87%E4%BB%B6%EF%BC%8C%E9%80%9F%E5%BA%A6%E7%BC%93%E6%85%A2%E4%BD%86%E6%98%AF%E6%9C%80%E5%AE%89%E5%85%A8"><span class="toc-number">11.</span> <span class="toc-text">每次有数据修改发生时都会写入 AOF 文件，速度缓慢但是最安全</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%8F%E7%A7%92%E9%92%9F%E5%90%8C%E6%AD%A5%E4%B8%80%E6%AC%A1%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%9C%B0%E5%B0%86%E5%A4%9A%E4%B8%AA%E5%86%99%E5%91%BD%E4%BB%A4%E5%90%8C%E6%AD%A5%E5%88%B0%E7%A1%AC%E7%9B%98%E3%80%82AOF-%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8%E7%9A%84"><span class="toc-number">12.</span> <span class="toc-text">每秒钟同步一次，显示地将多个写命令同步到硬盘。AOF 默认使用的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A9%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%B3%E5%AE%9A%E4%BD%95%E6%97%B6%E8%BF%9B%E8%A1%8C%E5%90%8C%E6%AD%A5%EF%BC%8C%E9%80%9F%E5%BA%A6%E6%9C%80%E5%BF%AB"><span class="toc-number">13.</span> <span class="toc-text">让操作系统决定何时进行同步，速度最快</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A0-%E7%BC%96%E8%BE%91-redis-windwos-conf-%E6%96%87%E4%BB%B6-1"><span class="toc-number">13.0.0.0.1.</span> <span class="toc-text">① 编辑  redis.windwos.conf 文件</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91redis-windwos-conf%E6%96%87%E4%BB%B6"><span class="toc-number">14.</span> <span class="toc-text">编辑redis.windwos.conf文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#appendfsync-always-%EF%BC%9A-%E6%AF%8F%E4%B8%80%E6%AC%A1%E6%93%8D%E4%BD%9C%E9%83%BD%E8%BF%9B%E8%A1%8C%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">15.</span> <span class="toc-text">appendfsync always ： 每一次操作都进行持久化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#appendfsync-no-%EF%BC%9A-%E4%B8%8D%E8%BF%9B%E8%A1%8C%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">16.</span> <span class="toc-text">appendfsync no	 ： 不进行持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1-%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8redis%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E5%B9%B6%E6%8C%87%E5%AE%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0-1"><span class="toc-number">16.0.0.0.1.</span> <span class="toc-text">② 重新启动redis服务器，并指定配置文件名称</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-AOF%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">16.0.0.1.</span> <span class="toc-text">3. AOF的优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-AOF%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">16.0.0.2.</span> <span class="toc-text">4. AOF的缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Jedis-%E9%87%8D%E7%82%B9"><span class="toc-number">16.1.</span> <span class="toc-text">第二章 Jedis(重点)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-Jedis%E7%9A%84%E5%85%A5%E9%97%A8"><span class="toc-number">16.1.1.</span> <span class="toc-text">第一节 Jedis的入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Jedis%E7%9A%84%E7%AE%80%E4%BB%8B"><span class="toc-number">16.1.1.1.</span> <span class="toc-text">1. Jedis的简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9Redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84bind%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">16.1.1.2.</span> <span class="toc-text">2. 修改Redis配置文件中的bind配置项</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-bind%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">16.1.1.2.1.</span> <span class="toc-text">2.1 bind配置项的作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E4%BF%AE%E6%94%B9bind%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-number">16.1.1.2.2.</span> <span class="toc-text">2.2 修改bind配置项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8Jedis"><span class="toc-number">16.1.1.3.</span> <span class="toc-text">3. 使用Jedis</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E5%BC%95%E5%85%A5Jedis%E7%9A%84%E4%BE%9D%E8%B5%96"><span class="toc-number">16.1.1.3.1.</span> <span class="toc-text">3.1 引入Jedis的依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-Jedis%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">16.1.1.3.2.</span> <span class="toc-text">3.2 Jedis的使用代码基本操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JedisPool%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">16.1.2.</span> <span class="toc-text">4. JedisPool的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-Redis%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6"><span class="toc-number">16.2.</span> <span class="toc-text">第三章 Redis事务控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-Redis%E4%BA%8B%E5%8A%A1%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">16.2.1.</span> <span class="toc-text">第一节 Redis事务的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BA%8B%E5%8A%A1%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">16.2.1.1.</span> <span class="toc-text">1. 事务的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E7%9A%84%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">16.2.1.2.</span> <span class="toc-text">2. 事务控制的相关命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%9C%A8%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80%E4%B8%AD%EF%BC%8C%E4%B8%80%E8%88%AC%E5%88%86%E4%B8%BA%E4%BB%A5%E4%B8%8B%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%9A"><span class="toc-number">16.2.1.3.</span> <span class="toc-text">事务在其他语言中，一般分为以下三个阶段：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E4%BA%8B%E5%8A%A1"><span class="toc-number">16.2.2.</span> <span class="toc-text">开启事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E4%BA%8B%E5%8A%A1-x2F-%E6%94%BE%E5%BC%83%E4%BA%8B%E5%8A%A1"><span class="toc-number">16.2.3.</span> <span class="toc-text">执行事务&#x2F;放弃事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E5%91%BD%E4%BB%A4%E9%98%9F%E5%88%97%E6%89%A7%E8%A1%8C%E5%A4%B1%E8%B4%A5%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%83%85%E5%86%B5"><span class="toc-number">16.2.4.</span> <span class="toc-text">第二节 命令队列执行失败的两种情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Redis%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%AF%E6%8C%81%E5%9B%9E%E6%BB%9A"><span class="toc-number">16.2.4.1.</span> <span class="toc-text">3. Redis为什么不支持回滚</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%82%B2%E8%A7%82%E9%94%81%E5%92%8C%E4%B9%90%E8%A7%82%E9%94%81"><span class="toc-number">16.2.5.</span> <span class="toc-text">第三节 悲观锁和乐观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%82%B2%E8%A7%82%E9%94%81"><span class="toc-number">16.2.5.1.</span> <span class="toc-text">1. 悲观锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B9%90%E8%A7%82%E9%94%81"><span class="toc-number">16.2.5.2.</span> <span class="toc-text">2. 乐观锁</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-Redis%E7%9A%84%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%9C%BA%E5%88%B6"><span class="toc-number">16.3.</span> <span class="toc-text">第四章 Redis的主从复制机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">16.3.1.</span> <span class="toc-text">第一节 主从复制的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">16.3.1.1.</span> <span class="toc-text">1. 什么是主从复制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">16.3.1.2.</span> <span class="toc-text">2. 主从复制的目的</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E6%90%AD%E5%BB%BA%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E9%9B%86%E7%BE%A4"><span class="toc-number">16.3.2.</span> <span class="toc-text">第二节 搭建主从复制集群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%90%AD%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="toc-number">16.3.2.1.</span> <span class="toc-text">1. 搭建思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-number">16.3.2.2.</span> <span class="toc-text">2. 搭建步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%90%AF%E5%8A%A8Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E9%9B%86%E7%BE%A4"><span class="toc-number">16.3.2.3.</span> <span class="toc-text">3. 启动Redis主从复制集群</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-%E4%B8%BB%E4%BB%8E%E5%85%B3%E7%B3%BB"><span class="toc-number">16.3.3.</span> <span class="toc-text">第三节 主从关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E4%B8%BB%E4%BB%8E%E5%85%B3%E7%B3%BB"><span class="toc-number">16.3.3.1.</span> <span class="toc-text">1. 查看主从关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E4%B8%BB%E4%BB%8E%E5%85%B3%E7%B3%BB"><span class="toc-number">16.3.3.2.</span> <span class="toc-text">2. 配置主从关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8F%96%E6%B6%88%E4%B8%BB%E4%BB%8E%E5%85%B3%E7%B3%BB"><span class="toc-number">16.3.3.3.</span> <span class="toc-text">3. 取消主从关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%89%A7%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">16.3.3.4.</span> <span class="toc-text">4. 执行测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%8A%82-%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-number">16.3.4.</span> <span class="toc-text">第四节 哨兵模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">16.3.4.1.</span> <span class="toc-text">1. 哨兵模式的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">16.3.4.2.</span> <span class="toc-text">2. 相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E4%B8%BB%E8%A7%82%E4%B8%8B%E7%BA%BF"><span class="toc-number">16.3.4.2.1.</span> <span class="toc-text">2.1 主观下线</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E5%AE%A2%E8%A7%82%E4%B8%8B%E7%BA%BF"><span class="toc-number">16.3.4.2.2.</span> <span class="toc-text">2.2 客观下线</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-%E5%BF%83%E8%B7%B3%E6%A3%80%E6%9F%A5"><span class="toc-number">16.3.4.2.3.</span> <span class="toc-text">2.3 心跳检查</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E5%93%A8%E5%85%B5"><span class="toc-number">16.3.4.3.</span> <span class="toc-text">3. 配置哨兵</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/02/2023-5-8-%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2%E7%AE%80%E5%8E%86/" title="java工程师"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java工程师"/></a><div class="content"><a class="title" href="/2023/06/02/2023-5-8-%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2%E7%AE%80%E5%8E%86/" title="java工程师">java工程师</a><time datetime="2023-06-02T08:58:25.061Z" title="Created 2023-06-02 16:58:25">2023-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/16/2023-5-16%20Linux%E4%B8%8B/" title="Linux下"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux下"/></a><div class="content"><a class="title" href="/2023/05/16/2023-5-16%20Linux%E4%B8%8B/" title="Linux下">Linux下</a><time datetime="2023-05-15T22:19:03.000Z" title="Created 2023-05-16 06:19:03">2023-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/2023-5-17%20Linux%E4%B8%8A/" title="Linux上"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux上"/></a><div class="content"><a class="title" href="/2023/05/15/2023-5-17%20Linux%E4%B8%8A/" title="Linux上">Linux上</a><time datetime="2023-05-14T22:19:03.000Z" title="Created 2023-05-15 06:19:03">2023-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8A/" title="Redis上"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis上"/></a><div class="content"><a class="title" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8A/" title="Redis上">Redis上</a><time datetime="2023-05-14T22:19:03.000Z" title="Created 2023-05-15 06:19:03">2023-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8B/" title="Redis下"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis下"/></a><div class="content"><a class="title" href="/2023/05/15/2023-5-18%20Redis%E4%B8%8B/" title="Redis下">Redis下</a><time datetime="2023-05-14T22:19:03.000Z" title="Created 2023-05-15 06:19:03">2023-05-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://anzhiy.cn/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a></p></div></footer></div></div></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="data:image/jpeg;base64,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"/><div class="loading-image-dot"></div><div id="loading-percentage">0%</div></div></div><script>const loadingPercentage = document.getElementById("loading-percentage");
+let loadingPercentageTimer = setInterval(function() {
+  var progressBar = document.querySelector(".pace-progress");
+  if (!progressBar) return
+  var currentValue = progressBar.getAttribute("data-progress-text");
+  if (currentValue !== loadingPercentage.textContent) {
+    loadingPercentage.textContent = currentValue;
+    if (currentValue === "100%") {
+      clearInterval(loadingPercentageTimer);
+    }
+  }
+}, 100);
+const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+    Pace.restart()
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/progress_bar/progress_bar.css"/><script async="async" src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">10</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">5</div></a></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="center-console" type="button" title="中控台"><i class="anzhiyufont anzhiyu-icon-fish"></i></button><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div><div id="console"><div class="close-btn" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-xmark" style="font-size: 35px;"></i></div><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="anzhiyu.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> <span>Newest Comments</span></span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="anzhiyu.hideConsole()"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Linux%E4%B8%8A/" style="font-size: 1.05rem;">Linux上<sup>1</sup></a><a href="/tags/Linux%E4%B8%8B/" style="font-size: 1.05rem;">Linux下<sup>1</sup></a><a href="/tags/Redis%E4%B8%8A/" style="font-size: 1.05rem;">Redis上<sup>1</sup></a><a href="/tags/Redis%E4%B8%8B/" style="font-size: 1.05rem;">Redis下<sup>1</sup></a><a href="/tags/mybatis/" style="font-size: 1.05rem;">mybatis<sup>2</sup></a><a href="/tags/spring/" style="font-size: 1.05rem;">spring<sup>1</sup></a><a href="/tags/spring%E5%85%A8%E5%AE%B6%E6%A1%B6/" style="font-size: 1.05rem;">spring全家桶<sup>3</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" style="font-size: 1.05rem;">个人简历<sup>1</sup></a><a href="/tags/%E5%B0%9A%E5%A5%BD%E6%88%BF/" style="font-size: 1.05rem;">尚好房<sup>1</sup></a><a href="/tags/%E7%AE%80%E5%8E%86/" style="font-size: 1.05rem;">简历<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history" onclick="anzhiyu.hideConsole()"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">June 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">May 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="anzhiyu.switchDarkMode()" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.2.1/source/js/utils.js"></script><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.2.1/source/js/main.js"></script><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.2.1/source/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><script src="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 1.2.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#3b70fc",
+      "",
+      "color:#3b70fc",
+      "color:#3b70fc",
+      "",
+      "color:#3b70fc",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 John Doe 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("04/01/2021 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+      img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+      img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anzhiy.cn";</script><script>//动态标题
+let leaveTitle = 'w(ﾟДﾟ)w 不要走！再看看嘛！';
+let backTitle = '♪(^∇^*)欢迎肥来！';
+let OriginTitile = document.title
+let titleTime
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    //离开当前页面时标签显示内容
+    document.title = leaveTitle
+    clearTimeout(titleTime)
+  } else {
+    //返回当前页面时标签显示内容
+    document.title = backTitle + OriginTitile
+    //两秒后变回正常标题
+    titleTime = setTimeout(function () {
+      document.title = OriginTitile
+    }, 2000)
+  }
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script>// 初始化函数
+let rm = {};
+
+//禁止图片与超链接拖拽
+let aElements = document.getElementsByTagName("a");
+for (let i = 0; i < aElements.length; i++) {
+  aElements[i].setAttribute("draggable", "false");
+  let imgElements = aElements[i].getElementsByTagName("img");
+  for (let j = 0; j < imgElements.length; j++) {
+    imgElements[j].setAttribute("draggable", "false");
+  }
+}
+
+// 显示菜单
+rm.showRightMenu = function (isTrue, x = 0, y = 0) {
+  console.info(x, y)
+  let rightMenu = document.getElementById("rightMenu");
+  rightMenu.style.top = x + "px";
+  rightMenu.style.left = y + "px";
+  if (isTrue) {
+    rightMenu.style.display = "block";
+    stopMaskScroll();
+  } else {
+    rightMenu.style.display = "none";
+  }
+};
+
+// 隐藏菜单
+rm.hideRightMenu = function () {
+  rm.showRightMenu(false);
+  let rightMenuMask = document.querySelector("#rightmenu-mask");
+  rightMenuMask.style.display = "none";
+};
+
+// 尺寸
+let rmWidth = document.getElementById("rightMenu").offsetWidth;
+let rmHeight = document.getElementById("rightMenu").offsetHeight;
+
+// 重新定义尺寸
+rm.reloadrmSize = function () {
+  rightMenu.style.visibility = "hidden";
+  rightMenu.style.display = "block";
+  // 获取宽度和高度
+  rmWidth = document.getElementById("rightMenu").offsetWidth;
+  rmHeight = document.getElementById("rightMenu").offsetHeight;
+  rightMenu.style.visibility = "visible";
+};
+
+// 获取点击的href
+let domhref = "";
+let domImgSrc = "";
+let globalEvent = null;
+
+var oncontextmenuFunction = function (event) {
+  if (document.body.clientWidth > 768) {
+    let pageX = event.clientX + 10; //加10是为了防止显示时鼠标遮在菜单上
+    let pageY = event.clientY;
+
+    //其他额外菜单
+    const $rightMenuOther = document.querySelector(".rightMenuOther");
+    const $rightMenuPlugin = document.querySelector(".rightMenuPlugin");
+    const $rightMenuCopyText = document.querySelector("#menu-copytext");
+    const $rightMenuPasteText = document.querySelector("#menu-pastetext");
+    const $rightMenuCommentText = document.querySelector("#menu-commenttext");
+    const $rightMenuNewWindow = document.querySelector("#menu-newwindow");
+    const $rightMenuNewWindowImg = document.querySelector("#menu-newwindowimg");
+    const $rightMenuCopyLink = document.querySelector("#menu-copylink");
+    const $rightMenuCopyImg = document.querySelector("#menu-copyimg");
+    const $rightMenuDownloadImg = document.querySelector("#menu-downloadimg");
+    const $rightMenuSearch = document.querySelector("#menu-search");
+    const $rightMenuSearchBaidu = document.querySelector("#menu-searchBaidu");
+    const $rightMenuMusicToggle = document.querySelector("#menu-music-toggle");
+    const $rightMenuMusicBack = document.querySelector("#menu-music-back");
+    const $rightMenuMusicForward = document.querySelector("#menu-music-forward");
+    const $rightMenuMusicPlaylist = document.querySelector("#menu-music-playlist");
+    const $rightMenuMusicCopyMusicName = document.querySelector("#menu-music-copyMusicName");
+
+    let href = event.target.href;
+    let imgsrc = event.target.currentSrc;
+
+    // 判断模式 扩展模式为有事件
+    let pluginMode = false;
+    $rightMenuOther.style.display = "block";
+    globalEvent = event;
+
+    // 检查是否需要复制 是否有选中文本
+    if (selectTextNow && window.getSelection()) {
+      pluginMode = true;
+      $rightMenuCopyText.style.display = "block";
+      $rightMenuCommentText.style.display = "block";
+      $rightMenuSearch.style.display = "block";
+      $rightMenuSearchBaidu.style.display = "block";
+    } else {
+      $rightMenuCopyText.style.display = "none";
+      $rightMenuCommentText.style.display = "none";
+      $rightMenuSearchBaidu.style.display = "none";
+      $rightMenuSearch.style.display = "none";
+    }
+
+    //检查是否右键点击了链接a标签
+    if (href) {
+      pluginMode = true;
+      $rightMenuNewWindow.style.display = "block";
+      $rightMenuCopyLink.style.display = "block";
+      domhref = href;
+    } else {
+      $rightMenuNewWindow.style.display = "none";
+      $rightMenuCopyLink.style.display = "none";
+    }
+
+    //检查是否需要复制图片
+    if (imgsrc) {
+      pluginMode = true;
+      $rightMenuCopyImg.style.display = "block";
+      $rightMenuDownloadImg.style.display = "block";
+      $rightMenuNewWindowImg.style.display = "block";
+      document.getElementById("rightMenu").style.width="12rem"
+      domImgSrc = imgsrc;
+    } else {
+      $rightMenuCopyImg.style.display = "none";
+      $rightMenuDownloadImg.style.display = "none";
+      $rightMenuNewWindowImg.style.display = "none";
+    }
+
+    // 判断是否为输入框
+    if (event.target.tagName.toLowerCase() === "input" || event.target.tagName.toLowerCase() === "textarea") {
+      pluginMode = true;
+      $rightMenuPasteText.style.display = "block";
+    } else {
+      $rightMenuPasteText.style.display = "none";
+    }
+    const navMusicEl = document.querySelector("#nav-music");
+    //判断是否是音乐
+    if (navMusicEl && navMusicEl.contains(event.target)) {
+      pluginMode = true;
+      $rightMenuMusicToggle.style.display = "block";
+      $rightMenuMusicBack.style.display = "block";
+      $rightMenuMusicForward.style.display = "block";
+      $rightMenuMusicPlaylist.style.display = "block";
+      $rightMenuMusicCopyMusicName.style.display = "block";
+    } else {
+      $rightMenuMusicToggle.style.display = "none";
+      $rightMenuMusicBack.style.display = "none";
+      $rightMenuMusicForward.style.display = "none";
+      $rightMenuMusicPlaylist.style.display = "none";
+      $rightMenuMusicCopyMusicName.style.display = "none";
+    }
+
+    // 如果不是扩展模式则隐藏扩展模块
+    if (pluginMode) {
+      $rightMenuOther.style.display = "none";
+      $rightMenuPlugin.style.display = "block";
+    } else {
+      $rightMenuPlugin.style.display = "none";
+    }
+
+    rm.reloadrmSize();
+
+    // 鼠标默认显示在鼠标右下方，当鼠标靠右或靠下时，将菜单显示在鼠标左方\上方
+    if (pageX + rmWidth > window.innerWidth) {
+      pageX -= rmWidth + 10;
+    }
+    if (pageY + rmHeight > window.innerHeight) {
+      pageY -= pageY + rmHeight - window.innerHeight;
+    }
+
+    rm.showRightMenu(true, pageY, pageX);
+    document.getElementById("rightmenu-mask").style.display = "flex";
+    return false;
+  }
+};
+
+// 监听右键初始化
+window.oncontextmenu = oncontextmenuFunction
+
+// 下载图片状态
+rm.downloadimging = false;
+
+// 复制图片到剪贴板
+rm.writeClipImg = function (imgsrc) {
+  console.log("按下复制");
+  rm.hideRightMenu();
+  anzhiyu.snackbarShow("正在下载中，请稍后", false, 10000);
+  if (rm.downloadimging == false) {
+    rm.downloadimging = true;
+    setTimeout(function () {
+      copyImage(imgsrc);
+      anzhiyu.snackbarShow("复制成功！图片已添加盲水印，请遵守版权协议");
+      rm.downloadimging = false;
+    }, "10000");
+  }
+};
+
+function imageToBlob(imageURL) {
+  const img = new Image();
+  const c = document.createElement("canvas");
+  const ctx = c.getContext("2d");
+  img.crossOrigin = "";
+  img.src = imageURL;
+  return new Promise(resolve => {
+    img.onload = function () {
+      c.width = this.naturalWidth;
+      c.height = this.naturalHeight;
+      ctx.drawImage(this, 0, 0);
+      c.toBlob(
+        blob => {
+          // here the image is a blob
+          resolve(blob);
+        },
+        "image/png",
+        0.75
+      );
+    };
+  });
+}
+
+async function copyImage(imageURL) {
+  const blob = await imageToBlob(imageURL);
+  const item = new ClipboardItem({ "image/png": blob });
+  navigator.clipboard.write([item]);
+}
+
+rm.copyUrl = function (id) {
+  const input = document.createElement("input"); // Create a new <input> element
+  input.id = "copyVal"; // Set the id of the new element to "copyVal"
+  document.body.appendChild(input); // Append the new element to the end of the <body> element
+  
+  const text = id;
+  input.value = text;
+  input.select();
+  input.setSelectionRange(0, input.value.length);
+  document.execCommand("copy");
+  
+  input.remove(); // Remove the <input> element from the DOM
+};
+
+function stopMaskScroll() {
+  if (document.getElementById("rightmenu-mask")) {
+    let xscroll = document.getElementById("rightmenu-mask");
+    xscroll.addEventListener(
+      "mousewheel",
+      function (e) {
+        //阻止浏览器默认方法
+        rm.hideRightMenu();
+        // e.preventDefault();
+      },
+      { passive: true }
+    );
+  }
+  if (document.getElementById("rightMenu")) {
+    let xscroll = document.getElementById("rightMenu");
+    xscroll.addEventListener(
+      "mousewheel",
+      function (e) {
+        //阻止浏览器默认方法
+        rm.hideRightMenu();
+        // e.preventDefault();
+      },
+      { passive: true }
+    );
+  }
+}
+
+rm.rightmenuCopyText = function (txt) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt);
+  }
+  rm.hideRightMenu();
+};
+
+rm.copyPageUrl = function () {
+  var url = window.location.href;
+  rm.copyUrl(url);
+  anzhiyu.snackbarShow("复制本页链接地址成功", false, 2000);
+  rm.hideRightMenu();
+};
+
+rm.sharePage = function () {
+  var content = window.location.href;
+  rm.copyUrl(url);
+  anzhiyu.snackbarShow("复制本页链接地址成功", false, 2000);
+  rm.hideRightMenu();
+};
+
+// 复制当前选中文本
+var selectTextNow = "";
+document.onmouseup = document.ondblclick = selceText;
+
+function selceText() {
+  var txt;
+  if (document.selection) {
+    txt = document.selection.createRange().text;
+  } else {
+    txt = window.getSelection().toString();
+  }
+  selectTextNow = txt !== "" ? txt : "";
+}
+
+// 读取剪切板
+rm.readClipboard = function () {
+  if (navigator.clipboard) {
+    navigator.clipboard.readText().then(clipText => rm.insertAtCaret(globalEvent.target, clipText));
+  }
+};
+
+// 粘贴文本到焦点
+rm.insertAtCaret = function (elemt, value) {
+  const startPos = elemt.selectionStart,
+    endPos = elemt.selectionEnd;
+  if (document.selection) {
+    elemt.focus();
+    var sel = document.selection.createRange();
+    sel.text = value;
+    elemt.focus();
+  } else {
+    if (startPos || startPos == "0") {
+      var scrollTop = elemt.scrollTop;
+      elemt.value = elemt.value.substring(0, startPos) + value + elemt.value.substring(endPos, elemt.value.length);
+      elemt.focus();
+      elemt.selectionStart = startPos + value.length;
+      elemt.selectionEnd = startPos + value.length;
+      elemt.scrollTop = scrollTop;
+    } else {
+      elemt.value += value;
+      elemt.focus();
+    }
+  }
+};
+
+//粘贴文本
+rm.pasteText = function () {
+  const result = rm.readClipboard() || "";
+  rm.hideRightMenu();
+};
+
+//引用到评论
+rm.rightMenuCommentText = function (txt) {
+  rm.hideRightMenu();
+  const postCommentDom = document.getElementById("post-comment");
+  var domTop = postCommentDom.offsetTop;
+  window.scrollTo(0, domTop - 80);
+  if (txt == "undefined" || txt == "null") txt = "好棒！";
+  function setText() {
+    setTimeout(() => {
+      var input = document.getElementsByClassName("el-textarea__inner")[0];
+      if (!input) setText();
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("input", true, true);
+      let inputValue = replaceAll(txt, "\n", "\n> ");
+      input.value = "> " + inputValue + "\n\n";
+      input.dispatchEvent(evt);
+      input.focus();
+      input.setSelectionRange(-1, -1);
+      if (document.getElementById("comment-tips")) {
+        document.getElementById("comment-tips").classList.add("show");
+      }
+    }, 100);
+  }
+  setText();
+};
+
+//替换所有内容
+function replaceAll(string, search, replace) {
+  return string.split(search).join(replace);
+}
+
+// 百度搜索
+rm.searchBaidu = function () {
+  anzhiyu.snackbarShow("即将跳转到百度搜索", false, 2000);
+  setTimeout(function () {
+    window.open("https://www.baidu.com/s?wd=" + selectTextNow);
+  }, "2000");
+  rm.hideRightMenu();
+};
+
+//分享链接
+rm.copyLink = function () {
+  rm.rightmenuCopyText(domhref);
+  anzhiyu.snackbarShow("已复制链接地址");
+};
+
+function addRightMenuClickEvent() {
+  // 添加点击事件
+  document.getElementById("menu-backward").addEventListener("click", function () {
+  window.history.back();
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-forward").addEventListener("click", function () {
+    window.history.forward();
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-refresh").addEventListener("click", function () {
+    window.location.reload();
+  });
+
+  document.getElementById("menu-top").addEventListener("click", function () {
+    anzhiyu.scrollToDest(0, 500);
+    rm.hideRightMenu();
+  });
+
+  const menuLinks = document.querySelectorAll(".menu-link");
+  menuLinks.forEach(function (link) {
+    link.addEventListener("click", rm.hideRightMenu);
+  });
+
+  document.getElementById("menu-darkmode").addEventListener("click", anzhiyu.switchDarkMode);
+
+  document.getElementById("menu-home") && document.getElementById("menu-home").addEventListener("click", function () {
+    window.location.href = window.location.origin;
+  });
+
+  document.getElementById("menu-randomPost").addEventListener("click", function () {
+    toRandomPost();
+  });
+
+  document.getElementById("menu-commentBarrage").addEventListener("click", anzhiyu.switchCommentBarrage);
+
+  document.getElementById("rightmenu-mask").addEventListener("click", rm.hideRightMenu);
+
+  document.getElementById("rightmenu-mask").addEventListener("contextmenu", function (event) {
+    rm.hideRightMenu();
+    event.preventDefault(); // Prevent the default context menu from appearing
+  });
+
+  document.getElementById("menu-copy").addEventListener("click", rm.copyPageUrl);
+
+  document.getElementById("menu-pastetext").addEventListener("click", rm.pasteText);
+
+  document.getElementById("menu-copytext").addEventListener("click", function () {
+    rm.rightmenuCopyText(selectTextNow);
+    anzhiyu.snackbarShow("复制成功，复制和转载请标注本文地址");
+  });
+
+  document.getElementById("menu-commenttext").addEventListener("click", function () {
+    rm.rightMenuCommentText(selectTextNow);
+  });
+
+  document.getElementById("menu-newwindow").addEventListener("click", function () {
+    window.open(domhref, "_blank");
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-copylink").addEventListener("click", rm.copyLink);
+
+  document.getElementById("menu-downloadimg").addEventListener("click", function () {
+    anzhiyu.downloadImage(domImgSrc, "anzhiyu");
+  });
+
+  document.getElementById("menu-newwindowimg").addEventListener("click", function () {
+    window.open(domImgSrc, "_blank");
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-copyimg").addEventListener("click", function () {
+    rm.writeClipImg(domImgSrc);
+  });
+
+  document.getElementById("menu-searchBaidu").addEventListener("click", rm.searchBaidu);
+
+  //音乐
+  document.getElementById("menu-music-toggle").addEventListener("click", anzhiyu.musicToggle);
+
+  document.getElementById("menu-music-back").addEventListener("click", anzhiyu.musicSkipBack);
+
+  document.getElementById("menu-music-forward").addEventListener("click", anzhiyu.musicSkipForward);
+
+  document.getElementById("menu-music-copyMusicName").addEventListener("click", function () {
+    rm.rightmenuCopyText(anzhiyu.musicGetName());
+    anzhiyu.snackbarShow("复制歌曲名称成功", false, 3000);
+  });
+
+}
+
+addRightMenuClickEvent();</script><script data-pjax>var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var consoleEl = document.getElementById("console");
+// 已随机的歌曲
+var selectRandomSong = [];
+// 音乐默认声音大小
+var musicVolume = 0.8;
+// 是否切换了周杰伦音乐列表
+var changeMusicListFlag = false;
+// 当前默认播放列表
+var defaultPlayMusicList = [];
+
+document.getElementById("page-name").innerText = document.title.split(" | Hexo")[0];
+anzhiyu.initIndexEssay();
+anzhiyu.changeTimeInEssay();
+anzhiyu.removeBodyPaceClass();
+anzhiyu.qrcodeCreate();
+anzhiyu.changeTimeInAlbumDetail();
+anzhiyu.reflashEssayWaterFall();
+anzhiyu.sayhi();
+anzhiyu.stopImgRightDrag();
+anzhiyu.addNavBackgroundInit();
+anzhiyu.setValueToBodyType();
+anzhiyu.catalogActive();
+anzhiyu.tagsPageActive();
+anzhiyu.categoriesBarActive();
+anzhiyu.topCategoriesBarScroll();
+
+anzhiyu.getCustomPlayList();
+anzhiyu.addEventListenerConsoleMusicList(false);
+setTimeout(() => {
+  if (typeof addFriendLinksInFooter === "function") {
+    addFriendLinksInFooter();
+  }
+}, 200)</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.0/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>
